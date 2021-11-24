@@ -20,7 +20,11 @@
 
     @livewireStyles
 </head>
-<body class="template-index belle template-index-belle">
+<body class="belle @if (request()->routeIs('home'))
+    template-index template-index-belle
+@elseif (request()->routeIs('products.index'))
+    template-collection
+@endif">
     <div id="pre-loader">
         <img src="{{ asset('assets/images/loader.gif') }}" alt="Loading..." />
     </div>
@@ -84,7 +88,9 @@
         </div>
         <!--End Top Header-->
         <!--Header-->
-        <div class="header-wrap classicHeader animated d-flex">
+        <div class="header-wrap animated d-flex @if (request()->routeIs('home'))
+            classicHeader
+        @endif">
             <div class="container-fluid">
                 <div class="row align-items-center">
                 	<!--Desktop Logo-->
