@@ -40,7 +40,7 @@
                             </div>
                             <div class="lightboximages">
                                 <a href="{{ asset('assets/images/product-detail-page/camelia-reversible-big1.jpg') }}" data-size="1462x2048"></a>
-                                <a href="assets/images/product-detail-page/camelia-reversible-big2.jpg" data-size="1462x2048"></a>
+                                <a href="{{ asset('assets/images/product-detail-page/camelia-reversible0.jpg') }}" data-size="1462x2048"></a>
                                 <a href="assets/images/product-detail-page/camelia-reversible-big9.jpg" data-size="731x1024"></a>
                                 <a href="assets/images/product-detail-page/camelia-reversible-big10.jpg" data-size="731x1024"></a>
                             </div>
