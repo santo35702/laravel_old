@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\Frontend\HomePage;
+use App\Http\Livewire\Frontend\ProductPage;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,6 +20,11 @@ use App\Http\Livewire\Frontend\HomePage;
 // });
 
 Route::get('/', HomePage::class)->name('home');
+
+Route::prefix('products/')->name('products.')->group(function ()
+{
+    Route::get('/', ProductPage::class)->name('index');
+});
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
