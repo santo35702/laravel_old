@@ -24,6 +24,8 @@
     template-index template-index-belle
 @elseif (request()->routeIs('products.index') || request()->routeIs('products.list'))
     template-collection
+@elseif (request()->routeIs('products.details'))
+    template-product
 @endif">
     <div id="pre-loader">
         <img src="{{ asset('assets/images/loader.gif') }}" alt="Loading..." />
