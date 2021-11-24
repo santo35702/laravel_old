@@ -119,12 +119,12 @@
                                     <div class="grid__item">
                                         <div class="mini-list-item">
                                             <div class="mini-view_image">
-                                                <a class="grid-view-item__link" href="#">
+                                                <a class="grid-view-item__link" href="{{ route('products.details') }}">
                                                     <img class="grid-view-item__image" src="{{ asset('assets/images/product-images/product-image1.jpg') }}" alt="" />
                                                 </a>
                                             </div>
                                             <div class="details">
-                                                <a class="grid-view-item__title" href="#">Cena Skirt</a>
+                                                <a class="grid-view-item__title" href="{{ route('products.details') }}">Cena Skirt</a>
                                                 <div class="grid-view-item__meta">
                                                     <span class="product-price__price">
                                                         <span class="money">$173.60</span>
@@ -270,12 +270,12 @@
                             <div class="list-view-item__image-column">
                                 <div class="list-view-item__image-wrapper">
                                     <!-- Image -->
-                                    <a href="product-layout-2.html"><img class="list-view-item__image blur-up lazyload" data-src="{{ asset('assets/images/product-images/product-image1.jpg') }}" src="{{ asset('assets/images/product-images/product-image1.jpg') }}" alt="image" title="product"></a>
+                                    <a href="{{ route('products.details') }}"><img class="list-view-item__image blur-up lazyload" data-src="{{ asset('assets/images/product-images/product-image1.jpg') }}" src="{{ asset('assets/images/product-images/product-image1.jpg') }}" alt="image" title="product"></a>
                                     <!-- End Image -->
                                 </div>
                             </div>
                             <div class="list-view-item__title-column">
-                                <div class="h4 grid-view-item__title"><a href="product-layout-2.html">Camelia Reversible Jacket</a></div>
+                                <div class="h4 grid-view-item__title"><a href="{{ route('products.details') }}">Camelia Reversible Jacket</a></div>
                                 <!-- Product Review -->
                                 <p class="product-review"><i class="font-13 fa fa-star"></i><i class="font-13 fa fa-star"></i><i class="font-13 fa fa-star"></i><i class="font-13 fa fa-star-o"></i><i class="font-13 fa fa-star-o"></i></p>
                                 <!-- End Product Review -->

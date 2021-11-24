@@ -273,7 +273,7 @@
                                 <!-- start product image -->
                                 <div class="product-image">
                                     <!-- start product image -->
-                                    <a href="#">
+                                    <a href="{{ route('products.details') }}">
                                         <!-- image -->
                                         <img class="primary blur-up lazyload" data-src="{{ asset('assets/images/product-images/product-image1.jpg') }}" src="{{ asset('assets/images/product-images/product-image1.jpg') }}" alt="image" title="product">
                                         <!-- End image -->
@@ -317,7 +317,7 @@
                                 <div class="product-details text-center">
                                     <!-- product name -->
                                     <div class="product-name">
-                                        <a href="#">Edna Dress</a>
+                                        <a href="{{ route('products.details') }}">Edna Dress</a>
                                     </div>
                                     <!-- End product name -->
                                     <!-- product price -->
