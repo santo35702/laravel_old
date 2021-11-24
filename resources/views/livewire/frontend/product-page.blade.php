@@ -222,10 +222,14 @@
                         <div class="filters-toolbar-wrapper">
                             <div class="row">
                                 <div class="col-4 col-md-4 col-lg-4 filters-toolbar__item collection-view-as d-flex justify-content-start align-items-center">
-                                    <a href="{{ route('products.index') }}" title="Grid View" class="change-view change-view--active">
+                                    <a href="{{ route('products.index') }}" title="Grid View" class="change-view @if (request()->routeIs('products.index'))
+                                        change-view--active
+                                    @endif">
                                         <img src="{{ asset('assets/images/grid.jpg') }}" alt="Grid" />
                                     </a>
-                                    <a href="{{ route('products.list') }}" title="List View" class="change-view">
+                                    <a href="{{ route('products.list') }}" title="List View" class="change-view @if (request()->routeIs('products.list'))
+                                        change-view--active
+                                    @endif">
                                         <img src="{{ asset('assets/images/list.jpg') }}" alt="List" />
                                     </a>
                                 </div>

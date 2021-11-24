@@ -2,8 +2,8 @@
     <!--Collection Banner-->
     <div class="collection-header">
         <div class="collection-hero">
-            <div class="collection-hero__image"><img data-src="assets/images/cat-women3.jpg" src="assets/images/cat-women3.jpg" alt="Women" title="Women" /></div>
-            <div class="collection-hero__title-wrapper"><h1 class="collection-hero__title page-width">Shop List View</h1></div>
+            <div class="collection-hero__image"><img data-src="{{ asset('assets/images/cat-men.jpg') }}" src="{{ asset('assets/images/cat-men.jpg') }}" alt="Men" title="Men" /></div>
+            <div class="collection-hero__title-wrapper"><h1 class="collection-hero__title page-width">Products List View</h1></div>
         </div>
     </div>
     <!--End Collection Banner-->
@@ -19,22 +19,6 @@
                         <div class="widget-title"><h2>Categories</h2></div>
                         <div class="widget-content">
                             <ul class="sidebar_categories">
-                                <li class="level1 sub-level"><a href="#;" class="site-nav">Clothing</a>
-                                    <ul class="sublinks">
-                                        <li class="level2"><a href="#;" class="site-nav">Men</a></li>
-                                        <li class="level2"><a href="#;" class="site-nav">Women</a></li>
-                                        <li class="level2"><a href="#;" class="site-nav">Child</a></li>
-                                        <li class="level2"><a href="#;" class="site-nav">View All Clothing</a></li>
-                                    </ul>
-                                </li>
-                                <li class="level1 sub-level"><a href="#;" class="site-nav">Jewellery</a>
-                                    <ul class="sublinks">
-                                        <li class="level2"><a href="#;" class="site-nav">Ring</a></li>
-                                        <li class="level2"><a href="#;" class="site-nav">Neckalses</a></li>
-                                        <li class="level2"><a href="#;" class="site-nav">Eaarings</a></li>
-                                        <li class="level2"><a href="#;" class="site-nav">View All Jewellery</a></li>
-                                    </ul>
-                                </li>
                                 <li class="lvl-1"><a href="#;" class="site-nav">Shoes</a></li>
                                 <li class="lvl-1"><a href="#;" class="site-nav">Accessories</a></li>
                                 <li class="lvl-1"><a href="#;" class="site-nav">Collections</a></li>
@@ -112,14 +96,6 @@
                         <div class="widget-title"><h2>Brands</h2></div>
                         <ul>
                             <li>
-                              <input type="checkbox" value="allen-vela" id="check1">
-                              <label for="check1"><span><span></span></span>Allen Vela</label>
-                            </li>
-                            <li>
-                              <input type="checkbox" value="oxymat" id="check3">
-                              <label for="check3"><span><span></span></span>Oxymat</label>
-                            </li>
-                            <li>
                               <input type="checkbox" value="vanelas" id="check4">
                               <label for="check4"><span><span></span></span>Vanelas</label>
                             </li>
@@ -144,10 +120,11 @@
                                         <div class="mini-list-item">
                                             <div class="mini-view_image">
                                                 <a class="grid-view-item__link" href="#">
-                                                    <img class="grid-view-item__image" src="assets/images/product-images/mini-product-img.jpg" alt="" />
+                                                    <img class="grid-view-item__image" src="{{ asset('assets/images/product-images/product-image1.jpg') }}" alt="" />
                                                 </a>
                                             </div>
-                                            <div class="details"> <a class="grid-view-item__title" href="#">Cena Skirt</a>
+                                            <div class="details">
+                                                <a class="grid-view-item__title" href="#">Cena Skirt</a>
                                                 <div class="grid-view-item__meta">
                                                     <span class="product-price__price">
                                                         <span class="money">$173.60</span>
@@ -156,38 +133,38 @@
                                             </div>
                                         </div>
                                     </div>
-                                <div class="grid__item">
-                                  <div class="mini-list-item">
-                                    <div class="mini-view_image"> <a class="grid-view-item__link" href="#"><img class="grid-view-item__image" src="assets/images/product-images/mini-product-img1.jpg" alt="" /></a> </div>
-                                    <div class="details"> <a class="grid-view-item__title" href="#">Block Button Up</a>
-                                      <div class="grid-view-item__meta"><span class="product-price__price"><span class="money">$378.00</span></span></div>
+                                    <div class="grid__item">
+                                        <div class="mini-list-item">
+                                            <div class="mini-view_image"> <a class="grid-view-item__link" href="#"><img class="grid-view-item__image" src="assets/images/product-images/product-image2.jpg" alt="" /></a> </div>
+                                            <div class="details"> <a class="grid-view-item__title" href="#">Block Button Up</a>
+                                                <div class="grid-view-item__meta"><span class="product-price__price"><span class="money">$378.00</span></span></div>
+                                            </div>
+                                        </div>
                                     </div>
-                                  </div>
-                                </div>
-                                <div class="grid__item">
-                                  <div class="mini-list-item">
-                                    <div class="mini-view_image"> <a class="grid-view-item__link" href="#"><img class="grid-view-item__image" src="assets/images/product-images/mini-product-img2.jpg" alt="" /></a> </div>
-                                    <div class="details"> <a class="grid-view-item__title" href="#">Balda Button Pant</a>
-                                      <div class="grid-view-item__meta"><span class="product-price__price"><span class="money">$278.60</span></span></div>
+                                    <div class="grid__item">
+                                        <div class="mini-list-item">
+                                            <div class="mini-view_image"> <a class="grid-view-item__link" href="#"><img class="grid-view-item__image" src="assets/images/product-images/product-image3.jpg" alt="" /></a> </div>
+                                            <div class="details"> <a class="grid-view-item__title" href="#">Balda Button Pant</a>
+                                                <div class="grid-view-item__meta"><span class="product-price__price"><span class="money">$278.60</span></span></div>
+                                            </div>
+                                        </div>
                                     </div>
-                                  </div>
-                                </div>
-                                <div class="grid__item">
-                                  <div class="mini-list-item">
-                                    <div class="mini-view_image"> <a class="grid-view-item__link" href="#"><img class="grid-view-item__image" src="assets/images/product-images/mini-product-img3.jpg" alt="" /></a> </div>
-                                    <div class="details"> <a class="grid-view-item__title" href="#">Border Dress in Black/Silver</a>
-                                      <div class="grid-view-item__meta"><span class="product-price__price"><span class="money">$228.00</span></span></div>
+                                    <div class="grid__item">
+                                        <div class="mini-list-item">
+                                            <div class="mini-view_image"> <a class="grid-view-item__link" href="#"><img class="grid-view-item__image" src="assets/images/product-images/product-image4.jpg" alt="" /></a> </div>
+                                            <div class="details"> <a class="grid-view-item__title" href="#">Border Dress in Black/Silver</a>
+                                                <div class="grid-view-item__meta"><span class="product-price__price"><span class="money">$228.00</span></span></div>
+                                            </div>
+                                        </div>
                                     </div>
-                                  </div>
                                 </div>
-                              </div>
                             </div>
                         </div>
                     </div>
                     <!--End Popular Products-->
                     <!--Banner-->
                     <div class="sidebar_widget static-banner">
-                        <img src="assets/images/side-banner-2.jpg" alt="" />
+                        <img src="{{ asset('assets/images/side-banner-2.jpg') }}" alt="" />
                     </div>
                     <!--Banner-->
                     <!--Information-->
@@ -198,40 +175,33 @@
                     <!--end Information-->
                     <!--Product Tags-->
                     <div class="sidebar_widget">
-                      <div class="widget-title">
-                        <h2>Product Tags</h2>
-                      </div>
-                      <div class="widget-content">
-                        <ul class="product-tags">
-                          <li><a href="#" title="Show products matching tag $100 - $400">$100 - $400</a></li>
-                          <li><a href="#" title="Show products matching tag $400 - $600">$400 - $600</a></li>
-                          <li><a href="#" title="Show products matching tag $600 - $800">$600 - $800</a></li>
-                          <li><a href="#" title="Show products matching tag Above $800">Above $800</a></li>
-                          <li><a href="#" title="Show products matching tag Allen Vela">Allen Vela</a></li>
-                          <li><a href="#" title="Show products matching tag Black">Black</a></li>
-                          <li><a href="#" title="Show products matching tag Blue">Blue</a></li>
-                          <li><a href="#" title="Show products matching tag Cantitate">Cantitate</a></li>
-                          <li><a href="#" title="Show products matching tag Famiza">Famiza</a></li>
-                          <li><a href="#" title="Show products matching tag Gray">Gray</a></li>
-                          <li><a href="#" title="Show products matching tag Green">Green</a></li>
-                          <li><a href="#" title="Show products matching tag Hot">Hot</a></li>
-                          <li><a href="#" title="Show products matching tag jean shop">jean shop</a></li>
-                          <li><a href="#" title="Show products matching tag jesse kamm">jesse kamm</a></li>
-                          <li><a href="#" title="Show products matching tag L">L</a></li>
-                          <li><a href="#" title="Show products matching tag Lardini">Lardini</a></li>
-                          <li><a href="#" title="Show products matching tag lareida">lareida</a></li>
-                          <li><a href="#" title="Show products matching tag Lirisla">Lirisla</a></li>
-                          <li><a href="#" title="Show products matching tag M">M</a></li>
-                          <li><a href="#" title="Show products matching tag mini-dress">mini-dress</a></li>
-                          <li><a href="#" title="Show products matching tag Monark">Monark</a></li>
-                          <li><a href="#" title="Show products matching tag Navy">Navy</a></li>
-                          <li><a href="#" title="Show products matching tag new">new</a></li>
-                          <li><a href="#" title="Show products matching tag new arrivals">new arrivals</a></li>
-                          <li><a href="#" title="Show products matching tag Orange">Orange</a></li>
-                          <li><a href="#" title="Show products matching tag oxford">oxford</a></li>
-                          <li><a href="#" title="Show products matching tag Oxymat">Oxymat</a></li>
-                        </ul>
-                        <span class="btn btn--small btnview">View all</span> </div>
+                        <div class="widget-title">
+                            <h2>Product Tags</h2>
+                        </div>
+                        <div class="widget-content">
+                            <ul class="product-tags">
+                                <li><a href="#" title="Show products matching tag $100 - $400">$100 - $400</a></li>
+                                <li><a href="#" title="Show products matching tag $400 - $600">$400 - $600</a></li>
+                                <li><a href="#" title="Show products matching tag $600 - $800">$600 - $800</a></li>
+                                <li><a href="#" title="Show products matching tag Above $800">Above $800</a></li>
+                                <li><a href="#" title="Show products matching tag Black">Black</a></li>
+                                <li><a href="#" title="Show products matching tag Blue">Blue</a></li>
+                                <li><a href="#" title="Show products matching tag Gray">Gray</a></li>
+                                <li><a href="#" title="Show products matching tag Green">Green</a></li>
+                                <li><a href="#" title="Show products matching tag Hot">Hot</a></li>
+                                <li><a href="#" title="Show products matching tag jesse kamm">jesse kamm</a></li>
+                                <li><a href="#" title="Show products matching tag L">L</a></li>
+                                <li><a href="#" title="Show products matching tag Lirisla">Lirisla</a></li>
+                                <li><a href="#" title="Show products matching tag M">M</a></li>
+                                <li><a href="#" title="Show products matching tag Monark">Monark</a></li>
+                                <li><a href="#" title="Show products matching tag Navy">Navy</a></li>
+                                <li><a href="#" title="Show products matching tag new">new</a></li>
+                                <li><a href="#" title="Show products matching tag new arrivals">new arrivals</a></li>
+                                <li><a href="#" title="Show products matching tag Orange">Orange</a></li>
+                                <li><a href="#" title="Show products matching tag oxford">oxford</a></li>
+                            </ul>
+                            <span class="btn btn--small btnview">View all</span>
+                        </div>
                     </div>
                     <!--end Product Tags-->
                 </div>
@@ -240,7 +210,7 @@
             <!--Main Content-->
             <div class="col-12 col-sm-12 col-md-9 col-lg-9 main-col">
                 <div class="category-description">
-                    <h3>Category Description</h3>
+                    <h3>Products Description</h3>
                     <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing.</p>
                     <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source.</p>
                 </div>
@@ -252,19 +222,16 @@
                         <div class="filters-toolbar-wrapper">
                             <div class="row">
                                 <div class="col-4 col-md-4 col-lg-4 filters-toolbar__item collection-view-as d-flex justify-content-start align-items-center">
-                                    <a href="shop-left-sidebar.html" title="Grid View" class="change-view change-view--active">
-                                        <img src="assets/images/grid.jpg" alt="Grid" />
+                                    <a href="{{ route('products.index') }}" title="Grid View" class="change-view change-view--active">
+                                        <img src="{{ asset('assets/images/grid.jpg') }}" alt="Grid" />
                                     </a>
-                                    <a href="shop-listview.html" title="List View" class="change-view">
-                                        <img src="assets/images/list.jpg" alt="List" />
+                                    <a href="{{ route('products.list') }}" title="List View" class="change-view">
+                                        <img src="{{ asset('assets/images/list.jpg') }}" alt="List" />
                                     </a>
                                 </div>
                                 <div class="col-4 col-md-4 col-lg-4 text-center filters-toolbar__item filters-toolbar__item--count d-flex justify-content-center align-items-center">
-                                    <span class="filters-toolbar__product-count">Showing: 22</span>
-                                </div>
-                                <div class="col-4 col-md-4 col-lg-4 text-right">
                                     <div class="filters-toolbar__item">
-                                        <label for="SortBy" class="hidden">Sort</label>
+                                        <label for="SortBy" class="hidden">Sort By:</label>
                                         <select name="SortBy" id="SortBy" class="filters-toolbar__input filters-toolbar__input--sort">
                                             <option value="title-ascending" selected="selected">Sort</option>
                                             <option>Best Selling</option>
@@ -275,7 +242,21 @@
                                             <option>Date, new to old</option>
                                             <option>Date, old to new</option>
                                         </select>
-                                        <input class="collection-header__default-sort" type="hidden" value="manual">
+                                    </div>
+                                </div>
+                                <div class="col-4 col-md-4 col-lg-4 text-right">
+                                    <div class="filters-toolbar__item">
+                                        <label for="SortBy" class="hidden">Items Count:</label>
+                                        <select name="SortBy" id="SortBy" class="filters-toolbar__input filters-toolbar__input--sort">
+                                            <option value="title-ascending" selected="selected">Sort</option>
+                                            <option>Best Selling</option>
+                                            <option>Alphabetically, A-Z</option>
+                                            <option>Alphabetically, Z-A</option>
+                                            <option>Price, low to high</option>
+                                            <option>Price, high to low</option>
+                                            <option>Date, new to old</option>
+                                            <option>Date, old to new</option>
+                                        </select>
                                     </div>
                                 </div>
 
@@ -289,7 +270,7 @@
                             <div class="list-view-item__image-column">
                                 <div class="list-view-item__image-wrapper">
                                     <!-- Image -->
-                                    <a href="product-layout-2.html"><img class="list-view-item__image blur-up lazyload" data-src="assets/images/product-images/product-image1.jpg" src="assets/images/product-images/product-image1.jpg" alt="image" title="product"></a>
+                                    <a href="product-layout-2.html"><img class="list-view-item__image blur-up lazyload" data-src="{{ asset('assets/images/product-images/product-image1.jpg') }}" src="{{ asset('assets/images/product-images/product-image1.jpg') }}" alt="image" title="product"></a>
                                     <!-- End Image -->
                                 </div>
                             </div>
@@ -299,7 +280,7 @@
                                 <p class="product-review"><i class="font-13 fa fa-star"></i><i class="font-13 fa fa-star"></i><i class="font-13 fa fa-star"></i><i class="font-13 fa fa-star-o"></i><i class="font-13 fa fa-star-o"></i></p>
                                 <!-- End Product Review -->
                                 <!-- Sort Description -->
-                                <p>Belle Multipurpose Bootstrap 4 Html Template that will give you and your customers a smooth shopping experience which can be used for various kinds of stores such as boutiques, bookstores, technology stores, jewelries and other types of web shops....</p>
+                                <p>Bootstrap 4 Html Template that will give you and your customers a smooth shopping experience which can be used for various kinds of stores such as boutiques, bookstores, technology stores, jewelries and other types of web shops....</p>
                                 <!-- End Sort Description -->
                                 <!-- Price -->
                                 <p class="product-price grid-view-item__meta">
@@ -328,7 +309,7 @@
                                 <p class="product-review"><i class="font-13 fa fa-star"></i><i class="font-13 fa fa-star"></i><i class="font-13 fa fa-star"></i><i class="font-13 fa fa-star"></i><i class="font-13 fa fa-star"></i></p>
                                 <!-- End Product Review -->
                                 <!-- Sort Description -->
-                                <p>Belle Multipurpose Bootstrap 4 Html Template that will give you and your customers a smooth shopping experience which can be used for various kinds of stores such as boutiques, bookstores, technology stores, jewelries and other types of web shops....</p>
+                                <p>Bootstrap 4 Html Template that will give you and your customers a smooth shopping experience which can be used for various kinds of stores such as boutiques, bookstores, technology stores, jewelries and other types of web shops....</p>
                                 <!-- End Sort Description -->
                                 <!-- Price -->
                                 <p class="product-price grid-view-item__meta">
@@ -356,7 +337,7 @@
                                 <p class="product-review"><i class="font-13 fa fa-star"></i><i class="font-13 fa fa-star"></i><i class="font-13 fa fa-star"></i><i class="font-13 fa fa-star"></i><i class="font-13 fa fa-star"></i></p>
                                 <!-- End Product Review -->
                                 <!-- Sort Description -->
-                                <p>Belle Multipurpose Bootstrap 4 Html Template that will give you and your customers a smooth shopping experience which can be used for various kinds of stores such as boutiques, bookstores, technology stores, jewelries and other types of web shops....</p>
+                                <p>Bootstrap 4 Html Template that will give you and your customers a smooth shopping experience which can be used for various kinds of stores such as boutiques, bookstores, technology stores, jewelries and other types of web shops....</p>
                                 <!-- End Sort Description -->
                                 <!-- Price -->
                                 <p class="product-price grid-view-item__meta">
@@ -384,7 +365,7 @@
                                 <p class="product-review"><i class="font-13 fa fa-star"></i><i class="font-13 fa fa-star"></i><i class="font-13 fa fa-star"></i><i class="font-13 fa fa-star"></i><i class="font-13 fa fa-star"></i></p>
                                 <!-- End Product Review -->
                                 <!-- Sort Description -->
-                                <p>Belle Multipurpose Bootstrap 4 Html Template that will give you and your customers a smooth shopping experience which can be used for various kinds of stores such as boutiques, bookstores, technology stores, jewelries and other types of web shops....</p>
+                                <p>Bootstrap 4 Html Template that will give you and your customers a smooth shopping experience which can be used for various kinds of stores such as boutiques, bookstores, technology stores, jewelries and other types of web shops....</p>
                                 <!-- End Sort Description -->
                                 <!-- Price -->
                                 <p class="product-price grid-view-item__meta">
@@ -413,7 +394,7 @@
                                 <p class="product-review"><i class="font-13 fa fa-star"></i><i class="font-13 fa fa-star"></i><i class="font-13 fa fa-star-o"></i><i class="font-13 fa fa-star-o"></i><i class="font-13 fa fa-star-o"></i></p>
                                 <!-- End Product Review -->
                                 <!-- Sort Description -->
-                                <p>Belle Multipurpose Bootstrap 4 Html Template that will give you and your customers a smooth shopping experience which can be used for various kinds of stores such as boutiques, bookstores, technology stores, jewelries and other types of web shops....</p>
+                                <p>Bootstrap 4 Html Template that will give you and your customers a smooth shopping experience which can be used for various kinds of stores such as boutiques, bookstores, technology stores, jewelries and other types of web shops....</p>
                                 <!-- End Sort Description -->
                                 <!-- Price -->
                                 <p class="product-price grid-view-item__meta">
@@ -442,7 +423,7 @@
                                 <p class="product-review"><i class="font-13 fa fa-star-o"></i><i class="font-13 fa fa-star-o"></i><i class="font-13 fa fa-star-o"></i><i class="font-13 fa fa-star-o"></i><i class="font-13 fa fa-star-o"></i></p>
                                 <!-- End Product Review -->
                                 <!-- Sort Description -->
-                                <p>Belle Multipurpose Bootstrap 4 Html Template that will give you and your customers a smooth shopping experience which can be used for various kinds of stores such as boutiques, bookstores, technology stores, jewelries and other types of web shops....</p>
+                                <p>Bootstrap 4 Html Template that will give you and your customers a smooth shopping experience which can be used for various kinds of stores such as boutiques, bookstores, technology stores, jewelries and other types of web shops....</p>
                                 <!-- End Sort Description -->
                                 <!-- Price -->
                                 <p class="product-price grid-view-item__meta">
@@ -470,7 +451,7 @@
                                 <p class="product-review"><i class="font-13 fa fa-star-o"></i><i class="font-13 fa fa-star-o"></i><i class="font-13 fa fa-star-o"></i><i class="font-13 fa fa-star-o"></i><i class="font-13 fa fa-star-o"></i></p>
                                 <!-- End Product Review -->
                                 <!-- Sort Description -->
-                                <p>Belle Multipurpose Bootstrap 4 Html Template that will give you and your customers a smooth shopping experience which can be used for various kinds of stores such as boutiques, bookstores, technology stores, jewelries and other types of web shops....</p>
+                                <p>Bootstrap 4 Html Template that will give you and your customers a smooth shopping experience which can be used for various kinds of stores such as boutiques, bookstores, technology stores, jewelries and other types of web shops....</p>
                                 <!-- End Sort Description -->
                                 <!-- Price -->
                                 <p class="product-price grid-view-item__meta">
@@ -498,7 +479,7 @@
                                 <p class="product-review"><i class="font-13 fa fa-star-o"></i><i class="font-13 fa fa-star-o"></i><i class="font-13 fa fa-star-o"></i><i class="font-13 fa fa-star-o"></i><i class="font-13 fa fa-star-o"></i></p>
                                 <!-- End Product Review -->
                                 <!-- Sort Description -->
-                                <p>Belle Multipurpose Bootstrap 4 Html Template that will give you and your customers a smooth shopping experience which can be used for various kinds of stores such as boutiques, bookstores, technology stores, jewelries and other types of web shops....</p>
+                                <p>Bootstrap 4 Html Template that will give you and your customers a smooth shopping experience which can be used for various kinds of stores such as boutiques, bookstores, technology stores, jewelries and other types of web shops....</p>
                                 <!-- End Sort Description -->
                                 <!-- Price -->
                                 <p class="product-price grid-view-item__meta">
@@ -526,7 +507,7 @@
                                 <p class="product-review"><i class="font-13 fa fa-star-o"></i><i class="font-13 fa fa-star-o"></i><i class="font-13 fa fa-star-o"></i><i class="font-13 fa fa-star-o"></i><i class="font-13 fa fa-star-o"></i></p>
                                 <!-- End Product Review -->
                                 <!-- Sort Description -->
-                                <p>Belle Multipurpose Bootstrap 4 Html Template that will give you and your customers a smooth shopping experience which can be used for various kinds of stores such as boutiques, bookstores, technology stores, jewelries and other types of web shops....</p>
+                                <p>Bootstrap 4 Html Template that will give you and your customers a smooth shopping experience which can be used for various kinds of stores such as boutiques, bookstores, technology stores, jewelries and other types of web shops....</p>
                                 <!-- End Sort Description -->
                                 <!-- Price -->
                                 <p class="product-price grid-view-item__meta">
@@ -554,7 +535,7 @@
                                 <p class="product-review"><i class="font-13 fa fa-star"></i><i class="font-13 fa fa-star"></i><i class="font-13 fa fa-star-o"></i><i class="font-13 fa fa-star-o"></i><i class="font-13 fa fa-star-o"></i></p>
                                 <!-- End Product Review -->
                                 <!-- Sort Description -->
-                                <p>Belle Multipurpose Bootstrap 4 Html Template that will give you and your customers a smooth shopping experience which can be used for various kinds of stores such as boutiques, bookstores, technology stores, jewelries and other types of web shops....</p>
+                                <p>Bootstrap 4 Html Template that will give you and your customers a smooth shopping experience which can be used for various kinds of stores such as boutiques, bookstores, technology stores, jewelries and other types of web shops....</p>
                                 <!-- End Sort Description -->
                                 <!-- Price -->
                                 <p class="product-price grid-view-item__meta">
@@ -582,7 +563,7 @@
                                 <p class="product-review"><i class="font-13 fa fa-star"></i><i class="font-13 fa fa-star"></i><i class="font-13 fa fa-star-o"></i><i class="font-13 fa fa-star-o"></i><i class="font-13 fa fa-star-o"></i></p>
                                 <!-- End Product Review -->
                                 <!-- Sort Description -->
-                                <p>Belle Multipurpose Bootstrap 4 Html Template that will give you and your customers a smooth shopping experience which can be used for various kinds of stores such as boutiques, bookstores, technology stores, jewelries and other types of web shops....</p>
+                                <p>Bootstrap 4 Html Template that will give you and your customers a smooth shopping experience which can be used for various kinds of stores such as boutiques, bookstores, technology stores, jewelries and other types of web shops....</p>
                                 <!-- End Sort Description -->
                                 <!-- Price -->
                                 <p class="product-price grid-view-item__meta">
@@ -610,7 +591,7 @@
                                 <p class="product-review"><i class="font-13 fa fa-star"></i><i class="font-13 fa fa-star"></i><i class="font-13 fa fa-star-o"></i><i class="font-13 fa fa-star-o"></i><i class="font-13 fa fa-star-o"></i></p>
                                 <!-- End Product Review -->
                                 <!-- Sort Description -->
-                                <p>Belle Multipurpose Bootstrap 4 Html Template that will give you and your customers a smooth shopping experience which can be used for various kinds of stores such as boutiques, bookstores, technology stores, jewelries and other types of web shops....</p>
+                                <p>Bootstrap 4 Html Template that will give you and your customers a smooth shopping experience which can be used for various kinds of stores such as boutiques, bookstores, technology stores, jewelries and other types of web shops....</p>
                                 <!-- End Sort Description -->
                                 <!-- Price -->
                                 <p class="product-price grid-view-item__meta">
@@ -638,7 +619,7 @@
                                 <p class="product-review"><i class="font-13 fa fa-star"></i><i class="font-13 fa fa-star"></i><i class="font-13 fa fa-star-o"></i><i class="font-13 fa fa-star-o"></i><i class="font-13 fa fa-star-o"></i></p>
                                 <!-- End Product Review -->
                                 <!-- Sort Description -->
-                                <p>Belle Multipurpose Bootstrap 4 Html Template that will give you and your customers a smooth shopping experience which can be used for various kinds of stores such as boutiques, bookstores, technology stores, jewelries and other types of web shops....</p>
+                                <p>Bootstrap 4 Html Template that will give you and your customers a smooth shopping experience which can be used for various kinds of stores such as boutiques, bookstores, technology stores, jewelries and other types of web shops....</p>
                                 <!-- End Sort Description -->
                                 <!-- Price -->
                                 <p class="product-price grid-view-item__meta">
@@ -666,7 +647,7 @@
                                 <p class="product-review"><i class="font-13 fa fa-star"></i><i class="font-13 fa fa-star"></i><i class="font-13 fa fa-star-o"></i><i class="font-13 fa fa-star-o"></i><i class="font-13 fa fa-star-o"></i></p>
                                 <!-- End Product Review -->
                                 <!-- Sort Description -->
-                                <p>Belle Multipurpose Bootstrap 4 Html Template that will give you and your customers a smooth shopping experience which can be used for various kinds of stores such as boutiques, bookstores, technology stores, jewelries and other types of web shops....</p>
+                                <p>Bootstrap 4 Html Template that will give you and your customers a smooth shopping experience which can be used for various kinds of stores such as boutiques, bookstores, technology stores, jewelries and other types of web shops....</p>
                                 <!-- End Sort Description -->
                                 <!-- Price -->
                                 <p class="product-price grid-view-item__meta">
@@ -681,10 +662,13 @@
                         <!--End ListView Item-->
                     </div>
                 </div>
-                <div class="infinitpaginOuter">
-                    <div class="infinitpagin">
-                        <a href="#" class="btn loadMore">Load More</a>
-                    </div>
+                <div class="pagination justify-content-between">
+                    <p>Showing 1 to 20 Items from 50 Results.</p>
+                    <ul>
+                        <li class="active"><a href="#">1</a></li>
+                        <li><a href="#">2</a></li>
+                        <li class="next"><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i></a></li>
+                    </ul>
                 </div>
             </div>
             <!--End Main Content-->
