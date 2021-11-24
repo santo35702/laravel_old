@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\Frontend\HomePage;
 use App\Http\Livewire\Frontend\ProductPage;
+use App\Http\Livewire\Frontend\ProductListPage;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,6 +25,7 @@ Route::get('/', HomePage::class)->name('home');
 Route::prefix('products/')->name('products.')->group(function ()
 {
     Route::get('/', ProductPage::class)->name('index');
+    Route::get('/list', ProductListPage::class)->name('list');
 });
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
