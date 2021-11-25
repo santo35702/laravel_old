@@ -26,7 +26,7 @@
     template-collection
 @elseif (request()->routeIs('products.details'))
     template-product
-@elseif (request()->routeIs('about') || request()->routeIs('contact') || request()->routeIs('faq') || request()->routeIs('not_found') || request()->routeIs('cart') || request()->routeIs('checkout') || request()->routeIs('compare'))
+@elseif (request()->routeIs('about') || request()->routeIs('contact') || request()->routeIs('faq') || request()->routeIs('not_found') || request()->routeIs('cart') || request()->routeIs('checkout') || request()->routeIs('compare') || request()->routeIs('wishlist'))
     page-template @if (request()->routeIs('contact'))
         contact-template
     @elseif (request()->routeIs('not_found'))
@@ -88,7 +88,7 @@
                                     <li><a href="{{ route('register') }}">Create Account</a></li>
                                 @endif
                             @endunless
-                            <li><a href="wishlist.html">Wishlist</a></li>
+                            <li><a href="{{ route('wishlist') }}">Wishlist</a></li>
                         </ul>
                     </div>
                 </div>
