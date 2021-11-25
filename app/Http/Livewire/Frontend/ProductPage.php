@@ -3,11 +3,14 @@
 namespace App\Http\Livewire\Frontend;
 
 use Livewire\Component;
+use App\Models\Product;
 
 class ProductPage extends Component
 {
     public function render()
     {
-        return view('livewire.frontend.product-page')->layout('layouts.base');
+        $products = Product::paginate(24);
+        $popular_products = Product::inRandomOrder()->limit(5)->get();
+        return view('livewire.frontend.product-page', ['products' => $products, 'popular_products' => $popular_products])->layout('layouts.base');
     }
 }
