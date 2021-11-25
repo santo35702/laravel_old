@@ -6,6 +6,7 @@ use App\Http\Livewire\Frontend\HomePage;
 use App\Http\Livewire\Frontend\CartPage;
 use App\Http\Livewire\Frontend\ProductPage;
 use App\Http\Livewire\Frontend\AboutUsPage;
+use App\Http\Livewire\Frontend\ComparePage;
 use App\Http\Livewire\Frontend\NotFoundPage;
 use App\Http\Livewire\Frontend\CheckoutPage;
 use App\Http\Livewire\Frontend\ContactUsPage;
@@ -43,6 +44,8 @@ Route::get('/faqs', FAQPage::class)->name('faq');
 Route::get('/cart', CartPage::class)->name('cart');
 
 Route::get('/checkout', CheckoutPage::class)->name('checkout');
+
+Route::get('/compare', ComparePage::class)->name('compare');
 
 Route::get('/contact-us', ContactUsPage::class)->name('contact');
 
