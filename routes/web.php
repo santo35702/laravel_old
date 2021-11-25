@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\Frontend\HomePage;
 use App\Http\Livewire\Frontend\ProductPage;
 use App\Http\Livewire\Frontend\AboutUsPage;
+use App\Http\Livewire\Frontend\ContactUsPage;
 use App\Http\Livewire\Frontend\ProductListPage;
 use App\Http\Livewire\Frontend\ProductDetailsPage;
 
@@ -32,6 +33,8 @@ Route::prefix('products/')->name('products.')->group(function ()
     Route::get('/list', ProductListPage::class)->name('list');
     Route::get('/details', ProductDetailsPage::class)->name('details');
 });
+
+Route::get('/contact-us', ContactUsPage::class)->name('contact');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');

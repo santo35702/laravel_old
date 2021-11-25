@@ -26,8 +26,12 @@
     template-collection
 @elseif (request()->routeIs('products.details'))
     template-product
-@elseif (request()->routeIs('about'))
-    page-template
+@elseif (request()->routeIs('about') || request()->routeIs('contact'))
+    page-template @if (request()->routeIs('contact'))
+        contact-template
+    @else
+        ''
+    @endif
 @endif">
     <div id="pre-loader">
         <img src="{{ asset('assets/images/loader.gif') }}" alt="Loading..." />
@@ -122,8 +126,6 @@
                                   	<li><a href="cart-variant1.html" class="site-nav">Cart Page </a></li>
                                     <li><a href="compare-variant1.html" class="site-nav">Compare Product </a></li>
         							<li><a href="checkout.html" class="site-nav">Checkout</a></li>
-                                    <li><a href="about-us.html" class="site-nav">About Us <span class="lbl nm_label1">New</span> </a></li>
-                                    <li><a href="contact-us.html" class="site-nav">Contact Us</a></li>
                                     <li><a href="faqs.html" class="site-nav">FAQs</a></li>
                                     <li><a href="404.html" class="site-nav">404</a></li>
                                     <li><a href="coming-soon.html" class="site-nav">Coming soon <span class="lbl nm_label1">New</span> </a></li>
@@ -138,6 +140,7 @@
                                     <li><a href="blog-article.html" class="site-nav">Article</a></li>
                                   </ul>
                                 </li>
+                                <li class="lvl1"><a href="{{ route('contact') }}">Contact Us </a></li>
                             </ul>
                         </nav>
                         <!--End Desktop Menu-->
@@ -217,8 +220,6 @@
                   	<li><a href="cart-variant1.html" class="site-nav">Cart Page </a></li>
                     <li><a href="compare-variant1.html" class="site-nav">Compare Product </a></li>
         			<li><a href="checkout.html" class="site-nav">Checkout</a></li>
-                    <li><a href="about-us.html" class="site-nav">About Us<span class="lbl nm_label1">New</span></a></li>
-                    <li><a href="contact-us.html" class="site-nav">Contact Us</a></li>
                     <li><a href="faqs.html" class="site-nav">FAQs</a></li>
                     <li><a href="404.html" class="site-nav">404</a></li>
                     <li><a href="coming-soon.html" class="site-nav">Coming soon<span class="lbl nm_label1">New</span></a></li>
@@ -233,6 +234,7 @@
                     <li><a href="blog-article.html" class="site-nav">Article</a></li>
                   </ul>
                 </li>
+                <li class="lvl1"><a href="{{ route('contact') }}">Contact Us </a></li>
             </ul>
     	</div>
     	<!--End Mobile Menu-->
