@@ -26,11 +26,11 @@
     template-collection
 @elseif (request()->routeIs('products.details'))
     template-product
-@elseif (request()->routeIs('about') || request()->routeIs('contact'))
+@elseif (request()->routeIs('about') || request()->routeIs('contact') || request()->routeIs('faq') || request()->routeIs('not_found'))
     page-template @if (request()->routeIs('contact'))
         contact-template
-    @else
-        ''
+    @elseif (request()->routeIs('not_found'))
+        lookbook-template error-page
     @endif
 @endif">
     <div id="pre-loader">
@@ -122,14 +122,14 @@
                                 <li class="lvl1"><a href="{{ route('about') }}">About Us </a></li>
                                 <li class="lvl1 parent megamenu"><a href="{{ route('products.index') }}">Products </a></li>
                                 <li class="lvl1 parent dropdown"><a href="#">Pages <i class="anm anm-angle-down-l"></i></a>
-                                  <ul class="dropdown">
-                                  	<li><a href="cart-variant1.html" class="site-nav">Cart Page </a></li>
-                                    <li><a href="compare-variant1.html" class="site-nav">Compare Product </a></li>
-        							<li><a href="checkout.html" class="site-nav">Checkout</a></li>
-                                    <li><a href="faqs.html" class="site-nav">FAQs</a></li>
-                                    <li><a href="404.html" class="site-nav">404</a></li>
-                                    <li><a href="coming-soon.html" class="site-nav">Coming soon <span class="lbl nm_label1">New</span> </a></li>
-                                  </ul>
+                                    <ul class="dropdown">
+                                      	<li><a href="cart-variant1.html" class="site-nav">Cart Page </a></li>
+                                        <li><a href="compare-variant1.html" class="site-nav">Compare Product </a></li>
+            							<li><a href="checkout.html" class="site-nav">Checkout</a></li>
+                                        <li><a href="{{ route('faq') }}" class="site-nav">FAQs</a></li>
+                                        <li><a href="{{ route('not_found') }}" class="site-nav">404</a></li>
+                                        <li><a href="coming-soon.html" class="site-nav">Coming soon <span class="lbl nm_label1">New</span> </a></li>
+                                    </ul>
                                 </li>
                                 <li class="lvl1 parent dropdown"><a href="#">Blog <i class="anm anm-angle-down-l"></i></a>
                                   <ul class="dropdown">
@@ -216,14 +216,14 @@
                 <li class="lvl1"><a href="{{ route('about') }}">About Us </a></li>
             	<li class="lvl1"><a href="{{ route('products.index') }}">Products </a></li>
             	<li class="lvl1 parent megamenu"><a href="about-us.html">Pages <i class="anm anm-plus-l"></i></a>
-                  <ul>
-                  	<li><a href="cart-variant1.html" class="site-nav">Cart Page </a></li>
-                    <li><a href="compare-variant1.html" class="site-nav">Compare Product </a></li>
-        			<li><a href="checkout.html" class="site-nav">Checkout</a></li>
-                    <li><a href="faqs.html" class="site-nav">FAQs</a></li>
-                    <li><a href="404.html" class="site-nav">404</a></li>
-                    <li><a href="coming-soon.html" class="site-nav">Coming soon<span class="lbl nm_label1">New</span></a></li>
-                  </ul>
+                    <ul>
+                      	<li><a href="cart-variant1.html" class="site-nav">Cart Page </a></li>
+                        <li><a href="compare-variant1.html" class="site-nav">Compare Product </a></li>
+            			<li><a href="checkout.html" class="site-nav">Checkout</a></li>
+                        <li><a href="{{ route('faq') }}" class="site-nav">FAQs</a></li>
+                        <li><a href="{{ route('not_found') }}" class="site-nav">404</a></li>
+                        <li><a href="coming-soon.html" class="site-nav">Coming soon<span class="lbl nm_label1">New</span></a></li>
+                    </ul>
                 </li>
             	<li class="lvl1 parent megamenu"><a href="blog-left-sidebar.html">Blog <i class="anm anm-plus-l"></i></a>
                   <ul>
@@ -653,6 +653,9 @@
         <script src="{{ asset('assets/js/vendor/modernizr-3.6.0.min.js') }}"></script>
         <script src="{{ asset('assets/js/vendor/jquery.cookie.js') }}"></script>
         <script src="{{ asset('assets/js/vendor/wow.min.js') }}"></script>
+        @if (request()->routeIs('not_found'))
+            <script src="{{ asset('assets/js/vendor/masonry.js') }}" type="text/javascript"></script>
+        @endif
         <!-- Including Javascript -->
         <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
         <script src="{{ asset('assets/js/plugins.js') }}"></script>
