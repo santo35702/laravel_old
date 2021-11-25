@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\Frontend\HomePage;
 use App\Http\Livewire\Frontend\ProductPage;
+use App\Http\Livewire\Frontend\AboutUsPage;
 use App\Http\Livewire\Frontend\ProductListPage;
 use App\Http\Livewire\Frontend\ProductDetailsPage;
 
@@ -22,6 +23,8 @@ use App\Http\Livewire\Frontend\ProductDetailsPage;
 // });
 
 Route::get('/', HomePage::class)->name('home');
+
+Route::get('/about-us', AboutUsPage::class)->name('about');
 
 Route::prefix('products/')->name('products.')->group(function ()
 {
