@@ -4,7 +4,7 @@
         <!--Breadcrumb-->
         <div class="bredcrumbWrap">
             <div class="container breadcrumbs">
-                <a href="{{ route('home') }}" title="Back to the home page">Home</a><span aria-hidden="true">›</span><span>Product Details</span>
+                <a href="{{ route('home') }}" title="Back to the home page">Home</a><span aria-hidden="true">›</span><span class="text-capitalize">{{ $product->title }} Details</span>
             </div>
         </div>
         <!--End Breadcrumb-->
@@ -17,20 +17,17 @@
                         <div class="product-details-img">
                             <div class="product-thumb">
                                 <div id="gallery" class="product-dec-slider-2 product-tab-left">
+                                    <a data-image="{{ asset('assets/images/product-images/' . $product->image ) }}" data-zoom-image="{{ asset('assets/images/product-images/' . $product->image) }}" class="slick-slide slick-cloned" data-slick-index="-4" aria-hidden="true" tabindex="-1">
+                                        <img class="blur-up lazyload" data-src="{{ asset('assets/images/product-images/' . $product->image) }}" src="{{ asset('assets/images/product-images/' . $product->image) }}" alt="{{ $product->title }}" />
+                                    </a>
                                     <a data-image="{{ asset('assets/images/product-detail-page/camelia-reversible-big1.jpg') }}" data-zoom-image="{{ asset('assets/images/product-detail-page/camelia-reversible-big1.jpg') }}" class="slick-slide slick-cloned" data-slick-index="-4" aria-hidden="true" tabindex="-1">
                                         <img class="blur-up lazyload" data-src="{{ asset('assets/images/product-detail-page/camelia-reversible0.jpg') }}" src="{{ asset('assets/images/product-detail-page/camelia-reversible0.jpg') }}" alt="" />
-                                    </a>
-                                    <a data-image="assets/images/product-detail-page/camelia-reversible-big9.jpg" data-zoom-image="assets/images/product-detail-page/camelia-reversible-big9.jpg" class="slick-slide slick-cloned" data-slick-index="5" aria-hidden="true" tabindex="-1">
-                                        <img class="blur-up lazyload" data-src="assets/images/product-detail-page/camelia-reversible4.jpg" src="assets/images/product-detail-page/camelia-reversible4.jpg" alt="" />
-                                    </a>
-                                    <a data-image="assets/images/product-detail-page/camelia-reversible-big10.jpg" data-zoom-image="assets/images/product-detail-page/camelia-reversible-big10.jpg" class="slick-slide slick-cloned" data-slick-index="6" aria-hidden="true" tabindex="-1">
-                                        <img class="blur-up lazyload" data-src="assets/images/product-detail-page/camelia-reversible5.jpg" src="assets/images/product-detail-page/camelia-reversible5.jpg" alt="" />
                                     </a>
                                 </div>
                             </div>
                             <div class="zoompro-wrap product-zoom-right pl-20">
                                 <div class="zoompro-span">
-                                    <img class="blur-up lazyload zoompro" data-zoom-image="{{ asset('assets/images/product-detail-page/camelia-reversible-big1.jpg') }}" alt="" src="{{ asset('assets/images/product-detail-page/camelia-reversible-big1.jpg') }}" />
+                                    <img class="blur-up lazyload zoompro" data-zoom-image="{{ asset('assets/images/product-images/' . $product->image) }}" alt="" src="{{ asset('assets/images/product-images/' . $product->image) }}" />
                                 </div>
                                 <div class="product-labels"><span class="lbl on-sale">Sale</span><span class="lbl pr-label1">new</span></div>
                                 <div class="product-buttons">
@@ -39,22 +36,17 @@
                                 </div>
                             </div>
                             <div class="lightboximages">
+                                <a href="{{ asset('assets/images/product-images/' . $product->image) }}" data-size="1462x2048"></a>
                                 <a href="{{ asset('assets/images/product-detail-page/camelia-reversible-big1.jpg') }}" data-size="1462x2048"></a>
-                                <a href="{{ asset('assets/images/product-detail-page/camelia-reversible0.jpg') }}" data-size="1462x2048"></a>
-                                <a href="assets/images/product-detail-page/camelia-reversible-big9.jpg" data-size="731x1024"></a>
-                                <a href="assets/images/product-detail-page/camelia-reversible-big10.jpg" data-size="731x1024"></a>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-12 col-12">
                         <div class="product-single__meta">
-                            <h1 class="product-single__title">Product Details</h1>
-                            <div class="product-nav clearfix">
-                                <a href="#" class="next" title="Next"><i class="fa fa-angle-right" aria-hidden="true"></i></a>
-                            </div>
+                            <h1 class="product-single__title">{{ $product->title }}</h1>
                             <div class="prInfoRow">
-                                <div class="product-stock"> <span class="instock ">In Stock</span> <span class="outstock hide">Unavailable</span> </div>
-                                <div class="product-sku">SKU: <span class="variant-sku">19115-rdxs</span></div>
+                                <div class="product-stock"> <span class="{{ $product->stock_status === 'instock' ? 'instock' : 'outstock'}}">{{ $product->stock_status }}</span></div>
+                                <div class="product-sku">SKU: <span class="variant-sku text-uppercase">{{ $product->sku }}</span></div>
                                 <div class="product-review">
                                     <a class="reviewLink" href="#tab2">
                                         <i class="font-13 fa fa-star"></i>
@@ -68,9 +60,9 @@
                             </div>
                             <p class="product-single__price product-single__price-product-template">
                                 <span class="visually-hidden">Regular price</span>
-                                <s id="ComparePrice-product-template"><span class="money">$600.00</span></s>
+                                <s id="ComparePrice-product-template"><span class="money">${{ $product->regular_price }}</span></s>
                                 <span class="product-price__price product-price__price-product-template product-price__sale product-price__sale--single">
-                                    <span id="ProductPrice-product-template"><span class="money">$500.00</span></span>
+                                    <span id="ProductPrice-product-template"><span class="money">${{ $product->sale_price == null ? $product->regular_price : $product->sale_price }}</span></span>
                                 </span>
                                 <span class="discount-badge"> <span class="devider">|</span>&nbsp;
                                     <span>You Save</span>
@@ -81,17 +73,12 @@
                                 </span>
                             </p>
                             <div class="orderMsg" data-user="23" data-time="24">
-                                <img src="assets/images/order-icon.jpg" alt="" />
+                                <img src="{{ asset('assets/images/order-icon.jpg') }}" alt="Order" />
                                 <strong class="items">5</strong> sold in last <strong class="time">26</strong> hours
                             </div>
                         </div>
                         <div class="product-single__description rte">
-                            <ul>
-                                <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit</li>
-                                <li>Sed ut perspiciatis unde omnis iste natus error sit</li>
-                                <li>Neque porro quisquam est qui dolorem ipsum quia dolor</li>
-                                <li>Lorem Ipsum is not simply random text.</li>
-                            </ul>
+                            <p>{{ $product->short_description }}</p>
                         </div>
                         <div id="quantity_message">Hurry! Only  <span class="items">4</span>  left in stock.</div>
                         <form method="post" action="#" accept-charset="UTF-8" class="product-form product-form-product-template hidedropdown" enctype="multipart/form-data">
@@ -153,9 +140,7 @@
                             <!-- Product Action -->
                             <div class="product-action clearfix">
                                 <div class="product-form__item--submit mb-2">
-                                    <button type="button" name="add" class="btn product-form__cart-submit">
-                                        <span>Add to cart</span>
-                                    </button>
+                                    <a href="#" class="btn product-form__cart-submit">Add to Cart</a>
                                 </div>
                                 <div class="shopify-payment-button" data-shopify="payment-button">
                                     <button type="button" class="shopify-payment-button__button shopify-payment-button__button--unbranded">Buy it now</button>
@@ -230,29 +215,7 @@
                 <div class="tab-container">
                     <div id="tab1" class="tab-content">
                         <div class="product-description rte">
-                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
-                            <ul>
-                                <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit</li>
-                                <li>Sed ut perspiciatis unde omnis iste natus error sit</li>
-                                <li>Neque porro quisquam est qui dolorem ipsum quia dolor</li>
-                                <li>Lorem Ipsum is not simply random text.</li>
-                                <li>Free theme updates</li>
-                            </ul>
-                            <h3>Sed ut perspiciatis unde omnis iste natus error sit voluptatem</h3>
-                            <p>You can change the position of any sections such as slider, banner, products, collection and so on by just dragging and dropping.&nbsp;</p>
-                            <h3>Lorem Ipsum is not simply random text.</h3>
-                            <p>But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness.</p>
-                            <p>Change colors, fonts, banners, megamenus and more. Preview changes are live before saving them.</p>
-                            <h3>1914 translation by H. Rackham</h3>
-                            <p>But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness.</p>
-                            <h3>Section 1.10.33 of "de Finibus Bonorum et Malorum", written by Cicero in 45 BC</h3>
-                            <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.</p>
-                            <h3>The standard Lorem Ipsum passage, used since the 1500s</h3>
-                            <p>You can use variant style from colors, images or variant images. Also available differnt type of design styles and size.</p>
-                            <h3>Lorem Ipsum is not simply random text.</h3>
-                            <p>But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness.</p>
-                            <h3>Proin ut lacus eget elit molestie posuere.</h3>
-                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled.</p>
+                            <p>{{ $product->description }}</p>
                         </div>
                     </div>
 
@@ -261,7 +224,7 @@
                             <div class="spr-container">
                                 <div class="spr-header clearfix">
                                     <div class="spr-summary">
-                                        <span class="product-review"><a class="reviewLink"><i class="font-13 fa fa-star"></i><i class="font-13 fa fa-star"></i><i class="font-13 fa fa-star"></i><i class="font-13 fa fa-star-o"></i><i class="font-13 fa fa-star-o"></i> </a><span class="spr-summary-actions-togglereviews">Based on 6 reviews456</span></span>
+                                        <span class="product-review"><a class="reviewLink"><i class="font-13 fa fa-star"></i><i class="font-13 fa fa-star"></i><i class="font-13 fa fa-star"></i><i class="font-13 fa fa-star-o"></i><i class="font-13 fa fa-star-o"></i> </a><span class="spr-summary-actions-togglereviews">Based on 6 reviews 456</span></span>
                                         <span class="spr-summary-actions">
                                             <a href="#" class="spr-summary-actions-newreview btn">Write a review</a>
                                         </span>
