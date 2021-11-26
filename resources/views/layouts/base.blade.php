@@ -138,6 +138,18 @@
                                   </ul>
                                 </li>
                                 <li class="lvl1"><a href="{{ route('contact') }}">Contact Us </a></li>
+                                @auth
+                                    <li class="lvl1 parent dropdown"><a href="#">Account <i class="anm anm-angle-down-l"></i></a>
+                                        <ul class="dropdown">
+                                            @if (Auth::user()->utype === 'ADM')
+                                                <li><a href="{{ route('compare') }}" class="site-nav">Dashboard</a></li>
+                                            @else
+                                                <li><a href="{{ route('faq') }}" class="site-nav">Dashboard</a></li>
+                                            @endif
+                                            <li><a href="{{ route('not_found') }}" class="site-nav">Logout</a></li>
+                                        </ul>
+                                    </li>
+                                @endauth
                             </ul>
                         </nav>
                         <!--End Desktop Menu-->

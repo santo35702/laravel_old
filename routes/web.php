@@ -29,6 +29,10 @@ use App\Http\Livewire\Frontend\ProductDetailsPage;
 //     return view('welcome');
 // });
 
+// Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+//     return view('dashboard');
+// })->name('dashboard');
+
 Route::get('/', HomePage::class)->name('home');
 
 Route::get('/about-us', AboutUsPage::class)->name('about');
@@ -54,6 +58,12 @@ Route::get('/contact-us', ContactUsPage::class)->name('contact');
 
 Route::get('/404', NotFoundPage::class)->name('not_found');
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
+// Users / Customers Router__
+Route::middleware(['auth:sanctum', 'verified'])->prefix('admin')->name('admin')->group(function () {
+    //
+});
+
+// Admin Route__
+Route::middleware(['auth:sanctum', 'verified', 'authadmin'])->prefix('admin')->name('admin')->group(function () {
+    //
+});
