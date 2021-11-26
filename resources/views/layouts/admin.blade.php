@@ -17,12 +17,12 @@
 
         @livewireStyles
     </head>
-    <body class="hold-transition @if (request()->routeIs('login'))
+    <body class="hold-transition @if (request()->routeIs('login') || request()->routeIs('password.request'))
         login-page
-    @else
+    @elseif (request()->routeIs('register'))
         register-page
     @endif">
-    
+
         {{ $slot }}
 
         <!-- jQuery -->
