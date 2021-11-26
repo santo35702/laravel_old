@@ -37,7 +37,7 @@ Route::prefix('products/')->name('products.')->group(function ()
 {
     Route::get('/', ProductPage::class)->name('index');
     Route::get('/list', ProductListPage::class)->name('list');
-    Route::get('/details', ProductDetailsPage::class)->name('details');
+    Route::get('/{slug}', ProductDetailsPage::class)->name('details');
 });
 
 Route::get('/faqs', FAQPage::class)->name('faq');
