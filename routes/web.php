@@ -13,6 +13,8 @@ use App\Http\Livewire\Frontend\WishlistPage;
 use App\Http\Livewire\Frontend\ContactUsPage;
 use App\Http\Livewire\Frontend\ProductListPage;
 use App\Http\Livewire\Frontend\ProductDetailsPage;
+use App\Http\Livewire\User\UserDashboard;
+use App\Http\Livewire\Admin\AdminDashboard;
 
 /*
 |--------------------------------------------------------------------------
@@ -58,12 +60,12 @@ Route::get('/contact-us', ContactUsPage::class)->name('contact');
 
 Route::get('/404', NotFoundPage::class)->name('not_found');
 
-// Users / Customers Router__
-Route::middleware(['auth:sanctum', 'verified'])->prefix('admin')->name('admin')->group(function () {
-    //
+// Admin Route__
+Route::middleware(['auth:sanctum', 'verified', 'authadmin'])->prefix('admin')->name('admin.')->group(function () {
+    Route::get('/', AdminDashboard::class)->name('dashboard');
 });
 
-// Admin Route__
-Route::middleware(['auth:sanctum', 'verified', 'authadmin'])->prefix('admin')->name('admin')->group(function () {
-    //
+// Users / Customers Router__
+Route::middleware(['auth:sanctum', 'verified'])->prefix('users')->name('users.')->group(function () {
+    Route::get('/', UserDashboard::class)->name('dashboard');
 });
