@@ -10,20 +10,27 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
         <!-- Font Awesome -->
         <link rel="stylesheet" href="{{ asset('admin/plugins/fontawesome-free/css/all.min.css') }}">
-        <!-- icheck bootstrap -->
-        <link rel="stylesheet" href="{{ asset('admin/plugins/icheck-bootstrap/icheck-bootstrap.min.css') }}">
         <!-- Theme style -->
         <link rel="stylesheet" href="{{ asset('admin/dist/css/adminlte.min.css') }}">
 
         @livewireStyles
     </head>
-    <body class="hold-transition @if (request()->routeIs('login') || request()->routeIs('password.request'))
-        login-page
+    <body class="hold-transition @if (request()->routeIs('admin.dashboard'))
+        sidebar-mini
     @elseif (request()->routeIs('register'))
-        register-page
+        ''
     @endif">
 
-        {{ $slot }}
+        <!-- Site wrapper -->
+        <div class="wrapper">
+            <!-- Preloader -->
+            <div class="preloader flex-column justify-content-center align-items-center">
+              <img class="animation__shake" src="{{ asset('admin/dist/img/AdminLTELogo.png') }}" alt="Loading..." height="60" width="60">
+            </div>
+
+            {{ $slot }}
+        </div>
+
 
         <!-- jQuery -->
         <script src="{{ asset('admin/plugins/jquery/jquery.min.js') }}"></script>
