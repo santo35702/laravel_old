@@ -20,7 +20,7 @@ class AuthAdmin
             return $next($request);
         } else {
             $request->session()->flush();
-            return Redirect::route('login');
+            return redirect()->route('login');
         }
     }
 }

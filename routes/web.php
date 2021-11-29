@@ -60,12 +60,12 @@ Route::get('/contact-us', ContactUsPage::class)->name('contact');
 
 Route::get('/404', NotFoundPage::class)->name('not_found');
 
-// Admin Route__
-Route::middleware(['auth:sanctum', 'verified', 'authadmin'])->prefix('admin')->name('admin.')->group(function () {
-    Route::get('/', AdminDashboard::class)->name('dashboard');
+// Users / Customers Router__
+Route::middleware(['auth:sanctum', 'verified'])->prefix('users/')->name('users.')->group(function () {
+    Route::get('/dashboard', UserDashboard::class)->name('dashboard');
 });
 
-// Users / Customers Router__
-Route::middleware(['auth:sanctum', 'verified'])->prefix('users')->name('users.')->group(function () {
-    Route::get('/', UserDashboard::class)->name('dashboard');
+// Admin Route__
+Route::middleware(['auth:sanctum', 'verified', 'authadmin'])->prefix('admin/')->name('admin.')->group(function () {
+    Route::get('/dashboard', AdminDashboard::class)->name('dashboard');
 });

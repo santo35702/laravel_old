@@ -1,3 +1,3 @@
 <div>
-    <h1>Users / Customer Dashboard</h1>
+    <h1>Users / Customer Dashboard.</h1>
 </div>

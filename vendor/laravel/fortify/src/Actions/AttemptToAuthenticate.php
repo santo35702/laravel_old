@@ -57,10 +57,10 @@ class AttemptToAuthenticate
             $request->filled('remember'))
         ) {
             if (Auth::user()->utype === 'ADM') {
-                session( ['utype' => 'ADM']);
+                session(['utype' => 'ADM']);
                 return redirect(RouteServiceProvider::ADMINHOME);
-            } elseif (Auth::user()->utype === 'USR') {
-                session( ['utype' => 'USR']);
+            } else if (Auth::user()->utype === 'USR') {
+                session(['utype' => 'USR']);
                 return redirect(RouteServiceProvider::HOME);
             }
 
