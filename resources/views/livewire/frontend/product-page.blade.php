@@ -264,7 +264,7 @@
                                     <!-- countdown end -->
 
                                     <!-- Start product button -->
-                                    <a href="#" class="variants add btn btn-addto-cart">Add to Cart</a>
+                                    <a href="#" class="variants add btn btn-addto-cart" wire:click.prevent="addToCart({{ $key->id }}, '{{ $key->title }}', {{ $key->regular_price }})">Add to Cart</a>
                                     <div class="button-set">
                                         <a href="javascript:void(0)" title="Quick View" class="quick-view-popup quick-view" data-toggle="modal" data-target="#content_quickview">
                                             <i class="icon anm anm-search-plus-r"></i>
