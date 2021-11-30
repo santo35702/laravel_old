@@ -16,7 +16,7 @@
         @livewireStyles
     </head>
     <body class="hold-transition @if (request()->routeIs('admin.dashboard'))
-        sidebar-mini
+        sidebar-mini layout-fixed
     @else
         ''
     @endif">
@@ -162,76 +162,102 @@
                 <div class="sidebar">
                     <!-- Sidebar user panel (optional) -->
                     <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-                        <div class="image">
-                            <img src="{{ asset('admin/dist/img/user1-128x128.jpg') }}" class="img-circle elevation-2" alt="User Image">
-                        </div>
+                        @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
+                            <div class="image">
+                                <img src="{{ Auth::user()->profile_photo_url }}" class="img-circle elevation-2" alt="User Image">
+                            </div>
+                        @else
+                            <div class="image">
+                                <img src="{{ asset('admin/dist/img/user1-128x128.jpg') }}" class="img-circle elevation-2" alt="User Image">
+                            </div>
+                        @endif
                         <div class="info">
                             <a href="#" class="d-block">{{ Auth::user()->name }}</a>
                         </div>
                     </div>
-                </div>
-                <!-- /.sidebar -->
 
-                <!-- SidebarSearch Form -->
-                <div class="form-inline">
-                    <div class="input-group" data-widget="sidebar-search">
-                        <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
-                        <div class="input-group-append">
-                            <button class="btn btn-sidebar">
-                                <i class="fas fa-search fa-fw"></i>
-                            </button>
+                    <!-- SidebarSearch Form -->
+                    <div class="form-inline">
+                        <div class="input-group" data-widget="sidebar-search">
+                            <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
+                            <div class="input-group-append">
+                                <button class="btn btn-sidebar">
+                                    <i class="fas fa-search fa-fw"></i>
+                                </button>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <!-- Sidebar Menu -->
-                <nav class="mt-2">
-                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                        <li class="nav-item">
-                            <a href="#" class="nav-link @if (request()->routeIs('admin.dashboard'))
-                                active
-                            @endif">
-                                <i class="nav-icon fas fa-tachometer-alt"></i>
-                                <p>Dashboard</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon fas fa-th"></i>
-                                <p>Widgets
-                                  <span class="right badge badge-danger">New</span>
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-header">EXAMPLES</li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon far fa-image"></i>
-                                <p>Gallery</p>
-                            </a>
-                        </li>
-                        <li class="nav-header">SESSIONS</li>
-                        <li class="nav-item">
-                            <form method="POST" action="{{ route('logout') }}">
-                                @csrf
-                                <a href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                this.closest('form').submit();" class="nav-link">
-                                    <i class="nav-icon fas fa-sign-out-alt text-info"></i>
-                                    <p class="text">Log Out</p>
+                    <!-- Sidebar Menu -->
+                    <nav class="mt-2">
+                        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                            <li class="nav-item">
+                                <a href="#" class="nav-link @if (request()->routeIs('admin.dashboard'))
+                                    active
+                                @endif">
+                                    <i class="nav-icon fas fa-tachometer-alt"></i>
+                                    <p>Dashboard</p>
                                 </a>
-                            </form>
-                        </li>
-                    </ul>
-                </nav>
-                <!-- /.sidebar-menu -->
+                            </li>
+                            <li class="nav-item">
+                                <a href="#" class="nav-link">
+                                    <i class="nav-icon fas fa-th"></i>
+                                    <p>Widgets
+                                      <span class="right badge badge-danger">New</span>
+                                    </p>
+                                </a>
+                            </li>
+                            <li class="nav-header">EXAMPLES</li>
+                            <li class="nav-item">
+                                <a href="#" class="nav-link">
+                                    <i class="nav-icon far fa-image"></i>
+                                    <p>Gallery</p>
+                                </a>
+                            </li>
+                            <li class="nav-header">SESSIONS</li>
+                            <li class="nav-item">
+                                <form method="POST" action="{{ route('logout') }}">
+                                    @csrf
+                                    <a href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                    this.closest('form').submit();" class="nav-link">
+                                        <i class="nav-icon fas fa-sign-out-alt text-info"></i>
+                                        <p class="text">Log Out</p>
+                                    </a>
+                                </form>
+                            </li>
+                        </ul>
+                    </nav>
+                    <!-- /.sidebar-menu -->
+                </div>
+                <!-- /.sidebar -->
             </aside>
 
             {{ $slot }}
+
+            <footer class="main-footer">
+                <strong>Copyright &copy; 2021-{{ date('M') }} <a href="mailto:santo35702@gmail.com">MD: Suvo</a>.</strong>
+                All rights reserved.
+                <div class="float-right d-none d-sm-inline-block">
+                    <b>Version</b> {{ Illuminate\Foundation\Application::VERSION }}
+                </div>
+            </footer>
+
+            <!-- Control Sidebar -->
+            <aside class="control-sidebar control-sidebar-dark">
+                <!-- Control sidebar content goes here -->
+            </aside>
+            <!-- /.control-sidebar -->
         </div>
 
 
         <!-- jQuery -->
         <script src="{{ asset('admin/plugins/jquery/jquery.min.js') }}"></script>
+        <!-- jQuery UI 1.11.4 -->
+        <script src="{{ asset('admin/plugins/jquery-ui/jquery-ui.min.js') }}"></script>
+        <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+        <script>
+          $.widget.bridge('uibutton', $.ui.button)
+        </script>
         <!-- Bootstrap 4 -->
         <script src="{{ asset('admin/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
         <!-- AdminLTE App -->
