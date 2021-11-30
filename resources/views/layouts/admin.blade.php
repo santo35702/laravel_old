@@ -164,7 +164,7 @@
                     <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                         @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
                             <div class="image">
-                                <img src="{{ Auth::user()->profile_photo_url }}" class="img-circle elevation-2" alt="User Image">
+                                <img src="{{ Auth::user()->profile_photo_url }}" class="img-circle elevation-2" alt="{{ Auth::user()->name }}">
                             </div>
                         @else
                             <div class="image">
@@ -172,7 +172,8 @@
                             </div>
                         @endif
                         <div class="info">
-                            <a href="#" class="d-block">{{ Auth::user()->name }}</a>
+                            <a href="{{ route('profile.show') }}" class="d-block">{{ Auth::user()->name }}</a>
+                            <small class="text-white">{{ Auth::user()->email }}</small>
                         </div>
                     </div>
 
@@ -192,7 +193,7 @@
                     <nav class="mt-2">
                         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                             <li class="nav-item">
-                                <a href="#" class="nav-link @if (request()->routeIs('admin.dashboard'))
+                                <a href="{{ route('admin.dashboard') }}" class="nav-link @if (request()->routeIs('admin.dashboard'))
                                     active
                                 @endif">
                                     <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -207,12 +208,65 @@
                                     </p>
                                 </a>
                             </li>
-                            <li class="nav-header">EXAMPLES</li>
+                            <li class="nav-header">TEAM</li>
+                            @if (Laravel\Jetstream\Jetstream::hasTeamFeatures())
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link">
+                                        <i class="nav-icon fas fa-users"></i>
+                                        <p>Team A
+                                          <i class="fas fa-angle-left right"></i>
+                                        </p>
+                                    </a>
+                                    <ul class="nav nav-treeview">
+                                        <li class="nav-item">
+                                            <a href="#" class="nav-link">
+                                                <i class="far fa-circle nav-icon"></i>
+                                                <p>Team Settings</p>
+                                            </a>
+                                        </li>
+                                        {{-- @can('create', Laravel\Jetstream\Jetstream::newTeamModel()) --}}
+                                        <li class="nav-item">
+                                            <a href="#" class="nav-link">
+                                                <i class="far fa-circle nav-icon"></i>
+                                                <p>Create New Team</p>
+                                            </a>
+                                        </li>
+                                        {{-- @endcan --}}
+                                        {{-- @foreach (Auth::user()->allTeams() as $team) --}}
+                                        <li class="nav-item">
+                                            <a href="#" class="nav-link">
+                                                <i class="far fa-circle nav-icon"></i>
+                                                <p>Switch Teams</p>
+                                            </a>
+                                        </li>
+                                        {{-- @endforeach --}}
+                                    </ul>
+                                </li>
+                            @endif
+                            <li class="nav-header">MANAGEMENT</li>
                             <li class="nav-item">
                                 <a href="#" class="nav-link">
-                                    <i class="nav-icon far fa-image"></i>
-                                    <p>Gallery</p>
+                                    <i class="nav-icon fas fa-user-circle"></i>
+                                    <p>Manage Account
+                                        <i class="fas fa-angle-left right"></i>
+                                    </p>
                                 </a>
+                                <ul class="nav nav-treeview">
+                                    <li class="nav-item">
+                                      <a href="{{ route('profile.show') }}" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Profile</p>
+                                      </a>
+                                    </li>
+                                    @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
+                                        <li class="nav-item">
+                                          <a href="{{ route('api-tokens.index') }}" class="nav-link">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>API Tokens</p>
+                                          </a>
+                                        </li>
+                                    @endif
+                                </ul>
                             </li>
                             <li class="nav-header">SESSIONS</li>
                             <li class="nav-item">
@@ -232,6 +286,7 @@
                 <!-- /.sidebar -->
             </aside>
 
+            <!-- Content Wrapper. Contains page content -->
             {{ $slot }}
 
             <footer class="main-footer">
