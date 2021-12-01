@@ -447,7 +447,7 @@
                             <!-- end product image -->
 
                             <!-- Start product button -->
-                            <a href="#" class="variants add btn btn-addto-cart">Add to Cart</a>
+                            <a href="#" class="variants add btn btn-addto-cart" wire:click.prevent="addToCart({{ $key->id }}, '{{ $key->title }}', {{ $key->regular_price }})">Add to Cart</a>
                             <div class="button-set">
                                 <a href="#" title="Quick View" class="quick-view" tabindex="0">
                                     <i class="icon anm anm-search-plus-r"></i>
