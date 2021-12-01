@@ -3,6 +3,8 @@
 namespace App\Http\Livewire\Frontend;
 
 use Livewire\Component;
+use Illuminate\Http\Request;
+use Cart;
 
 class CartPage extends Component
 {

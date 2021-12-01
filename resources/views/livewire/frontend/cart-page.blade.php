@@ -9,10 +9,13 @@
 
     <div class="container">
         <div class="row">
+            @if (Cart::count() > 0)
             <div class="col-12 col-sm-12 col-md-12 col-lg-12 main-col">
-                <div class="alert alert-success text-uppercase" role="alert">
-                    <i class="icon anm anm-truck-l icon-large"></i> &nbsp;<strong>Congratulations!</strong> You've got free shipping!
-                </div>
+                @if (session('status'))
+                    <div class="alert alert-success text-uppercase" role="alert">
+                        <i class="icon anm anm-truck-l icon-large"></i> &nbsp;<strong>Congratulations!</strong> {{ session('status') }}
+                    </div>
+                @endif
             </div>
             <div class="col-12 col-sm-12 col-md-8 col-lg-8 main-col">
                 <form action="#" method="post" class="cart style2">
@@ -27,13 +30,14 @@
                             </tr>
                         </thead>
                         <tbody>
+                            @foreach (Cart::content() as $key)
                             <tr class="cart__row border-bottom line1 cart-flex border-top">
                                 <td class="cart__image-wrapper cart-flex-item">
-                                    <a href="#"><img class="cart__image" src="assets/images/product-images/product-image1.jpg" alt="Elastic Waist Dress - Navy / Small"></a>
+                                    <a href="{{ route('products.details', $key->model->slug) }}"><img class="cart__image" src="{{ asset('assets/images/product-images/' . $key->model->image) }}" alt="{{ $key->model->title }}"></a>
                                 </td>
                                 <td class="cart__meta small--text-left cart-flex-item">
-                                    <div class="list-view-item__title">
-                                        <a href="#">Elastic Waist Dress </a>
+                                    <div class="list-view-item__title text-capitalize">
+                                        <a href="{{ route('products.details', $key->model->slug) }}">{{ $key->model->title }}</a>
                                     </div>
 
                                     <div class="cart__meta-text">
@@ -41,74 +45,23 @@
                                     </div>
                                 </td>
                                 <td class="cart__price-wrapper cart-flex-item">
-                                    <span class="money">$735.00</span>
+                                    <span class="money">${{ $key->model->regular_price }}</span>
                                 </td>
                                 <td class="cart__update-wrapper cart-flex-item text-right">
                                     <div class="cart__qty text-center">
                                         <div class="qtyField">
                                             <a class="qtyBtn minus" href="javascript:void(0);"><i class="icon icon-minus"></i></a>
-                                            <input class="cart__qty-input qty" type="text" name="updates[]" id="qty" value="1" pattern="[0-9]*">
+                                            <input class="cart__qty-input qty" type="text" name="updates[]" id="qty" value="{{ $key->qty }}" pattern="[0-9]*">
                                             <a class="qtyBtn plus" href="javascript:void(0);"><i class="icon icon-plus"></i></a>
                                         </div>
                                     </div>
                                 </td>
                                 <td class="text-right small--hide cart-price">
-                                    <div><span class="money">$735.00</span></div>
+                                    <div><span class="money">${{ $key->subtotal }}</span></div>
                                 </td>
                                 <td class="text-center small--hide"><a href="#" class="btn btn--secondary cart__remove" title="Remove tem"><i class="icon icon anm anm-times-l"></i></a></td>
                             </tr>
-                            <tr class="cart__row border-bottom line1 cart-flex border-top">
-                                <td class="cart__image-wrapper cart-flex-item">
-                                    <a href="#"><img class="cart__image" src="assets/images/product-images/product-image3.jpg" alt="3/4 Sleeve Kimono Dress"></a>
-                                </td>
-                                <td class="cart__meta small--text-left cart-flex-item">
-                                    <div class="list-view-item__title">
-                                        <a href="#">3/4 Sleeve Kimono Dress</a>
-                                    </div>
-                                </td>
-                                <td class="cart__price-wrapper cart-flex-item">
-                                    <span class="money">$735.00</span>
-                                </td>
-                                <td class="cart__update-wrapper cart-flex-item text-right">
-                                    <div class="cart__qty text-center">
-                                        <div class="qtyField">
-                                            <a class="qtyBtn minus" href="javascript:void(0);"><i class="icon icon-minus"></i></a>
-                                            <input class="cart__qty-input qty" type="text" name="updates[]" id="qty" value="1" pattern="[0-9]*">
-                                            <a class="qtyBtn plus" href="javascript:void(0);"><i class="icon icon-plus"></i></a>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td class="text-right small--hide cart-price">
-                                    <div><span class="money">$735.00</span></div>
-                                </td>
-                                <td class="text-center small--hide"><a href="#" class="btn btn--secondary cart__remove" title="Remove tem"><i class="icon icon anm anm-times-l"></i></a></td>
-                            </tr>
-                            <tr class="cart__row border-bottom line1 cart-flex border-top">
-                                <td class="cart__image-wrapper cart-flex-item">
-                                    <a href="#"><img class="cart__image" src="assets/images/product-images/product-image6.jpg" alt="Minerva Dress black"></a>
-                                </td>
-                                <td class="cart__meta small--text-left cart-flex-item">
-                                    <div class="list-view-item__title">
-                                        <a href="#">Minerva Dress black</a>
-                                    </div>
-                                </td>
-                                <td class="cart__price-wrapper cart-flex-item">
-                                    <span class="money">$526.00</span>
-                                </td>
-                                <td class="cart__update-wrapper cart-flex-item text-right">
-                                    <div class="cart__qty text-center">
-                                        <div class="qtyField">
-                                            <a class="qtyBtn minus" href="javascript:void(0);"><i class="icon icon-minus"></i></a>
-                                            <input class="cart__qty-input qty" type="text" name="updates[]" id="qty" value="1" pattern="[0-9]*">
-                                            <a class="qtyBtn plus" href="javascript:void(0);"><i class="icon icon-plus"></i></a>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td class="text-right small--hide cart-price">
-                                    <div><span class="money">$735.00</span></div>
-                                </td>
-                                <td class="text-center small--hide"><a href="#" class="btn btn--secondary cart__remove" title="Remove tem"><i class="icon icon anm anm-times-l"></i></a></td>
-                            </tr>
+                            @endforeach
                         </tbody>
                         <tfoot>
                             <tr>
@@ -368,7 +321,6 @@
                         </div>
                     </div>
                 </div>
-
                 </form>
             </div>
             <div class="col-12 col-sm-12 col-md-4 col-lg-4 cart__footer">
@@ -381,24 +333,30 @@
                 <div class="solid-border">
                   <div class="row">
                     <span class="col-12 col-sm-6 cart__subtotal-title"><strong>Subtotal</strong></span>
-                    <span class="col-12 col-sm-6 cart__subtotal-title cart__subtotal text-right"><span class="money">$735.00</span></span>
+                    <span class="col-12 col-sm-6 cart__subtotal-title cart__subtotal text-right"><span class="money">${{ Cart::subtotal() }}</span></span>
                     <hr class="clear">
                     <span class="col-12 col-sm-6 cart__subtotal-title"><strong>Tax</strong></span>
-                    <span class="col-12 col-sm-6 cart__subtotal-title cart__subtotal text-right"><span class="money">$15.00</span></span>
+                    <span class="col-12 col-sm-6 cart__subtotal-title cart__subtotal text-right"><span class="money">${{ Cart::tax() }}</span></span>
+                    <hr class="clear">
+                    <span class="col-12 col-sm-6 cart__subtotal-title"><strong>Shipping</strong></span>
+                    <span class="col-12 col-sm-6 cart__subtotal-title cart__subtotal text-right"><span class="money">Free Shipping</span></span>
                     <hr class="clear">
                     <span class="col-12 col-sm-6 cart__subtotal-title"><strong>Total</strong></span>
-                    <span class="col-12 col-sm-6 cart__subtotal-title cart__subtotal text-right"><span class="money">$750.00</span></span>
+                    <span class="col-12 col-sm-6 cart__subtotal-title cart__subtotal text-right"><span class="money">${{ Cart::total() }}</span></span>
                   </div>
-                  <div class="cart__shipping">Shipping &amp; taxes calculated at checkout</div>
-                  <p class="cart_tearm">
+                  {{-- <div class="cart__shipping">Shipping &amp; taxes calculated at checkout</div> --}}
+                  <p class="cart_tearm mt-2 pt-2">
                     <label>
-                      <input type="checkbox" name="tearm" id="cartTearm" class="checkbox" value="tearm" required="">
+                      <input type="checkbox" name="tearm" id="cartTearm" class="checkbox" value="tearm" required>
                        I agree with the terms and conditions</label>
                   </p>
-                  <input type="submit" name="checkout" id="cartCheckout" class="btn btn--small-wide checkout" value="Checkout" disabled="disabled">
+                  <input type="submit" name="checkout" id="cartCheckout" class="btn btn--small-wide checkout" value="Checkout">
                   <div class="paymnet-img"><img src="{{ asset('assets/images/payment-img.jpg') }}" alt="Payment"></div>
                 </div>
             </div>
+            @else
+                <p>You have no Products in your Cart.</p>
+            @endif
         </div>
     </div>
 </div>
