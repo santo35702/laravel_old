@@ -205,9 +205,11 @@
                                     </a>
                                 </div>
                                 <div class="col-4 col-md-4 col-lg-4 text-center filters-toolbar__item filters-toolbar__item--count d-flex justify-content-center align-items-center">
-                                    <div class="filters-toolbar__item">
-                                        <label for="SortBy" class="hidden">Sort By:</label>
-                                        <select name="SortBy" id="SortBy" class="filters-toolbar__input filters-toolbar__input--sort">
+                                    <div class="input-group input-group-sm">
+                                        <div class="input-group-prepend">
+                                            <label class="input-group-text" for="sortBy">Sort By:</label>
+                                        </div>
+                                        <select class="custom-select custom-select-sm" id="sortBy">
                                             <option value="title-ascending" selected="selected">Sort</option>
                                             <option>Best Selling</option>
                                             <option>Alphabetically, A-Z</option>
@@ -220,9 +222,8 @@
                                     </div>
                                 </div>
                                 <div class="col-4 col-md-4 col-lg-4 text-right">
-                                    <div class="filters-toolbar__item">
-                                        <label for="SortBy" class="hidden">Items Count:</label>
-                                        <select name="SortBy" id="SortBy" class="filters-toolbar__input filters-toolbar__input--sort">
+                                    <div class="input-group input-group-sm">
+                                        <select class="custom-select custom-select-sm" id="perPage">
                                             <option value="title-ascending" selected="selected">Sort</option>
                                             <option>Best Selling</option>
                                             <option>Alphabetically, A-Z</option>
@@ -232,6 +233,9 @@
                                             <option>Date, new to old</option>
                                             <option>Date, old to new</option>
                                         </select>
+                                        <div class="input-group-append">
+                                            <label class="input-group-text" for="perPage">Per Pages</label>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
