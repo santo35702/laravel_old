@@ -177,6 +177,7 @@
                             </a>
                             <!--Minicart Popup-->
                             <div id="header-cart" class="block block-cart">
+                                @if (Cart::count() > 0)
                                 <ul class="mini-products-list">
                                     @foreach (Cart::content() as $key)
                                     <li class="item">
@@ -214,6 +215,11 @@
                                         <a href="{{ route('checkout') }}" class="btn btn-secondary btn--small">Checkout</a>
                                     </div>
                                 </div>
+                                @else
+                                    <ul class="mini-products-list d-flex justify-content-center align-items-center">
+                                        <h3>Sorry...!! You have no Items in Cart</h3>
+                                    </ul>
+                                @endif
                             </div>
                             <!--EndMinicart Popup-->
                         </div>
