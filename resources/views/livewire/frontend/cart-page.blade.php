@@ -17,9 +17,9 @@
                     </div>
                 @endif
             </div>
-            <div class="col-12 col-sm-12 col-md-8 col-lg-8 main-col">
+            <div class="col-12 col-sm-12 col-md-8 col-lg-8 main-col table-responsive">
                 <form action="#" method="post" class="cart style2">
-                    <table class="table table-hover">
+                    <table class="table table-hover table-bordered border-outline">
                         <thead class="cart__row cart__header">
                             <tr>
                                 <th colspan="2" class="text-center">Product</th>
@@ -50,23 +50,24 @@
                                 <td class="cart__update-wrapper cart-flex-item text-right">
                                     <div class="cart__qty text-center">
                                         <div class="qtyField">
-                                            <a class="qtyBtn minus" href="javascript:void(0);"><i class="icon icon-minus"></i></a>
+                                            <a class="qtyBtn minus" href="javascript:void(0);" wire:click.prevent="decreaseQty('{{ $key->rowId }}')"><i class="icon icon-minus"></i></a>
                                             <input class="cart__qty-input qty" type="text" name="updates[]" id="qty" value="{{ $key->qty }}" pattern="[0-9]*">
-                                            <a class="qtyBtn plus" href="javascript:void(0);"><i class="icon icon-plus"></i></a>
+                                            <a class="qtyBtn plus" href="javascript:void(0);" wire:click.prevent="increaseQty('{{ $key->rowId }}')"><i class="icon icon-plus"></i></a>
                                         </div>
                                     </div>
                                 </td>
                                 <td class="text-right small--hide cart-price">
                                     <div><span class="money">${{ $key->subtotal }}</span></div>
                                 </td>
-                                <td class="text-center small--hide"><a href="#" class="btn btn--secondary cart__remove" title="Remove tem"><i class="icon icon anm anm-times-l"></i></a></td>
+                                <td class="text-center small--hide"><a href="#" class="btn btn--secondary cart__remove" title="Remove tem" wire:click.prevent="destroy('{{ $key->rowId }}')"><i class="icon icon anm anm-times-l"></i></a></td>
                             </tr>
                             @endforeach
                         </tbody>
                         <tfoot>
                             <tr>
                                 <td colspan="3" class="text-left"><a href="{{ route('products.index') }}" class="btn--link cart-continue"><i class="icon icon-arrow-circle-left"></i> Continue shopping</a></td>
-                                <td colspan="3" class="text-right"><button type="submit" name="update" class="btn--link cart-update"><i class="fa fa-refresh"></i> Update</button></td>
+                                <td colspan="1" class="text-right"><button type="submit" name="update" class="btn--link cart-update"><i class="fa fa-refresh"></i> Update</button></td>
+                                <td colspan="2" class="text-right"><a href="#" class="btn--link cart-update mr-2" wire:click.prevent="removeAll()"><i class="fa fa-trash-o"></i> Remove All</a></td>
                             </tr>
                         </tfoot>
                 </table>
@@ -355,7 +356,23 @@
                 </div>
             </div>
             @else
-                <p>You have no Products in your Cart.</p>
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12 main-col">
+                    @if (session('status'))
+                        <div class="alert alert-success text-uppercase" role="alert">
+                            <i class="icon anm anm-truck-l icon-large"></i> &nbsp;<strong>Congratulations!</strong> {{ session('status') }}
+                        </div>
+                    @endif
+                    <div class="jumbotron justify-content-between d-flex">
+                        <div class="">
+                            <h1 class="display-4 text-info">Sorry...!!</h1>
+                            <p class="lead">You have no Products in your Cart.</p>
+                            <hr class="my-4">
+                            <p>you can buy our awesome product.</p>
+                            <a class="btn btn-primary btn-lg" href="{{ route('products.index') }}" role="button">Click here</a>
+                        </div>
+                        <img src="{{ asset('assets/images/cart.png')}}" alt="Cart logo">
+                    </div>
+                </div>
             @endif
         </div>
     </div>
