@@ -140,7 +140,7 @@
                             <!-- Product Action -->
                             <div class="product-action clearfix">
                                 <div class="product-form__item--submit mb-2">
-                                    <a href="#" class="btn product-form__cart-submit">Add to Cart</a>
+                                    <a href="#" class="btn product-form__cart-submit" wire:click.prevent="addToCart({{ $product->id }}, '{{ $product->title }}', {{ $product->regular_price }})">Add to Cart</a>
                                 </div>
                                 <div class="shopify-payment-button" data-shopify="payment-button">
                                     <button type="button" class="shopify-payment-button__button shopify-payment-button__button--unbranded">Buy it now</button>

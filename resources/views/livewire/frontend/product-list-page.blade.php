@@ -264,7 +264,7 @@
                                     <span class="product-price__price product-price__sale"><span class="money">${{ $key->sale_price !== null ? $key->sale_price : $key->regular_price }}</span></span>
                                 </p>
                                 <!-- End Price -->
-                                <a href="#" class="variants btn btn--small">Add To Cart</a>
+                                <a href="#" class="variants btn btn--small" wire:click.prevent="addToCart({{ $key->id }}, '{{ $key->title }}', {{ $key->regular_price }})">Add to Cart</a>
                             </div>
                         </div>
                         @endforeach
