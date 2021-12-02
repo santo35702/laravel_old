@@ -209,29 +209,29 @@
                                         <div class="input-group-prepend">
                                             <label class="input-group-text" for="sortBy">Sort By:</label>
                                         </div>
-                                        <select class="custom-select custom-select-sm" id="sortBy">
-                                            <option value="title-ascending" selected="selected">Sort</option>
+                                        <select class="custom-select custom-select-sm" id="sortBy" wire:model="sorting">
+                                            <option value="default" selected>Default</option>
                                             <option>Best Selling</option>
-                                            <option>Alphabetically, A-Z</option>
-                                            <option>Alphabetically, Z-A</option>
-                                            <option>Price, low to high</option>
-                                            <option>Price, high to low</option>
-                                            <option>Date, new to old</option>
-                                            <option>Date, old to new</option>
+                                            <option value="name">Alphabetically, A-Z</option>
+                                            <option value="name-desc">Alphabetically, Z-A</option>
+                                            <option value="price">Price, low to high</option>
+                                            <option value="price-desc">Price, high to low</option>
+                                            <option value="date">Date, new to old</option>
+                                            <option value="date-desc">Date, old to new</option>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="col-4 col-md-4 col-lg-4 text-right">
                                     <div class="input-group input-group-sm">
-                                        <select class="custom-select custom-select-sm" id="perPage">
-                                            <option value="title-ascending" selected="selected">Sort</option>
-                                            <option>Best Selling</option>
-                                            <option>Alphabetically, A-Z</option>
-                                            <option>Alphabetically, Z-A</option>
-                                            <option>Price, low to high</option>
-                                            <option>Price, high to low</option>
-                                            <option>Date, new to old</option>
-                                            <option>Date, old to new</option>
+                                        <select class="custom-select custom-select-sm" id="perPage" wire:model="pagesize">
+                                            <option value="20" selected>20 Items</option>
+                                            <option value="30">30 Items</option>
+                                            <option value="40">40 Items</option>
+                                            <option value="50">50 Items</option>
+                                            <option value="60">60 Items</option>
+                                            <option value="70">70 Items</option>
+                                            <option value="80">80 Items</option>
+                                            <option value="100">100 Items</option>
                                         </select>
                                         <div class="input-group-append">
                                             <label class="input-group-text" for="perPage">Per Pages</label>
