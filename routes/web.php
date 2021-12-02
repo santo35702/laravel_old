@@ -11,7 +11,9 @@ use App\Http\Livewire\Frontend\NotFoundPage;
 use App\Http\Livewire\Frontend\CheckoutPage;
 use App\Http\Livewire\Frontend\WishlistPage;
 use App\Http\Livewire\Frontend\ContactUsPage;
+use App\Http\Livewire\Frontend\ProductByBrand;
 use App\Http\Livewire\Frontend\ProductListPage;
+use App\Http\Livewire\Frontend\ProductByCategory;
 use App\Http\Livewire\Frontend\ProductDetailsPage;
 use App\Http\Livewire\User\UserDashboard;
 use App\Http\Livewire\Admin\AdminDashboard;
@@ -44,6 +46,8 @@ Route::prefix('products/')->name('products.')->group(function ()
     Route::get('/', ProductPage::class)->name('index');
     Route::get('/list', ProductListPage::class)->name('list');
     Route::get('/{slug}', ProductDetailsPage::class)->name('details');
+    Route::get('/categories/{slug}', ProductByCategory::class)->name('by_category');
+    Route::get('/brands/{slug}', ProductByBrand::class)->name('by_brands');
 });
 
 Route::get('/faqs', FAQPage::class)->name('faq');

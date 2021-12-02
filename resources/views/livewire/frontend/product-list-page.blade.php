@@ -20,7 +20,7 @@
                         <div class="widget-content">
                             <ul class="sidebar_categories text-capitalize">
                                 @foreach (\App\Models\Category::orderBy('name', 'asc')->get() as $key)
-                                    <li class="lvl-1"><a href="#;" class="site-nav">{{ $key->name }}</a></li>
+                                    <li class="lvl-1"><a href="{{ route('products.by_category', $key->slug) }}" class="site-nav">{{ $key->name }}</a></li>
                                 @endforeach
                             </ul>
                         </div>
@@ -94,7 +94,7 @@
                         <div class="widget-title"><h2>Brands</h2></div>
                         <ul class="text-capitalize">
                             @foreach (\App\Models\Brand::orderBy('name', 'asc')->get() as $key)
-                                <li class="lvl-1"><a href="#;" class="site-nav">{{ $key->name }}</a></li>
+                                <li class="lvl-1"><a href="{{ route('products.by_brands', $key->slug) }}" class="site-nav">{{ $key->name }}</a></li>
                             @endforeach
                             <li>
                               <input type="checkbox" value="monark" id="check6">
@@ -201,33 +201,37 @@
                                     </a>
                                 </div>
                                 <div class="col-4 col-md-4 col-lg-4 text-center filters-toolbar__item filters-toolbar__item--count d-flex justify-content-center align-items-center">
-                                    <div class="filters-toolbar__item">
-                                        <label for="SortBy" class="hidden">Sort By:</label>
-                                        <select name="SortBy" id="SortBy" class="filters-toolbar__input filters-toolbar__input--sort">
-                                            <option value="title-ascending" selected="selected">Sort</option>
+                                    <div class="input-group input-group-sm">
+                                        <div class="input-group-prepend">
+                                            <label class="input-group-text" for="sortBy">Sort By:</label>
+                                        </div>
+                                        <select class="custom-select custom-select-sm" id="sortBy" wire:model="sorting">
+                                            <option value="default" selected>Default</option>
                                             <option>Best Selling</option>
-                                            <option>Alphabetically, A-Z</option>
-                                            <option>Alphabetically, Z-A</option>
-                                            <option>Price, low to high</option>
-                                            <option>Price, high to low</option>
-                                            <option>Date, new to old</option>
-                                            <option>Date, old to new</option>
+                                            <option value="name">Alphabetically, A-Z</option>
+                                            <option value="name-desc">Alphabetically, Z-A</option>
+                                            <option value="price">Price, low to high</option>
+                                            <option value="price-desc">Price, high to low</option>
+                                            <option value="date">Date, new to old</option>
+                                            <option value="date-desc">Date, old to new</option>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="col-4 col-md-4 col-lg-4 text-right">
-                                    <div class="filters-toolbar__item">
-                                        <label for="SortBy" class="hidden">Items Count:</label>
-                                        <select name="SortBy" id="SortBy" class="filters-toolbar__input filters-toolbar__input--sort">
-                                            <option value="title-ascending" selected="selected">Sort</option>
-                                            <option>Best Selling</option>
-                                            <option>Alphabetically, A-Z</option>
-                                            <option>Alphabetically, Z-A</option>
-                                            <option>Price, low to high</option>
-                                            <option>Price, high to low</option>
-                                            <option>Date, new to old</option>
-                                            <option>Date, old to new</option>
+                                    <div class="input-group input-group-sm">
+                                        <select class="custom-select custom-select-sm" id="perPage" wire:model="pagesize">
+                                            <option value="20" selected>20 Items</option>
+                                            <option value="30">30 Items</option>
+                                            <option value="40">40 Items</option>
+                                            <option value="50">50 Items</option>
+                                            <option value="60">60 Items</option>
+                                            <option value="70">70 Items</option>
+                                            <option value="80">80 Items</option>
+                                            <option value="100">100 Items</option>
                                         </select>
+                                        <div class="input-group-append">
+                                            <label class="input-group-text" for="perPage">Per Pages</label>
+                                        </div>
                                     </div>
                                 </div>
 
