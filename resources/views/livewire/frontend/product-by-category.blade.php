@@ -197,7 +197,7 @@
                                     @endif">
                                         <img src="{{ asset('assets/images/grid.jpg') }}" alt="Grid" />
                                     </a>
-                                    <a href="{{ route('products.list') }}" title="List View" class="change-view @if (request()->routeIs('products.list'))
+                                    <a href="{{ route('products.list.by_category', $category->slug) }}" title="List View" class="change-view @if (request()->routeIs('products.list'))
                                         change-view--active
                                     @endif">
                                         <img src="{{ asset('assets/images/list.jpg') }}" alt="List" />
