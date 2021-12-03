@@ -16,6 +16,7 @@ use App\Http\Livewire\Frontend\ProductListPage;
 use App\Http\Livewire\Frontend\ProductByCategory;
 use App\Http\Livewire\Frontend\ProductDetailsPage;
 use App\Http\Livewire\Frontend\ProductByListCategory;
+use App\Http\Livewire\Frontend\SearchPage;
 use App\Http\Livewire\User\UserDashboard;
 use App\Http\Livewire\Admin\AdminDashboard;
 
@@ -50,6 +51,7 @@ Route::prefix('products/')->name('products.')->group(function ()
         Route::get('/', ProductListPage::class)->name('index');
         Route::get('/categories/{slug}', ProductByListCategory::class)->name('by_category');
     });
+    Route::get('/search', SearchPage::class)->name('search');
     Route::get('/{slug}', ProductDetailsPage::class)->name('details');
     Route::get('/categories/{slug}', ProductByCategory::class)->name('by_category');
     Route::get('/brands/{slug}', ProductByBrand::class)->name('by_brands');

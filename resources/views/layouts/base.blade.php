@@ -22,7 +22,7 @@
 </head>
 <body class="belle @if (request()->routeIs('home'))
     template-index template-index-belle
-@elseif (request()->routeIs('products.index') || request()->routeIs('products.list.index') || request()->routeIs('products.by_category') || request()->routeIs('products.list.by_category'))
+@elseif (request()->routeIs('products.index') || request()->routeIs('products.list.index') || request()->routeIs('products.by_category') || request()->routeIs('products.list.by_category') || request()->routeIs('products.search'))
     template-collection
 @elseif (request()->routeIs('products.details'))
     template-product
@@ -38,9 +38,9 @@
     </div>
     <div class="pageWrapper">
     	<!--Search Form Drawer-->
-    	<div class="search">
+        <div class="search">
             <div class="search__form">
-                <form class="search-bar__form" action="#">
+                <form class="search-bar__form" action="{{ route('products.search') }}">
                     <button class="go-btn search__button" type="submit"><i class="icon anm anm-search-l"></i></button>
                     <input class="search__input" type="search" name="q" value="" placeholder="Search entire store..." aria-label="Search" autocomplete="off">
                 </form>
