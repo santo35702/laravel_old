@@ -25,10 +25,8 @@
 
         @livewireStyles
     </head>
-    <body class="hold-transition @if (request()->routeIs('admin.dashboard'))
-        sidebar-mini layout-fixed
-    @elseif (request()->routeIs('admin.categories.index'))
-        sidebar-mini
+    <body class="hold-transition sidebar-mini @if (request()->routeIs('admin.dashboard'))
+        layout-fixed
     @endif">
 
         <!-- Site wrapper -->

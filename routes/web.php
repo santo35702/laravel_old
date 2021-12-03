@@ -21,6 +21,7 @@ use App\Http\Livewire\User\UserDashboard;
 use App\Http\Livewire\Admin\CategoryPage;
 use App\Http\Livewire\Admin\AdminDashboard;
 use App\Http\Livewire\Admin\AddCategoryPage;
+use App\Http\Livewire\Admin\EditCategoryPage;
 
 /*
 |--------------------------------------------------------------------------
@@ -85,5 +86,6 @@ Route::middleware(['auth:sanctum', 'verified', 'authadmin'])->prefix('admin/')->
     {
         Route::get('/', CategoryPage::class)->name('index');
         Route::get('/add', AddCategoryPage::class)->name('add');
+        Route::get('/edit/{slug}', EditCategoryPage::class)->name('edit');
     });
 });

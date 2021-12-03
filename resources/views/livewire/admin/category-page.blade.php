@@ -54,7 +54,10 @@
                                             <td>{{ $key->name }}</td>
                                             <td>{{ $key->slug }}</td>
                                             <td>{{ $key->description }}</td>
-                                            <td>-</td>
+                                            <td>
+                                                <a href="{{ route('admin.categories.edit', $key->slug) }}" class="btn btn-info btn-sm"><i class="fas fa-edit"></i></a>
+                                                <a href="#" class="btn btn-danger"><i class="fas fa-trash"></i></a>
+                                            </td>
                                         </tr>
                                     @endforeach
                                 </tbody>
