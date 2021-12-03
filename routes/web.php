@@ -18,7 +18,9 @@ use App\Http\Livewire\Frontend\ProductDetailsPage;
 use App\Http\Livewire\Frontend\ProductByListCategory;
 use App\Http\Livewire\Frontend\SearchPage;
 use App\Http\Livewire\User\UserDashboard;
+use App\Http\Livewire\Admin\CategoryPage;
 use App\Http\Livewire\Admin\AdminDashboard;
+use App\Http\Livewire\Admin\AddCategoryPage;
 
 /*
 |--------------------------------------------------------------------------
@@ -79,4 +81,9 @@ Route::middleware(['auth:sanctum', 'verified'])->prefix('users/')->name('users.'
 // Admin Route__
 Route::middleware(['auth:sanctum', 'verified', 'authadmin'])->prefix('admin/')->name('admin.')->group(function () {
     Route::get('/dashboard', AdminDashboard::class)->name('dashboard');
+    Route::prefix('categories')->name('categories.')->group(function ()
+    {
+        Route::get('/', CategoryPage::class)->name('index');
+        Route::get('/add', AddCategoryPage::class)->name('add');
+    });
 });
