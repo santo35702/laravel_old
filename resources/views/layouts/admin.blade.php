@@ -230,9 +230,9 @@
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="{{ route('admin.categories.add') }}" class="nav-link">
+                                        <a href="{{ route('admin.products.add') }}" class="nav-link">
                                             <i class="far fa-circle nav-icon"></i>
-                                            <p>Add New Category</p>
+                                            <p>Add New Products</p>
                                         </a>
                                     </li>
                                 </ul>
