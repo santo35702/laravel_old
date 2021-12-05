@@ -22,33 +22,41 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12">
-                    <div class="card card-primary">
-                        <div class="card-header">
-                            <h3 class="card-title">Update Information</h3>
+                    @if (session('status'))
+                        <div class="alert alert-success text-uppercase" role="alert">
+                            {{ session('status') }}
+                        </div>
+                    @endif
+                    <form wire:submit.prevent="updateItem">
+                        <div class="card card-primary">
+                            <div class="card-header">
+                                <h3 class="card-title">Update Information</h3>
 
-                            <div class="card-tools">
-                                <a href="{{ route('admin.categories.index') }}" class="btn btn-tool"><i class="fas fa-undo"></i></a>
+                                <div class="card-tools">
+                                    <a href="{{ route('admin.categories.index') }}" class="btn btn-tool"><i class="fas fa-undo"></i></a>
+                                </div>
                             </div>
+                            <div class="card-body">
+                                <div class="form-group">
+                                    <label for="name">Name</label>
+                                    <input type="text" class="form-control" id="name" placeholder="Enter Category Name" wire:model="name" wire:keyup="generateslug">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" wire:model="slug">
+                                </div>
+                                <div class="form-group"> <!-- id="summernote" -->
+                                    <label for="description">Description</label>
+                                    <textarea class="form-control" rows="5" placeholder="Enter Description" id="description" wire:model="description"></textarea>
+                                </div>
+                            </div>
+                            <!-- /.card-body -->
                         </div>
-                        <div class="card-body">
-                            <div class="form-group">
-                                <label for="inputName">Project Name</label>
-                                <input type="text" id="inputName" class="form-control" value="AdminLTE">
-                            </div>
-                            <div class="form-group">
-                                <label for="inputDescription">Project Description</label>
-                                <textarea id="inputDescription" class="form-control" rows="4">Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terr.</textarea>
-                            </div>
+                        <!-- /.card -->
+                        <div class="form-group">
+                            <a href="{{ route('admin.categories.index') }}" class="btn btn-secondary">Cancel</a>
+                            <input type="submit" value="Save Changes" class="btn btn-success float-right">
                         </div>
-                        <!-- /.card-body -->
-                    </div>
-                    <!-- /.card -->
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-12">
-                  <a href="#" class="btn btn-secondary">Cancel</a>
-                  <input type="submit" value="Save Changes" class="btn btn-success float-right">
+                    </form>
                 </div>
             </div>
         </div>
