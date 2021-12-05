@@ -25,9 +25,7 @@
 
         @livewireStyles
     </head>
-    <body class="hold-transition sidebar-mini @if (request()->routeIs('admin.dashboard'))
-        layout-fixed
-    @endif">
+    <body class="hold-transition sidebar-mini layout-fixed">
 
         <!-- Site wrapper -->
         <div class="wrapper">
@@ -217,6 +215,28 @@
                                 </a>
                             </li>
                             <li class="nav-header">Shop</li>
+                            <li class="nav-item">
+                                <a href="#" class="nav-link">
+                                    <i class="nav-icon fas fa-th"></i>
+                                    <p>Products
+                                        <i class="fas fa-angle-left right"></i>
+                                    </p>
+                                </a>
+                                <ul class="nav nav-treeview">
+                                    <li class="nav-item">
+                                        <a href="{{ route('admin.products.index') }}" class="nav-link">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>List All</p>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="{{ route('admin.categories.add') }}" class="nav-link">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>Add New Category</p>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
                             <li class="nav-item">
                                 <a href="#" class="nav-link">
                                     <i class="nav-icon fas fa-copy"></i>
