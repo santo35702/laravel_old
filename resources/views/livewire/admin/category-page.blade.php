@@ -34,6 +34,12 @@
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
+                            @if (session('status'))
+                                <div class="alert alert-success text-uppercase alert-dismissible fade show" role="alert">
+                                    {{ session('status') }}
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                </div>
+                            @endif
                             <table id="example1" class="table table-bordered table-hover table-striped">
                                 <thead>
                                     <tr>
@@ -54,9 +60,12 @@
                                             <td>{{ $key->name }}</td>
                                             <td>{{ $key->slug }}</td>
                                             <td>{{ $key->description }}</td>
-                                            <td>
-                                                <a href="{{ route('admin.categories.edit', $key->slug) }}" class="btn btn-info btn-sm"><i class="fas fa-edit"></i></a>
-                                                <a href="#" class="btn btn-danger"><i class="fas fa-trash"></i></a>
+                                            <td class="d-flex justify-content-center align-items-center">
+                                                <div class="btn-group btn-group-sm">
+                                                    <a href="{{ route('admin.categories.edit', $key->id) }}" class="btn btn-info"><i class="fas fa-edit"></i></a>
+                                                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal{{ $key->id }}"><i class="fas fa-trash"></i></button>
+                                                    {{-- <a href="#" class="btn btn-danger"><i class="fas fa-trash"></i></a> --}}
+                                                </div>
                                             </td>
                                         </tr>
                                     @endforeach
@@ -72,6 +81,33 @@
             <!-- /.row -->
         </div>
         <!-- /.container-fluid -->
+
+        {{-- Modal --}}
+        @foreach ($categories as $key)
+            <div class="modal fade" id="modal{{ $key->id }}">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Are you sure, you want to Delete <span class="text-capitalize text-danger">[{{ $key->name }}]</span></h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <p class="text-info">If you Delete this Category, You won't be able to see this category.</p>
+                        </div>
+                        <div class="modal-footer justify-content-between">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <a href="#" class="btn btn-danger" wire:click.prevent="deleteItem('{{ $key->id }}')">Delete</a>
+                            {{-- <button type="button" class="btn btn-primary">Save changes</button> --}}
+                        </div>
+                    </div>
+                    <!-- /.modal-content -->
+                </div>
+                <!-- /.modal-dialog -->
+            </div>
+        @endforeach
+        <!-- /.modal -->
     </section>
     <!-- /.content -->
 </div>
