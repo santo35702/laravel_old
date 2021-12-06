@@ -36,9 +36,9 @@ class ProductPage extends Component
         } else if ($this->sorting === 'price-desc') {
             $products = Product::orderBy('regular_price', 'DESC')->paginate($this->pagesize);
         } else if ($this->sorting === 'date') {
-            $products = Product::orderBy('created_at', 'asc')->paginate($this->pagesize);
-        } else if ($this->sorting === 'date-desc') {
             $products = Product::orderBy('created_at', 'DESC')->paginate($this->pagesize);
+        } else if ($this->sorting === 'date-desc') {
+            $products = Product::orderBy('created_at', 'asc')->paginate($this->pagesize);
         } else {
             $products = Product::paginate($this->pagesize);
         }

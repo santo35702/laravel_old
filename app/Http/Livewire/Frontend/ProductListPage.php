@@ -36,13 +36,13 @@ class ProductListPage extends Component
         } else if ($this->sorting === 'price-desc') {
             $products = Product::orderBy('regular_price', 'DESC')->paginate($this->pagesize);
         } else if ($this->sorting === 'date') {
-            $products = Product::orderBy('created_at', 'asc')->paginate($this->pagesize);
-        } else if ($this->sorting === 'date-desc') {
             $products = Product::orderBy('created_at', 'DESC')->paginate($this->pagesize);
+        } else if ($this->sorting === 'date-desc') {
+            $products = Product::orderBy('created_at', 'asc')->paginate($this->pagesize);
         } else {
             $products = Product::paginate($this->pagesize);
         }
-        
+
         $popular_products = Product::inRandomOrder()->limit(5)->get();
         return view('livewire.frontend.product-list-page', ['products' => $products, 'popular_products' => $popular_products])->layout('layouts.base');
     }

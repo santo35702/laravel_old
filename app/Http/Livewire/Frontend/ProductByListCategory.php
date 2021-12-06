@@ -41,9 +41,9 @@ class ProductByListCategory extends Component
         } else if ($this->sorting === 'price-desc') {
             $products = Product::where('category_id', $category->id)->orderBy('regular_price', 'DESC')->paginate($this->pagesize);
         } else if ($this->sorting === 'date') {
-            $products = Product::where('category_id', $category->id)->orderBy('created_at', 'asc')->paginate($this->pagesize);
-        } else if ($this->sorting === 'date-desc') {
             $products = Product::where('category_id', $category->id)->orderBy('created_at', 'DESC')->paginate($this->pagesize);
+        } else if ($this->sorting === 'date-desc') {
+            $products = Product::where('category_id', $category->id)->orderBy('created_at', 'asc')->paginate($this->pagesize);
         } else {
             $products = Product::where('category_id', $category->id)->paginate($this->pagesize);
         }
