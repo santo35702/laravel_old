@@ -74,7 +74,7 @@
                                             </td>
                                             <td>{{ $key->description }}</td>
                                             <td>
-                                                <a href="{{ route('admin.categories.edit', $key->id) }}" class="btn"><span class="badge {{ $key->stock_status === 'instock' ? 'badge-success' : 'badge-danger' }} pb-1">{{ $key->stock_status }}</span></a>
+                                                <a class="text-capitalize"><span class="badge {{ $key->stock_status === 'instock' ? 'badge-success' : 'badge-danger' }} pb-1">{{ $key->stock_status }}</span></a>
                                             </td>
                                             <td class="d-flex justify-content-center align-items-center">
                                                 <div class="btn-group btn-group-sm">
