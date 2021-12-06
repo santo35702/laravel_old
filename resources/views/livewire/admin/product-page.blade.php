@@ -110,7 +110,7 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            <p class="text-info">If you Delete this Category, You won't be able to see this category.</p>
+                            <p class="text-info">If you Delete this Product, You won't be able to see this Product.</p>
                         </div>
                         <div class="modal-footer justify-content-between">
                             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
