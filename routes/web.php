@@ -22,6 +22,7 @@ use App\Http\Livewire\Admin\ProductPage as AdminProductPage;
 use App\Http\Livewire\Admin\CategoryPage;
 use App\Http\Livewire\Admin\AdminDashboard;
 use App\Http\Livewire\Admin\AddProductPage;
+use App\Http\Livewire\Admin\EditProductPage;
 use App\Http\Livewire\Admin\AddCategoryPage;
 use App\Http\Livewire\Admin\EditCategoryPage;
 
@@ -88,6 +89,7 @@ Route::middleware(['auth:sanctum', 'verified', 'authadmin'])->prefix('admin/')->
     {
         Route::get('/', AdminProductPage::class)->name('index');
         Route::get('/add', AddProductPage::class)->name('add');
+        Route::get('/edit/{id}', EditProductPage::class)->name('edit');
     });
 
     Route::prefix('categories')->name('categories.')->group(function ()

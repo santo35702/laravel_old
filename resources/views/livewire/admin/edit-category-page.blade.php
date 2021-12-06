@@ -10,7 +10,7 @@
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Home</a></li>
                         <li class="breadcrumb-item"><a href="{{ route('admin.categories.index') }}">Categories</a></li>
-                        <li class="breadcrumb-item active">Edit some Categories</li>
+                        <li class="breadcrumb-item active">Edit Categories</li>
                     </ol>
                 </div>
             </div>

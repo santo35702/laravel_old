@@ -78,7 +78,7 @@
                                             </td>
                                             <td class="d-flex justify-content-center align-items-center">
                                                 <div class="btn-group btn-group-sm">
-                                                    <a href="{{ route('admin.categories.edit', $key->id) }}" class="btn btn-info"><i class="fas fa-edit"></i></a>
+                                                    <a href="{{ route('admin.products.edit', $key->id) }}" class="btn btn-info"><i class="fas fa-edit"></i></a>
                                                     <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal{{ $key->id }}"><i class="fas fa-trash"></i></button>
                                                     {{-- <a href="#" class="btn btn-danger"><i class="fas fa-trash"></i></a> --}}
                                                 </div>
