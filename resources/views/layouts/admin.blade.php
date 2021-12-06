@@ -18,6 +18,8 @@
         <link rel="stylesheet" href="{{ asset('admin/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css') }}">
         <!-- Toastr -->
         <link rel="stylesheet" href="{{ asset('admin/plugins/toastr/toastr.min.css') }}">
+        <!-- Select2 -->
+        <link rel="stylesheet" href="{{ asset('admin/plugins/select2/css/select2.min.css') }}">
         <!-- Theme style -->
         <link rel="stylesheet" href="{{ asset('admin/dist/css/adminlte.min.css') }}">
         <!-- summernote -->
@@ -382,6 +384,8 @@
         <script src="{{ asset('admin/plugins/sweetalert2/sweetalert2.min.js') }}"></script>
         <!-- Toastr -->
         <script src="{{ asset('admin/plugins/toastr/toastr.min.js') }}"></script>
+        <!-- Select2 -->
+        <script src="{{ asset('admin/plugins/select2/js/select2.full.min.js') }}"></script>
         <!-- AdminLTE App -->
         <script src="{{ asset('admin/dist/js/adminlte.min.js') }}"></script>
         <!-- AdminLTE for demo purposes -->
@@ -431,6 +435,18 @@
           });
         </script>
         @endif
+
+        <!-- Page specific script -->
+        <script>
+          $(function () {
+            //Initialize Select2 Elements
+            $('.select2').select2({
+                placeholder: 'Select an option'
+            })
+
+          })
+
+        </script>
 
         @livewireScripts
     </body>

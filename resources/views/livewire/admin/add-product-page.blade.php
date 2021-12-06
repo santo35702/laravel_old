@@ -22,6 +22,14 @@
         <div class="container-fluid">
             <form wire:submit.prevent="storeItem" enctype="multipart/form-data">
                 <div class="row">
+                    @if (session('status'))
+                        <div class="col-12">
+                            <div class="alert alert-success text-uppercase alert-dismissible fade show" role="alert">
+                                {{ session('status') }}
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            </div>
+                        </div>
+                    @endif
                     <div class="col-6">
                         <div class="card card-primary card-outline">
                             <div class="card-header">
@@ -36,11 +44,6 @@
                             </div>
                             <!-- /.card-header -->
                             <div class="card-body">
-                                @if (session('status'))
-                                    <div class="alert alert-success text-uppercase" role="alert">
-                                        {{ session('status') }}
-                                    </div>
-                                @endif
                                 <div class="form-group">
                                     <label for="title">Title</label>
                                     <input type="text" class="form-control" id="title" placeholder="Enter Products Title" wire:model="title" wire:keyup="generateslug">
@@ -50,55 +53,28 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="short_description">Short Description</label>
-                                    <textarea class="form-control" rows="5" placeholder="Enter Description" id="short_description" wire:model="short_description"></textarea>
-                                </div>
-                                <div class="form-group" id="summernote">
-                                    <label for="description">Description</label>
-                                    <textarea class="form-control" rows="5" placeholder="Enter Description" id="description" wire:model="description"></textarea>
+                                    <textarea class="form-control" rows="5" placeholder="Enter Short Description" id="short_description" wire:model="short_description"></textarea>
                                 </div>
                                 <div class="form-group">
                                     <label for="regular_price">Regular Price</label>
-                                    <input type="text" class="form-control" id="regular_price" placeholder="Enter Products Title" wire:model="regular_price">
+                                    <input type="number" class="form-control" id="regular_price" placeholder="Enter Products Regular Price" wire:model="regular_price">
                                 </div>
-                                <div class="form-group">
-                                    <label for="sale_price">Sale Price</label>
-                                    <input type="text" class="form-control" id="sale_price" placeholder="Enter Products Title" wire:model="sale_price">
-                                </div>
-                                <div class="form-group">
-                                    <label for="sku">SKU</label>
-                                    <input type="text" class="form-control" id="sku" placeholder="Enter Products Title" wire:model="sku">
-                                </div>
-                                <div class="form-group">
-                                    <label for="stock">Stock Status</label>
-                                    <select class="form-control" id="stock">
-                                        <option>In-Stock</option>
-                                        <option>Out of Stock</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label for="featured">Featured</label>
-                                    <select class="form-control" id="featured">
-                                        <option>No</option>
-                                        <option>Yes</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label for="quantity">Quantity</label>
-                                    <input type="text" class="form-control" id="quantity" placeholder="Enter Products Title" wire:model="quantity">
-                                </div>
-                                <div class="form-group">
-                                    <label for="image">Product Image</label>
-                                    <input type="file" class="form-control" id="image" wire:model="image">
+                                <div class="form-group ">
+                                    <div class="custom-file mb-3">
+                                        <label for="image" class="custom-file-label">Product Image</label>
+                                        <input type="file" class="custom-file-input" id="image" wire:model="image">
+                                        @if ($image)
+                                            <img src="{{ $image->temporaryUrl() }}" alt="Product image" class="img-fluid img-thumbnail" width="100">
+                                        @endif
+                                    </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="featured">Category</label>
-                                    <select class="form-control" id="featured">
+                                    <select class="custom-select select2" id="featured" wire:model="category_id">
                                         <option>Select Category...</option>
-                                        <option>Category1</option>
-                                        <option>Category2</option>
-                                        <option>Category3</option>
-                                        <option>Category4</option>
-                                        <option>Category5</option>
+                                        @foreach (\App\Models\Category::orderBy('name', 'ASC')->get() as $key)
+                                            <option value="{{ $key->id }}">{{ $key->name }}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                             </div>
@@ -121,24 +97,41 @@
                             </div>
                             <!-- /.card-header -->
                             <div class="card-body">
-                                <div class="form-group">
-                                    <label for="title">Title</label>
-                                    <input type="text" class="form-control" id="title" placeholder="Enter Products Title" wire:model="title" wire:keyup="generateslug">
-                                </div>
-                                <div class="form-group">
-                                    <input type="hidden" class="form-control" wire:model="slug">
-                                </div>
-                                <div class="form-group">
-                                    <label for="short_description">Short Description</label>
-                                    <textarea class="form-control" rows="5" placeholder="Enter Description" id="short_description" wire:model="short_description"></textarea>
-                                </div>
-                                <div class="form-group">
+                                <div class="form-group"> <!-- id="summernote" -->
                                     <label for="description">Description</label>
                                     <textarea class="form-control" rows="5" placeholder="Enter Description" id="description" wire:model="description"></textarea>
                                 </div>
                                 <div class="form-group">
-                                    <label for="title">Title</label>
-                                    <input type="text" class="form-control" id="title" placeholder="Enter Products Title" wire:model="title" wire:keyup="generateslug">
+                                    <label for="sale_price">Sale Price</label>
+                                    <input type="number" class="form-control" id="sale_price" placeholder="Enter Products Sale Price" wire:model="sale_price">
+                                </div>
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <label for="stock" class="input-group-text">Stock Status</label>
+                                    </div>
+                                    <select class="custom-select" id="stock" wire:model="stock_status">
+                                        <option value="instock">In-Stock</option>
+                                        <option value="outofstock">Out of Stock</option>
+                                    </select>
+                                </div>
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <label for="featured" class="input-group-text">Featured</label>
+                                    </div>
+                                    <select class="custom-select" id="featured" wire:model="featured">
+                                        <option value="0">No</option>
+                                        <option value="1">Yes</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="quantity">Quantity</label>
+                                    <input type="text" class="form-control" id="quantity" placeholder="Enter Products Quantity" wire:model="quantity">
+                                </div>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <label for="sku" class="input-group-text">SKU</label>
+                                    </div>
+                                    <input type="text" class="form-control" id="sku" placeholder="Enter Products SKU" wire:model="sku">
                                 </div>
                             </div>
                             <!-- /.card-body -->
