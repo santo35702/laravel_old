@@ -261,6 +261,29 @@
                                     </li>
                                 </ul>
                             </li>
+                            <li class="nav-header">Home Page</li>
+                            <li class="nav-item">
+                                <a href="#" class="nav-link">
+                                    <i class="nav-icon fas fa-copy"></i>
+                                    <p>Carousel
+                                        <i class="fas fa-angle-left right"></i>
+                                    </p>
+                                </a>
+                                <ul class="nav nav-treeview">
+                                    <li class="nav-item">
+                                        <a href="{{ route('admin.carousel.index') }}" class="nav-link">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>View All</p>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="{{ route('admin.carousel.add') }}" class="nav-link">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>Add New Carousel</p>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
                             <li class="nav-header">TEAM</li>
                             @if (Laravel\Jetstream\Jetstream::hasTeamFeatures())
                                 <li class="nav-item">
