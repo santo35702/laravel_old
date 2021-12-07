@@ -51,10 +51,6 @@
                                     <input type="text" class="form-control" id="subtitle" placeholder="Enter Carousel Sub-Title" wire:model="subtitle">
                                 </div>
                                 <div class="form-group">
-                                    <label for="price">Price</label>
-                                    <input type="text" class="form-control" id="price" placeholder="Enter Carousel Price" wire:model="price">
-                                </div>
-                                <div class="form-group">
                                     <label for="link">Link</label>
                                     <input type="text" class="form-control" id="link" placeholder="Enter Carousel Link" wire:model="link">
                                 </div>

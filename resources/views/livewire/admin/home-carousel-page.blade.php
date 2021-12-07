@@ -47,7 +47,6 @@
                                         <th style="width: 13%">Title</th>
                                         <th style="width: 13%">Sub-Title</th>
                                         <th style="width: 10%">Image</th>
-                                        <th style="width: 40%">Price</th>
                                         <th style="width: 40%">Link</th>
                                         <th style="width: 8%">Status</th>
                                         <th>Action</th>
@@ -71,9 +70,8 @@
                                             </td>
                                             <td>{{ $key->subtitle }}</td>
                                             <td>
-                                                <img alt="Carousel-{{ $sl++ }}" class="img-thumbnail" src="{{ asset('assets/images/product-images/' . $key->image ) }}">
+                                                <img alt="Carousel-{{ $sl++ }}" class="img-thumbnail" src="{{ asset('assets/images/slideshow-banners/' . $key->image ) }}">
                                             </td>
-                                            <td>{{ $key->price }}</td>
                                             <td>{{ $key->link }}</td>
                                             <td>
                                                 <a class="text-capitalize"><span class="badge {{ $key->status === 1 ? 'badge-success' : 'badge-danger' }} pb-1">{{ $key->status === 1 ? 'Active' : 'Inactive' }}</span></a>

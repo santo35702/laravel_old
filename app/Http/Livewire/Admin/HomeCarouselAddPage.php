@@ -14,7 +14,6 @@ class HomeCarouselAddPage extends Component
 
     public $title;
     public $subtitle;
-    public $price;
     public $link;
     public $image;
     public $status;
@@ -29,7 +28,6 @@ class HomeCarouselAddPage extends Component
         $carousel = new HomeCarousel();
         $carousel->title = $this->title;
         $carousel->subtitle = $this->subtitle;
-        $carousel->price = $this->price;
         $carousel->link = $this->link;
         $carousel->status = $this->status;
         $imageName = Carbon::now()->timestamp . '.' . $this->image->extension();
