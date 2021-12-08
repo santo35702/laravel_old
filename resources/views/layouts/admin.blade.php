@@ -284,6 +284,28 @@
                                     </li>
                                 </ul>
                             </li>
+                            <li class="nav-item">
+                                <a href="#" class="nav-link">
+                                    <i class="nav-icon fab fa-hacker-news-square"></i>
+                                    <p>New Arrivals
+                                        <i class="fas fa-angle-left right"></i>
+                                    </p>
+                                </a>
+                                <ul class="nav nav-treeview">
+                                    <li class="nav-item">
+                                        <a href="{{ route('admin.new_arrival') }}" class="nav-link">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>Manage</p>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="{{ route('admin.carousel.add') }}" class="nav-link">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>Add New Carousel</p>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
                             <li class="nav-header">TEAM</li>
                             @if (Laravel\Jetstream\Jetstream::hasTeamFeatures())
                                 <li class="nav-item">
@@ -478,5 +500,7 @@
         </script>
 
         @livewireScripts
+
+        @stack('script')
     </body>
 </html>

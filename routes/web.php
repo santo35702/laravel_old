@@ -26,6 +26,7 @@ use App\Http\Livewire\Admin\EditProductPage;
 use App\Http\Livewire\Admin\AddCategoryPage;
 use App\Http\Livewire\Admin\EditCategoryPage;
 use App\Http\Livewire\Admin\HomeCarouselPage;
+use App\Http\Livewire\Admin\HomeCategoryPage;
 use App\Http\Livewire\Admin\HomeCarouselAddPage;
 use App\Http\Livewire\Admin\HomeCarouselEditPage;
 
@@ -108,4 +109,6 @@ Route::middleware(['auth:sanctum', 'verified', 'authadmin'])->prefix('admin/')->
         Route::get('/add', HomeCarouselAddPage::class)->name('add');
         Route::get('/edit/{id}', HomeCarouselEditPage::class)->name('edit');
     });
+
+    Route::get('/home-category', HomeCategoryPage::class)->name('new_arrival');
 });
