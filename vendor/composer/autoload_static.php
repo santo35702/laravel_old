@@ -634,6 +634,7 @@ class ComposerStaticInit1684d6b6841a35b056f1dcf7ad441e38
         'App\\Models\\HomeCarousel' => __DIR__ . '/../..' . '/app/Models/HomeCarousel.php',
         'App\\Models\\HomeCategory' => __DIR__ . '/../..' . '/app/Models/HomeCategory.php',
         'App\\Models\\Product' => __DIR__ . '/../..' . '/app/Models/Product.php',
+        'App\\Models\\Sale' => __DIR__ . '/../..' . '/app/Models/Sale.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'App\\Providers\\AuthServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AuthServiceProvider.php',

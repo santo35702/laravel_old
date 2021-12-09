@@ -18,8 +18,11 @@ use App\Http\Livewire\Frontend\ProductDetailsPage;
 use App\Http\Livewire\Frontend\ProductByListCategory;
 use App\Http\Livewire\Frontend\SearchPage;
 use App\Http\Livewire\User\UserDashboard;
+use App\Http\Livewire\Admin\SalePage;
 use App\Http\Livewire\Admin\ProductPage as AdminProductPage;
+use App\Http\Livewire\Admin\AddSalePage;
 use App\Http\Livewire\Admin\CategoryPage;
+use App\Http\Livewire\Admin\EditSalePage;
 use App\Http\Livewire\Admin\AdminDashboard;
 use App\Http\Livewire\Admin\AddProductPage;
 use App\Http\Livewire\Admin\EditProductPage;
@@ -111,4 +114,11 @@ Route::middleware(['auth:sanctum', 'verified', 'authadmin'])->prefix('admin/')->
     });
 
     Route::get('/home-category', HomeCategoryPage::class)->name('new_arrival');
+
+    Route::prefix('sale')->name('sale.')->group(function ()
+    {
+        Route::get('/', SalePage::class)->name('index');
+        Route::get('/add', AddSalePage::class)->name('add');
+        Route::get('/edit/{id}', EditSalePage::class)->name('edit');
+    });
 });

@@ -18,6 +18,8 @@
         <link rel="stylesheet" href="{{ asset('admin/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css') }}">
         <!-- Toastr -->
         <link rel="stylesheet" href="{{ asset('admin/plugins/toastr/toastr.min.css') }}">
+        <!-- daterange picker -->
+        <link rel="stylesheet" href="{{ asset('admin/plugins/daterangepicker/daterangepicker.css') }}">
         <!-- Select2 -->
         <link rel="stylesheet" href="{{ asset('admin/plugins/select2/css/select2.min.css') }}">
         <!-- Theme style -->
@@ -290,6 +292,29 @@
                                     <p>Manage New Arrivals
                                     </p>
                                 </a>
+                            </li>
+                            <li class="nav-header">Products Page</li>
+                            <li class="nav-item">
+                                <a href="#" class="nav-link">
+                                    <i class="nav-icon fas fa-clock"></i>
+                                    <p>Sale Time
+                                        <i class="fas fa-angle-left right"></i>
+                                    </p>
+                                </a>
+                                <ul class="nav nav-treeview">
+                                    <li class="nav-item">
+                                        <a href="{{ route('admin.sale.index') }}" class="nav-link">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>View Time</p>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="{{ route('admin.sale.add') }}" class="nav-link">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>Add New Timer</p>
+                                        </a>
+                                    </li>
+                                </ul>
                             </li>
                             <li class="nav-header">TEAM</li>
                             @if (Laravel\Jetstream\Jetstream::hasTeamFeatures())
