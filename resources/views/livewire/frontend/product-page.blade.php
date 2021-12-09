@@ -257,14 +257,24 @@
                                         <img class="hover blur-up lazyload" data-src="{{ asset('assets/images/product-images/product-image1-1.jpg') }}" src="{{ asset('assets/images/product-images/product-image1-1.jpg') }}" alt="{{ $key->title }}" title="{{ $key->title }}">
                                         <!-- End hover image -->
                                         <!-- product label -->
-                                        <div class="product-labels rectangular"><span class="lbl on-sale">-16%</span> <span class="lbl pr-label1">new</span> <span class="lbl pr-label2">Hot</span> <span class="lbl on-sale">Sale</span> <span class="lbl pr-label3">Popular</span></div>
+                                        <div class="product-labels rectangular">
+                                            <span class="lbl on-sale">-16%</span>
+                                            <span class="lbl pr-label1">new</span>
+                                            <span class="lbl pr-label2">Hot</span>
+                                            @if ($key->sale_price > 0)
+                                                <span class="lbl on-sale">Sale</span>
+                                            @endif
+                                            <span class="lbl pr-label3">Popular</span>
+                                        </div>
                                         <span class="sold-out"><span>Sold out</span></span>
                                         <!-- End product label -->
                                     </a>
                                     <!-- end product image -->
 
                                     <!-- countdown start -->
-                                    <div class="saleTime desktop" data-countdown="2022/03/01"></div>
+                                    @if ($key->sale_price > 0)
+                                    <div class="saleTime desktop" data-countdown="2023/03/01"></div>
+                                    @endif
                                     <!-- countdown end -->
 
                                     <!-- Start product button -->
@@ -297,8 +307,10 @@
                                     <!-- End product name -->
                                     <!-- product price -->
                                     <div class="product-price">
+                                        @if ($key->sale_price > 0)
                                         <span class="old-price">${{ $key->regular_price }}</span>
-                                        <span class="price">${{ $key->sale_price !== null ? $key->sale_price : $key->regular_price }}</span>
+                                        @endif
+                                        <span class="price">${{ $key->sale_price ? $key->sale_price : $key->regular_price }}</span>
                                     </div>
                                     <!-- End product price -->
 
@@ -321,7 +333,11 @@
                                 </div>
                                 <!-- End product details -->
                                 <!-- countdown start -->
-                                <div class="timermobile"><div class="saleTime desktop" data-countdown="2022/03/01"></div></div>
+                                @if ($key->sale_price > 0)
+                                <div class="timermobile">
+                                    <div class="saleTime desktop" data-countdown="2022/03/01"></div>
+                                </div>
+                                @endif
                                 <!-- countdown end -->
                             </div>
                             @endforeach

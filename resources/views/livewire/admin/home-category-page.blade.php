@@ -85,7 +85,7 @@
         });
         $('.select2').on('change', function (e) {
             var data = $('.select2').select2("val");
-            @this.set('category_id', data);
+            $this.set('category_id', data);
         });
       })
 

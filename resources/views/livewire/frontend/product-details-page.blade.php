@@ -60,8 +60,10 @@
                             </div>
                             <p class="product-single__price product-single__price-product-template">
                                 <span class="visually-hidden">Regular price</span>
-                                <s id="ComparePrice-product-template"><span class="money">${{ $product->regular_price }}</span></s>
-                                <span class="product-price__price product-price__price-product-template product-price__sale product-price__sale--single">
+                                <s id="ComparePrice-product-template" class="{{ $product->sale_price == null ? 'visually-hidden' : ''}}">
+                                    <span class="money">${{ $product->regular_price }}</span>
+                                </s>
+                                <span class="product-price__price product-price__price-product-template {{ $product->sale_price > 0 ? 'product-price__sale' : '' }} product-price__sale--single">
                                     <span id="ProductPrice-product-template"><span class="money">${{ $product->sale_price == null ? $product->regular_price : $product->sale_price }}</span></span>
                                 </span>
                                 <span class="discount-badge"> <span class="devider">|</span>&nbsp;

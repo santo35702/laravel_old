@@ -249,6 +249,11 @@
                                         <img class="list-view-item__image blur-up lazyload" data-src="{{ asset('assets/images/product-images/' . $key->image ) }}" src="{{ asset('assets/images/product-images/' . $key->image ) }}" alt="{{ $key->title }}" title="{{ $key->title }}">
                                     </a>
                                     <!-- End Image -->
+                                    <!-- countdown start -->
+                                    @if ($key->sale_price > 0)
+                                    <div class="saleTime desktop" data-countdown="2022/03/01"></div>
+                                    @endif
+                                    <!-- countdown end -->
                                 </div>
                             </div>
                             <div class="list-view-item__title-column">
@@ -263,11 +268,20 @@
                                 <!-- End Sort Description -->
                                 <!-- Price -->
                                 <p class="product-price grid-view-item__meta">
+                                    @if ($key->sale_price > 0)
                                     <span class="old-price">${{ $key->regular_price }}</span>
-                                    <span class="product-price__price product-price__sale"><span class="money">${{ $key->sale_price !== null ? $key->sale_price : $key->regular_price }}</span></span>
+                                    @endif
+                                    <span class="product-price__price {{ $key->sale_price ? 'product-price__sale' : ''}}"><span class="money">${{ $key->sale_price ? $key->sale_price : $key->regular_price }}</span></span>
                                 </p>
                                 <!-- End Price -->
                                 <a href="#" class="variants btn btn--small" wire:click.prevent="addToCart({{ $key->id }}, '{{ $key->title }}', {{ $key->regular_price }})">Add to Cart</a>
+                                <!-- countdown start -->
+                                @if ($key->sale_price > 0)
+                                <div class="timermobile">
+                                    <div class="saleTime desktop" data-countdown="2022/03/01"></div>
+                                </div>
+                                @endif
+                                <!-- countdown end -->
                             </div>
                         </div>
                         @endforeach
