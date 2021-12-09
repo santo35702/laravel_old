@@ -40,7 +40,7 @@
                                     <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                 </div>
                             @endif
-                            <table id="example2" class="table table-bordered table-hover table-striped">
+                            <table class="table table-bordered table-hover table-striped">
                                 <thead>
                                     <tr>
                                         <th>SL</th>
@@ -127,3 +127,8 @@
     </section>
     <!-- /.content -->
 </div>
+
+@push('script')
+    <!-- AdminLTE for demo purposes -->
+    <script src="{{ asset('admin/dist/js/demo.js') }}"></script>
+@endpush

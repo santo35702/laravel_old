@@ -73,6 +73,10 @@
 </div>
 
 @push('script')
+    <script src="{{ asset('admin/dist/js/demo.js') }}"></script>
+@endpush
+
+@push('script1')
     <script>
       $(function () {
         //Initialize Select2 Elements
