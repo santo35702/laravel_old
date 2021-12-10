@@ -18,14 +18,17 @@
         <link rel="stylesheet" href="{{ asset('admin/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css') }}">
         <!-- Toastr -->
         <link rel="stylesheet" href="{{ asset('admin/plugins/toastr/toastr.min.css') }}">
-        <!-- daterange picker -->
-        <link rel="stylesheet" href="{{ asset('admin/plugins/daterangepicker/daterangepicker.css') }}">
+
         <!-- Select2 -->
         <link rel="stylesheet" href="{{ asset('admin/plugins/select2/css/select2.min.css') }}">
         <!-- Theme style -->
         <link rel="stylesheet" href="{{ asset('admin/dist/css/adminlte.min.css') }}">
         <!-- summernote -->
         <link rel="stylesheet" href="{{ asset('admin/plugins/summernote/summernote-bs4.min.css') }}">
+        <!-- daterange picker -->
+        <link rel="stylesheet" href="{{ asset('admin/plugins/daterangepicker/daterangepicker.css') }}">
+        <!-- Tempusdominus Bootstrap 4 -->
+        <link rel="stylesheet" href="{{ asset('admin/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css') }}">
 
         @livewireStyles
     </head>
