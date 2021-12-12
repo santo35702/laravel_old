@@ -25,8 +25,8 @@
         <link rel="stylesheet" href="{{ asset('admin/dist/css/adminlte.min.css') }}">
         <!-- summernote -->
         <link rel="stylesheet" href="{{ asset('admin/plugins/summernote/summernote-bs4.min.css') }}">
-        <!-- daterange picker -->
-        <link rel="stylesheet" href="{{ asset('admin/plugins/daterangepicker/daterangepicker.css') }}">
+        {{-- <!-- daterange picker -->
+        <link rel="stylesheet" href="{{ asset('admin/plugins/daterangepicker/daterangepicker.css') }}"> --}}
         <!-- Tempusdominus Bootstrap 4 -->
         <link rel="stylesheet" href="{{ asset('admin/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css') }}">
 
@@ -308,11 +308,11 @@
                                     <li class="nav-item">
                                         <a href="{{ route('admin.sale.index') }}" class="nav-link">
                                             <i class="far fa-circle nav-icon"></i>
-                                            <p>View Time</p>
+                                            <p>View & Manage Time</p>
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="{{ route('admin.sale.add') }}" class="nav-link">
+                                        <a href="#" class="nav-link">
                                             <i class="far fa-circle nav-icon"></i>
                                             <p>Add New Timer</p>
                                         </a>
