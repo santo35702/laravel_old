@@ -82,7 +82,7 @@
       $(function () {
           //Date picker
           $('#datepicker').datetimepicker({
-              format: 'Y-M-D',
+              format: 'Y-M-D H:M:S A',
               viewMode: 'years',
               daysOfWeekDisabled: [0, 6]
           })
