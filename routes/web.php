@@ -118,7 +118,7 @@ Route::middleware(['auth:sanctum', 'verified', 'authadmin'])->prefix('admin/')->
     Route::prefix('sale')->name('sale.')->group(function ()
     {
         Route::get('/', SalePage::class)->name('index');
-        Route::get('/add', AddSalePage::class)->name('add');
+        // Route::get('/add', AddSalePage::class)->name('add');
         // Route::get('/edit/{id}', EditSalePage::class)->name('edit');
     });
 });

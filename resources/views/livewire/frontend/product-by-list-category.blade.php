@@ -121,7 +121,11 @@
                                                 <a class="grid-view-item__title text-capitalize" href="{{ route('products.details', $key->slug) }}">{{ $key->title }}</a>
                                                 <div class="grid-view-item__meta">
                                                     <span class="product-price__price">
-                                                        <span class="money">${{ $key->regular_price }}</span>
+                                                        @if ($key->sale_price > 0 && $sale_date->status == 1 && $sale_date->sale_date > Carbon\Carbon::now())
+                                                            <span class="money">${{ $key->sale_price }}</span>
+                                                        @else
+                                                            <span class="money">${{ $key->regular_price }}</span>
+                                                        @endif
                                                     </span>
                                                 </div>
                                             </div>
@@ -250,8 +254,8 @@
                                     </a>
                                     <!-- End Image -->
                                     <!-- countdown start -->
-                                    @if ($key->sale_price > 0)
-                                    <div class="saleTime desktop" data-countdown="2022/03/01"></div>
+                                    @if ($key->sale_price > 0 && $sale_date->status == 1 && $sale_date->sale_date > Carbon\Carbon::now() )
+                                        <div class="saleTime desktop" data-countdown="{{ Carbon\Carbon::parse($sale_date->sale_date) }}"></div>
                                     @endif
                                     <!-- countdown end -->
                                 </div>
@@ -268,10 +272,12 @@
                                 <!-- End Sort Description -->
                                 <!-- Price -->
                                 <p class="product-price grid-view-item__meta">
-                                    @if ($key->sale_price > 0)
-                                    <span class="old-price">${{ $key->regular_price }}</span>
+                                    @if ($key->sale_price > 0 && $sale_date->status == 1 && $sale_date->sale_date > Carbon\Carbon::now())
+                                        <span class="old-price">${{ $key->regular_price }}</span>
+                                        <span class="product-price__price product-price__sale"><span class="money">${{ $key->sale_price }}</span></span>
+                                    @else
+                                        <span class="product-price__price"><span class="money">${{ $key->regular_price }}</span></span>
                                     @endif
-                                    <span class="product-price__price {{ $key->sale_price ? 'product-price__sale' : ''}}"><span class="money">${{ $key->sale_price ? $key->sale_price : $key->regular_price }}</span></span>
                                 </p>
                                 <!-- End Price -->
                                 <a href="#" class="variants btn btn--small" wire:click.prevent="addToCart({{ $key->id }}, '{{ $key->title }}', {{ $key->regular_price }})">Add to Cart</a>

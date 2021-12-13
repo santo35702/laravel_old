@@ -121,7 +121,11 @@
                                                 <a class="grid-view-item__title" href="{{ route('products.details', $key->slug) }}">{{ $key->title }}</a>
                                                 <div class="grid-view-item__meta">
                                                     <span class="product-price__price">
-                                                        <span class="money">${{ $key->regular_price }}</span>
+                                                        @if ($key->sale_price > 0 && $sale_date->status == 1 && $sale_date->sale_date > Carbon\Carbon::now())
+                                                            <span class="money">${{ $key->sale_price }}</span>
+                                                        @else
+                                                            <span class="money">${{ $key->regular_price }}</span>
+                                                        @endif
                                                     </span>
                                                 </div>
                                             </div>
@@ -258,12 +262,12 @@
                                         <!-- End hover image -->
                                         <!-- product label -->
                                         <div class="product-labels rectangular">
-                                            <span class="lbl on-sale">-16%</span>
+                                            @if ($key->sale_price > 0 && $sale_date->status == 1 && $sale_date->sale_date > Carbon\Carbon::now())
+                                                <span class="lbl on-sale">Sale</span>
+                                                <span class="lbl on-sale">-16%</span>
+                                            @endif
                                             <span class="lbl pr-label1">new</span>
                                             <span class="lbl pr-label2">Hot</span>
-                                            @if ($key->sale_price > 0)
-                                                <span class="lbl on-sale">Sale</span>
-                                            @endif
                                             <span class="lbl pr-label3">Popular</span>
                                         </div>
                                         <span class="sold-out"><span>Sold out</span></span>
@@ -272,13 +276,17 @@
                                     <!-- end product image -->
 
                                     <!-- countdown start -->
-                                    @if ($key->sale_price > 0)
-                                    <div class="saleTime desktop" data-countdown="2023/03/01"></div>
+                                    @if ($key->sale_price > 0 && $sale_date->status == 1 && $sale_date->sale_date > Carbon\Carbon::now() )
+                                        <div class="saleTime desktop" data-countdown="{{ Carbon\Carbon::parse($sale_date->sale_date) }}"></div>
                                     @endif
                                     <!-- countdown end -->
 
                                     <!-- Start product button -->
-                                    <a href="#" class="variants add btn btn-addto-cart" wire:click.prevent="addToCart({{ $key->id }}, '{{ $key->title }}', {{ $key->regular_price }})">Add to Cart</a>
+                                    @if ($key->sale_price > 0 && $sale_date->status == 1 && $sale_date->sale_date > Carbon\Carbon::now() )
+                                        <a href="#" class="variants add btn btn-addto-cart" wire:click.prevent="addToCart({{ $key->id }}, '{{ $key->title }}', {{ $key->sale_price }})">Add to Cart</a>
+                                    @else
+                                        <a href="#" class="variants add btn btn-addto-cart" wire:click.prevent="addToCart({{ $key->id }}, '{{ $key->title }}', {{ $key->regular_price }})">Add to Cart</a>
+                                    @endif
                                     <div class="button-set">
                                         <a href="javascript:void(0)" title="Quick View" class="quick-view-popup quick-view" data-toggle="modal" data-target="#content_quickview">
                                             <i class="icon anm anm-search-plus-r"></i>
@@ -307,10 +315,12 @@
                                     <!-- End product name -->
                                     <!-- product price -->
                                     <div class="product-price">
-                                        @if ($key->sale_price > 0)
-                                        <span class="old-price">${{ $key->regular_price }}</span>
+                                        @if ($key->sale_price > 0 && $sale_date->status == 1 && $sale_date->sale_date > Carbon\Carbon::now())
+                                            <span class="old-price">${{ $key->regular_price }}</span>
+                                            <span class="price">${{ $key->sale_price }}</span>
+                                        @else
+                                            <span class="price">${{ $key->regular_price }}</span>
                                         @endif
-                                        <span class="price">${{ $key->sale_price ? $key->sale_price : $key->regular_price }}</span>
                                     </div>
                                     <!-- End product price -->
 
@@ -333,10 +343,10 @@
                                 </div>
                                 <!-- End product details -->
                                 <!-- countdown start -->
-                                @if ($key->sale_price > 0)
-                                <div class="timermobile">
-                                    <div class="saleTime desktop" data-countdown="2022/03/01"></div>
-                                </div>
+                                @if ($key->sale_price > 0 && $sale_date->status == 1 && $sale_date->sale_date > Carbon\Carbon::now())
+                                    <div class="timermobile">
+                                        <div class="saleTime desktop" data-countdown="{{ Carbon\Carbon::parse($sale_date->sale_date) }}"></div>
+                                    </div>
                                 @endif
                                 <!-- countdown end -->
                             </div>

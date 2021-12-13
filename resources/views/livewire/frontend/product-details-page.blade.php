@@ -29,7 +29,12 @@
                                 <div class="zoompro-span">
                                     <img class="blur-up lazyload zoompro" data-zoom-image="{{ asset('assets/images/product-images/' . $product->image) }}" alt="" src="{{ asset('assets/images/product-images/' . $product->image) }}" />
                                 </div>
-                                <div class="product-labels"><span class="lbl on-sale">Sale</span><span class="lbl pr-label1">new</span></div>
+                                <div class="product-labels">
+                                    @if ($product->sale_price > 0 && $sale_date->status == 1 && $sale_date->sale_date > Carbon\Carbon::now())
+                                        <span class="lbl on-sale">Sale</span>
+                                    @endif
+                                    <span class="lbl pr-label1">new</span>
+                                </div>
                                 <div class="product-buttons">
                                     <a href="https://www.youtube.com/watch?v=93A2jOW5Mog" class="btn popup-video" title="View Video"><i class="icon anm anm-play-r" aria-hidden="true"></i></a>
                                     <a href="#" class="btn prlightbox" title="Zoom"><i class="icon anm anm-expand-l-arrows" aria-hidden="true"></i></a>
@@ -59,20 +64,27 @@
                                 </div>
                             </div>
                             <p class="product-single__price product-single__price-product-template">
-                                <span class="visually-hidden">Regular price</span>
-                                <s id="ComparePrice-product-template" class="{{ $product->sale_price == null ? 'visually-hidden' : ''}}">
-                                    <span class="money">${{ $product->regular_price }}</span>
-                                </s>
-                                <span class="product-price__price product-price__price-product-template {{ $product->sale_price > 0 ? 'product-price__sale' : '' }} product-price__sale--single">
-                                    <span id="ProductPrice-product-template"><span class="money">${{ $product->sale_price == null ? $product->regular_price : $product->sale_price }}</span></span>
-                                </span>
-                                <span class="discount-badge"> <span class="devider">|</span>&nbsp;
-                                    <span>You Save</span>
-                                    <span id="SaveAmount-product-template" class="product-single__save-amount">
-                                        <span class="money">$100.00</span>
+                                @if ($product->sale_price > 0 && $sale_date->status == 1 && $sale_date->sale_date > Carbon\Carbon::now())
+                                    <span class="visually-hidden">Offer price</span>
+                                    <s id="ComparePrice-product-template">
+                                        <span class="money">${{ $product->regular_price }}</span>
+                                    </s>
+                                    <span class="product-price__price product-price__price-product-template product-price__sale product-price__sale--single">
+                                        <span id="ProductPrice-product-template"><span class="money">${{ $product->sale_price }}</span></span>
                                     </span>
-                                    <span class="off">(<span>16</span>%)</span>
-                                </span>
+                                    <span class="discount-badge"> <span class="devider">|</span>&nbsp;
+                                        <span>You Save</span>
+                                        <span id="SaveAmount-product-template" class="product-single__save-amount">
+                                            <span class="money">$100.00</span>
+                                        </span>
+                                        <span class="off">(<span>16</span>%)</span>
+                                    </span>
+                                @else
+                                    <span class="visually-hidden">Regular price</span>
+                                    <span class="product-price__price product-price__price-product-template product-price__sale--single">
+                                        <span id="ProductPrice-product-template"><span class="money">${{ $product->regular_price }}</span></span>
+                                    </span>
+                                @endif
                             </p>
                             <div class="orderMsg" data-user="23" data-time="24">
                                 <img src="{{ asset('assets/images/order-icon.jpg') }}" alt="Order" />
@@ -142,7 +154,11 @@
                             <!-- Product Action -->
                             <div class="product-action clearfix">
                                 <div class="product-form__item--submit mb-2">
-                                    <a href="#" class="btn product-form__cart-submit" wire:click.prevent="addToCart({{ $product->id }}, '{{ $product->title }}', {{ $product->regular_price }})">Add to Cart</a>
+                                    @if ($product->sale_price > 0 && $sale_date->status == 1 && $sale_date->sale_date > Carbon\Carbon::now())
+                                        <a href="#" class="btn product-form__cart-submit" wire:click.prevent="addToCart({{ $product->id }}, '{{ $product->title }}', {{ $product->sale_price }})">Add to Cart</a>
+                                    @else
+                                        <a href="#" class="btn product-form__cart-submit" wire:click.prevent="addToCart({{ $product->id }}, '{{ $product->title }}', {{ $product->regular_price }})">Add to Cart</a>
+                                    @endif
                                 </div>
                                 <div class="shopify-payment-button" data-shopify="payment-button">
                                     <button type="button" class="shopify-payment-button__button shopify-payment-button__button--unbranded">Buy it now</button>

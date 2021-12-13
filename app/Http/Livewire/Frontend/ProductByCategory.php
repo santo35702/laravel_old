@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Frontend;
 
 use Livewire\Component;
 use App\Models\Product;
+use App\Models\Sale;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Cart;
@@ -49,6 +50,7 @@ class ProductByCategory extends Component
         }
 
         $popular_products = Product::inRandomOrder()->limit(5)->get();
-        return view('livewire.frontend.product-by-category', ['products' => $products, 'popular_products' => $popular_products, 'category' => $category])->layout('layouts.base');
+        $sale_date = Sale::find(1);
+        return view('livewire.frontend.product-by-category', ['products' => $products, 'popular_products' => $popular_products, 'category' => $category, 'sale_date' => $sale_date])->layout('layouts.base');
     }
 }
