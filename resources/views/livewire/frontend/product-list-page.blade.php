@@ -211,7 +211,7 @@
                                         </div>
                                         <select class="custom-select custom-select-sm" id="sortBy" wire:model="sorting">
                                             <option value="default" selected>Default</option>
-                                            <option>Best Selling</option>
+                                            <option disabled>Best Selling</option>
                                             <option value="name">Alphabetically, A-Z</option>
                                             <option value="name-desc">Alphabetically, Z-A</option>
                                             <option value="price">Price, low to high</option>
@@ -281,7 +281,11 @@
                                     @endif
                                 </p>
                                 <!-- End Price -->
-                                <a href="#" class="variants btn btn--small" wire:click.prevent="addToCart({{ $key->id }}, '{{ $key->title }}', {{ $key->regular_price }})">Add to Cart</a>
+                                @if ($key->sale_price > 0 && $sale_date->status == 1 && $sale_date->sale_date > Carbon\Carbon::now() )
+                                    <a href="#" class="variants btn btn--small" wire:click.prevent="addToCart({{ $key->id }}, '{{ $key->title }}', {{ $key->sale_price }})">Add to Cart</a>
+                                @else
+                                    <a href="#" class="variants btn btn--small" wire:click.prevent="addToCart({{ $key->id }}, '{{ $key->title }}', {{ $key->regular_price }})">Add to Cart</a>
+                                @endif
                                 <!-- countdown start -->
                                 @if ($key->sale_price > 0 && $sale_date->status == 1 && $sale_date->sale_date > Carbon\Carbon::now())
                                     <div class="timermobile">

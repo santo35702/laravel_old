@@ -214,7 +214,7 @@
                                         </div>
                                         <select class="custom-select custom-select-sm" id="sortBy" wire:model="sorting">
                                             <option value="default" selected>Default</option>
-                                            <option>Best Selling</option>
+                                            <option disabled>Best Selling</option>
                                             <option value="name">Alphabetically, A-Z</option>
                                             <option value="name-desc">Alphabetically, Z-A</option>
                                             <option value="price">Price, low to high</option>
