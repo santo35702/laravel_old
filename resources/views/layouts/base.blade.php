@@ -17,6 +17,8 @@
     <!-- Main Style CSS -->
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/responsive.css') }}">
+    <!-- NoUI-Slider -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.5.0/nouislider.min.css" />
 
     @livewireStyles
 </head>
@@ -682,6 +684,8 @@
         <script src="{{ asset('assets/js/popper.min.js') }}"></script>
         <script src="{{ asset('assets/js/lazysizes.js') }}"></script>
         <script src="{{ asset('assets/js/main.js') }}"></script>
+        <!-- NoUI-Slider -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.5.0/nouislider.min.js"></script>
         <!-- Photoswipe Gallery -->
         @if (request()->routeIs('products.details'))
             <script src="{{ asset('assets/js/vendor/photoswipe.min.js') }}"></script>
@@ -803,5 +807,7 @@
             </div>
         </div>
     @endif
+
+    @stack('script')
 </body>
 </html>
