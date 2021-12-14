@@ -36,8 +36,35 @@ class AddProductPage extends Component
         $this->slug = Str::slug($this->title);
     }
 
+    public function updated($fields)
+    {
+        $this->validateOnly($fields, [
+            'title' => 'required',
+            'slug' => 'required',
+            'short_description' => 'required',
+            'regular_price' => 'required',
+            'image' => 'required',
+            'category_id' => 'required',
+            'description' => 'required',
+            'quantity' => 'required',
+            'sku' => 'required',
+        ]);
+    }
+
     public function storeItem(Request $request)
     {
+        $this->validate([
+            'title' => 'required',
+            'slug' => 'required',
+            'short_description' => 'required',
+            'regular_price' => 'required',
+            'image' => 'required',
+            'category_id' => 'required',
+            'description' => 'required',
+            'quantity' => 'required',
+            'sku' => 'required',
+        ]);
+
         $product = new Product();
         $product->title = $this->title;
         $product->slug = $this->slug;

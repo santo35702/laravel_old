@@ -45,37 +45,77 @@
                             <!-- /.card-header -->
                             <div class="card-body">
                                 <div class="form-group">
-                                    <label for="title">Title</label>
+                                    <label for="title">Title <span class="text-danger">*</span></label>
                                     <input type="text" class="form-control" id="title" placeholder="Enter Products Title" wire:model="title" wire:keyup="generateslug">
+                                    @error ('title')
+                                        <div class="alert alert-danger alert-dismissible fade show mt-2" role="alert">
+                                            {{ $message }}
+                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
                                     <input type="hidden" class="form-control" wire:model="slug">
                                 </div>
                                 <div class="form-group">
-                                    <label for="short_description">Short Description</label>
+                                    <label for="short_description">Short Description <span class="text-danger">*</span></label>
                                     <textarea class="form-control" rows="5" placeholder="Enter Short Description" id="short_description" wire:model="short_description"></textarea>
+                                    @error ('short_description')
+                                        <div class="alert alert-danger alert-dismissible fade show mt-2" role="alert">
+                                            {{ $message }}
+                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
-                                    <label for="regular_price">Regular Price</label>
+                                    <label for="regular_price">Regular Price <span class="text-danger">*</span></label>
                                     <input type="number" class="form-control" id="regular_price" placeholder="Enter Products Regular Price" wire:model="regular_price">
+                                    @error ('regular_price')
+                                        <div class="alert alert-danger alert-dismissible fade show mt-2" role="alert">
+                                            {{ $message }}
+                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                    @enderror
                                 </div>
                                 <div class="form-group ">
                                     <div class="custom-file mb-3">
-                                        <label for="image" class="custom-file-label">Product Image</label>
+                                        <label for="image" class="custom-file-label">Product Image <span class="text-danger">*</span></label>
                                         <input type="file" class="custom-file-input" id="image" wire:model="image">
+                                        @error ('image')
+                                            <div class="alert alert-danger alert-dismissible fade show mt-2" role="alert">
+                                                {{ $message }}
+                                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                        @enderror
                                         @if ($image)
                                             <img src="{{ $image->temporaryUrl() }}" alt="Product image" class="img-fluid img-thumbnail" width="100">
                                         @endif
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="featured">Category</label>
-                                    <select class="custom-select select2" id="featured" wire:model="category_id">
+                                    <label for="category">Category <span class="text-danger">*</span></label>
+                                    <select class="custom-select select2" id="category" wire:model="category_id">
                                         <option>Select Category...</option>
                                         @foreach (\App\Models\Category::orderBy('name', 'ASC')->get() as $key)
                                             <option value="{{ $key->id }}">{{ $key->name }}</option>
                                         @endforeach
                                     </select>
+                                    @error ('category_id')
+                                        <div class="alert alert-danger alert-dismissible fade show mt-2" role="alert">
+                                            {{ $message }}
+                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                    @enderror
                                 </div>
                             </div>
                             <!-- /.card-body -->
@@ -98,8 +138,16 @@
                             <!-- /.card-header -->
                             <div class="card-body">
                                 <div class="form-group" id="summernote"> <!-- id="summernote" -->
-                                    <label for="description">Description</label>
+                                    <label for="description">Description <span class="text-danger">*</span></label>
                                     <textarea class="form-control" rows="5" placeholder="Enter Description" id="description" wire:model="description"></textarea>
+                                    @error ('description')
+                                        <div class="alert alert-danger alert-dismissible fade show mt-2" role="alert">
+                                            {{ $message }}
+                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
                                     <label for="sale_price">Sale Price</label>
@@ -124,14 +172,30 @@
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <label for="quantity">Quantity</label>
+                                    <label for="quantity">Quantity <span class="text-danger">*</span></label>
                                     <input type="text" class="form-control" id="quantity" placeholder="Enter Products Quantity" wire:model="quantity">
+                                    @error ('quantity')
+                                        <div class="alert alert-danger alert-dismissible fade show mt-2" role="alert">
+                                            {{ $message }}
+                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                    @enderror
                                 </div>
                                 <div class="input-group">
                                     <div class="input-group-prepend">
-                                        <label for="sku" class="input-group-text">SKU</label>
+                                        <label for="sku" class="input-group-text">SKU  <span class="text-danger">*</span></label>
                                     </div>
                                     <input type="text" class="form-control" id="sku" placeholder="Enter Products SKU" wire:model="sku">
+                                    @error ('sku')
+                                        <div class="alert alert-danger alert-dismissible fade show mt-2" role="alert">
+                                            {{ $message }}
+                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                    @enderror
                                 </div>
                             </div>
                             <!-- /.card-body -->
