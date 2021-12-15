@@ -61,9 +61,9 @@
                                 <div class="form-group">
                                     <input type="hidden" class="form-control" wire:model="slug">
                                 </div>
-                                <div class="form-group">
+                                <div class="form-group" wire:ignore>
                                     <label for="short_description">Short Description <span class="text-danger">*</span></label>
-                                    <textarea class="form-control @error('short_description') is-invalid @enderror" rows="3" placeholder="Enter Short Description" id="short_description" wire:model="short_description"></textarea>
+                                    <textarea class="form-control @error('short_description') is-invalid @enderror summernote" rows="3" id="short_description" wire:model="short_description"></textarea>
                                     @error ('short_description')
                                         <div class="invalid-feedback">
                                             {{ $message }}
@@ -92,7 +92,7 @@
                                                 {{ $message }}
                                             </div>
                                         @enderror
-                                        
+
                                         @if ($image)
                                             <img src="{{ $image->temporaryUrl() }}" alt="Product image" class="img-fluid img-thumbnail" width="100">
                                         @endif
@@ -132,9 +132,9 @@
                             </div>
                             <!-- /.card-header -->
                             <div class="card-body">
-                                <div class="form-group" id="summernote"> <!-- id="summernote" -->
+                                <div class="form-group" wire:ignore> <!-- id="summernote" -->
                                     <label for="description">Description <span class="text-danger">*</span></label>
-                                    <textarea class="form-control @error('description') is-invalid @enderror" rows="7" placeholder="Enter Description" id="description" wire:model="description"></textarea>
+                                    <textarea class="form-control @error('description') is-invalid @enderror summernote" id="description" wire:model="description"></textarea>
                                     @error ('description')
                                         <div class="invalid-feedback">
                                             {{ $message }}
@@ -212,8 +212,13 @@
     <script>
       $(function () {
         // Summernote
-        $('#summernote').summernote({
+        $('.summernote').summernote({
+            placeholder: 'Enter Description',
             tabsize: 2,
+            height: 150,   //set editable area's height
+            // codemirror: {
+            //     theme: 'monokai'
+            // }
             // fontNames: ['Arial', 'Arial Black', 'Comic Sans MS', 'Courier New', 'Merriweather'],
             // fontNamesIgnoreCheck: ['Merriweather'],
             // lineHeights: ['0.2', '0.3', '0.4', '0.5', '0.6', '0.8', '1.0', '1.2', '1.4', '1.5', '2.0', '3.0']

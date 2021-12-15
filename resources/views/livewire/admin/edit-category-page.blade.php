@@ -54,9 +54,9 @@
                                 <div class="form-group">
                                     <input type="hidden" class="form-control" wire:model="slug">
                                 </div>
-                                <div class="form-group" id="summernote"> <!-- id="summernote" -->
+                                <div class="form-group" wire:ignore> <!-- id="summernote" -->
                                     <label for="description">Description <span class="text-danger">*</span></label>
-                                    <textarea class="form-control @error('description') is-invalid @enderror" rows="5" placeholder="Enter Description" id="description" wire:model="description"></textarea>
+                                    <textarea class="form-control @error('description') is-invalid @enderror summernote" id="description" wire:model="description"></textarea>
                                     @error ('description')
                                         <div class="invalid-feedback">
                                             {{ $message }}
@@ -91,8 +91,10 @@
     <script>
       $(function () {
         // Summernote
-        $('#summernote').summernote({
+        $('.summernote').summernote({
+            placeholder: 'Enter Description',
             tabsize: 2,
+            height: 150,   //set editable area's height
             // fontNames: ['Arial', 'Arial Black', 'Comic Sans MS', 'Courier New', 'Merriweather'],
             // fontNamesIgnoreCheck: ['Merriweather'],
             // lineHeights: ['0.2', '0.3', '0.4', '0.5', '0.6', '0.8', '1.0', '1.2', '1.4', '1.5', '2.0', '3.0']
