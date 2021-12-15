@@ -24,7 +24,7 @@
                 <div class="col-12">
                     <div class="card card-primary card-outline">
                         <div class="card-header">
-                            <h3 class="card-title">Update Products</h3>
+                            <h3 class="card-title">Update Products <small class="ml-2"><b class="badge badge-danger mr-1">Note:</b> All <span class="text-danger fa-2x">*</span> marks must fill required.</small></h3>
                             <div class="card-tools">
                                 <a href="{{ route('admin.products.index') }}" class="btn btn-sm btn-info">Products</a>
                                 <button type="button" class="btn btn-tool" data-card-widget="maximize" title="Expand">
@@ -41,29 +41,56 @@
                                     <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                 </div>
                             @endif
+
+                            @error ('slug')
+                                <div class="alert alert-danger">
+                                    {{ $message }}
+                                </div>
+                            @enderror
                             <form wire:submit.prevent="updateItem" enctype="multipart/form-data">
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <h4>Products Information</h4>
                                         <div class="form-group">
-                                            <label for="title">Title</label>
-                                            <input type="text" class="form-control" id="title" placeholder="Enter Products Title" wire:model="title" wire:keyup="generateslug">
+                                            <label for="title">Title <span class="text-danger">*</span></label>
+                                            <input type="text" class="form-control @error('title') is-invalid @enderror" id="title" placeholder="Enter Products Title" wire:model="title" wire:keyup="generateslug">
+                                            @error ('title')
+                                                <div class="invalid-feedback">
+                                                    {{ $message }}
+                                                </div>
+                                            @enderror
                                         </div>
                                         <div class="form-group">
                                             <input type="hidden" class="form-control" wire:model="slug">
                                         </div>
                                         <div class="form-group">
-                                            <label for="short_description">Short Description</label>
-                                            <textarea class="form-control" rows="5" placeholder="Enter Short Description" id="short_description" wire:model="short_description"></textarea>
+                                            <label for="short_description">Short Description <span class="text-danger">*</span></label>
+                                            <textarea class="form-control @error('short_description') is-invalid @enderror" rows="5" placeholder="Enter Short Description" id="short_description" wire:model="short_description"></textarea>
+                                            @error ('short_description')
+                                                <div class="invalid-feedback">
+                                                    {{ $message }}
+                                                </div>
+                                            @enderror
                                         </div>
                                         <div class="form-group">
-                                            <label for="regular_price">Regular Price</label>
-                                            <input type="number" class="form-control" id="regular_price" placeholder="Enter Products Regular Price" wire:model="regular_price">
+                                            <label for="regular_price">Regular Price <span class="text-danger">*</span></label>
+                                            <input type="number" class="form-control @error('regular_price') is-invalid @enderror" id="regular_price" placeholder="Enter Products Regular Price" wire:model="regular_price">
+                                            @error ('regular_price')
+                                                <div class="invalid-feedback">
+                                                    {{ $message }}
+                                                </div>
+                                            @enderror
                                         </div>
                                         <div class="form-group ">
                                             <div class="custom-file mb-3">
                                                 <label for="image" class="custom-file-label">Product Image</label>
                                                 <input type="file" class="custom-file-input" id="image" wire:model="newImage">
+                                                {{-- @error ('newImage')
+                                                    <div class="invalid-feedback">
+                                                        {{ $message }}
+                                                    </div>
+                                                @enderror --}}
+
                                                 @if ($newImage)
                                                     <img src="{{ $newImage->temporaryUrl() }}" alt="Product image" class="img-fluid img-thumbnail" width="100">
                                                 @else
@@ -72,20 +99,30 @@
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label for="featured">Category</label>
-                                            <select class="custom-select select2" id="featured" wire:model="category_id">
+                                            <label for="featured">Category <span class="text-danger">*</span></label>
+                                            <select class="custom-select select2 @error('category_id') is-invalid @enderror" id="featured" wire:model="category_id">
                                                 <option>Select Category...</option>
                                                 @foreach (\App\Models\Category::orderBy('name', 'ASC')->get() as $key)
                                                     <option value="{{ $key->id }}">{{ $key->name }}</option>
                                                 @endforeach
                                             </select>
+                                            @error ('category_id')
+                                                <div class="invalid-feedback">
+                                                    {{ $message }}
+                                                </div>
+                                            @enderror
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
                                         <h4>Others Information</h4>
                                         <div class="form-group" id="summernote"> <!-- id="summernote" -->
-                                            <label for="description">Description</label>
-                                            <textarea class="form-control" rows="5" placeholder="Enter Description" id="description" wire:model="description"></textarea>
+                                            <label for="description">Description <span class="text-danger">*</span></label>
+                                            <textarea class="form-control @error('description') is-invalid @enderror" rows="5" placeholder="Enter Description" id="description" wire:model="description"></textarea>
+                                            @error ('description')
+                                                <div class="invalid-feedback">
+                                                    {{ $message }}
+                                                </div>
+                                            @enderror
                                         </div>
                                         <div class="form-group">
                                             <label for="sale_price">Sale Price</label>
@@ -110,18 +147,28 @@
                                             </select>
                                         </div>
                                         <div class="form-group">
-                                            <label for="quantity">Quantity</label>
-                                            <input type="text" class="form-control" id="quantity" placeholder="Enter Products Quantity" wire:model="quantity">
+                                            <label for="quantity">Quantity <span class="text-danger">*</span></label>
+                                            <input type="text" class="form-control @error ('quantity') is-invalid @enderror" id="quantity" placeholder="Enter Products Quantity" wire:model="quantity">
+                                            @error ('quantity')
+                                                <div class="invalid-feedback">
+                                                    {{ $message }}
+                                                </div>
+                                            @enderror
                                         </div>
                                         <div class="input-group">
                                             <div class="input-group-prepend">
-                                                <label for="sku" class="input-group-text">SKU</label>
+                                                <label for="sku" class="input-group-text">SKU <span class="text-danger">*</span></label>
                                             </div>
-                                            <input type="text" class="form-control" id="sku" placeholder="Enter Products SKU" wire:model="sku">
+                                            <input type="text" class="form-control @error ('sku') is-invalid @enderror" id="sku" placeholder="Enter Products SKU" wire:model="sku">
+                                            @error ('sku')
+                                                <div class="invalid-feedback">
+                                                    {{ $message }}
+                                                </div>
+                                            @enderror
                                         </div>
                                     </div>
                                 </div>
-                                <div class="form-group">
+                                <div class="form-group mt-3">
                                     <a href="{{ route('admin.products.index') }}" class="btn btn-secondary">Cancel</a>
                                     <button type="submit" class="btn btn-success float-right">Update</button>
                                 </div>

@@ -39,14 +39,14 @@ class AddProductPage extends Component
     public function updated($fields)
     {
         $this->validateOnly($fields, [
-            'title' => 'required',
-            'slug' => 'required',
+            'title' => 'required|max:255',
+            'slug' => 'required|unique:products|max:255',
             'short_description' => 'required',
-            'regular_price' => 'required',
-            'image' => 'required',
+            'regular_price' => 'required|numeric',
+            'image' => 'required|mimes:jpeg,jpg,png',
             'category_id' => 'required',
             'description' => 'required',
-            'quantity' => 'required',
+            'quantity' => 'required|numeric',
             'sku' => 'required',
         ]);
     }
@@ -54,14 +54,14 @@ class AddProductPage extends Component
     public function storeItem(Request $request)
     {
         $this->validate([
-            'title' => 'required',
-            'slug' => 'required',
+            'title' => 'required|max:255',
+            'slug' => 'required|unique:products|max:255',
             'short_description' => 'required',
-            'regular_price' => 'required',
-            'image' => 'required',
+            'regular_price' => 'required|numeric',
+            'image' => 'required|mimes:jpeg,jpg,png',
             'category_id' => 'required',
             'description' => 'required',
-            'quantity' => 'required',
+            'quantity' => 'required|numeric',
             'sku' => 'required',
         ]);
 

@@ -27,8 +27,23 @@ class EditCategoryPage extends Component
         $this->slug = Str::slug($this->name);
     }
 
+    public function updated($fields)
+    {
+        $this->validateOnly($fields, [
+            'name' => 'required|max:255',
+            'slug' => 'required|unique:categories|max:255',
+            'description' => 'required',
+        ]);
+    }
+
     public function updateItem(Request $request)
     {
+        $this->validate([
+            'name' => 'required|max:255',
+            'slug' => 'required|unique:products|max:255',
+            'description' => 'required',
+        ]);
+
         $category = Category::find($this->category_id);
         $category->name = $this->name;
         $category->slug = $this->slug;

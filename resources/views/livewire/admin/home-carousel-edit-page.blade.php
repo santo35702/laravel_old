@@ -31,7 +31,7 @@
                         @endif
                         <div class="card card-secondary card-outline">
                             <div class="card-header">
-                                <h3 class="card-title">Carousel Information</h3>
+                                <h3 class="card-title">Carousel Information <small class="ml-2"><b class="badge badge-danger mr-1">Note:</b> All <span class="text-danger fa-2x">*</span> marks must fill required.</small></h3>
                                 <div class="card-tools">
                                     <a href="{{ route('admin.carousel.index') }}" class="btn btn-tool"><i class="fas fa-undo"></i></a>
                                     <button type="button" class="btn btn-tool" data-card-widget="maximize" title="Expand">
@@ -43,21 +43,42 @@
                             <!-- /.card-header -->
                             <div class="card-body">
                                 <div class="form-group">
-                                    <label for="title">Title</label>
-                                    <input type="text" class="form-control" id="title" placeholder="Enter Carousel Title" wire:model="title">
+                                    <label for="title">Title <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control @error('title') is-invalid @enderror" id="title" placeholder="Enter Carousel Title" wire:model="title">
+                                    @error ('title')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
-                                    <label for="subtitle">Sub-Title</label>
-                                    <input type="text" class="form-control" id="subtitle" placeholder="Enter Carousel Sub-Title" wire:model="subtitle">
+                                    <label for="subtitle">Sub-Title <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control @error('subtitle') is-invalid @enderror" id="subtitle" placeholder="Enter Carousel Sub-Title" wire:model="subtitle">
+                                    @error ('subtitle')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
-                                    <label for="link">Link</label>
-                                    <input type="text" class="form-control" id="link" placeholder="Enter Carousel Link" wire:model="link">
+                                    <label for="link">Link <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control @error('link') is-invalid @enderror" id="link" placeholder="Enter Carousel Link" wire:model="link">
+                                    @error ('link')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
                                     <div class="custom-file mb-3">
-                                        <label for="image" class="custom-file-label">Carousel Image</label>
+                                        <label for="image" class="custom-file-label">Carousel Image <span class="text-danger">*</span></label>
                                         <input type="file" class="custom-file-input" id="image" wire:model="newImage">
+                                        @error ('image')
+                                            <div class="invalid-feedback">
+                                                {{ $message }}
+                                            </div>
+                                        @enderror
+
                                         @if ($newImage)
                                             <img src="{{ $newImage->temporaryUrl() }}" alt="Carousel image" class="img-fluid img-thumbnail" width="100">
                                         @else
@@ -66,12 +87,17 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="status">Status</label>
-                                    <select class="custom-select select2" id="status" wire:model="status">
+                                    <label for="status">Status <span class="text-danger">*</span></label>
+                                    <select class="custom-select select2 @error('status') is-invalid @enderror" id="status" wire:model="status">
                                         <option>Select Status...</option>
                                         <option value="1">Active</option>
                                         <option value="2">Inactive</option>
                                     </select>
+                                    @error ('status')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
                                 </div>
                             </div>
                             <!-- /.card-body -->

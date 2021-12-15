@@ -23,8 +23,27 @@ class HomeCarouselAddPage extends Component
         $this->status = 0;
     }
 
+    public function updated($fields)
+    {
+        $this->validateOnly($fields, [
+            'title' => 'required|max:255',
+            'subtitle' => 'required|max:255',
+            'link' => 'required|max:255',
+            'image' => 'required|mimes:jpeg,jpg,png',
+            'status' => 'required',
+        ]);
+    }
+
     public function storeItem(Request $request)
     {
+        $this->validate([
+            'title' => 'required|max:255',
+            'subtitle' => 'required|max:255',
+            'link' => 'required|max:255',
+            'image' => 'required|mimes:jpeg,jpg,png',
+            'status' => 'required',
+        ]);
+
         $carousel = new HomeCarousel();
         $carousel->title = $this->title;
         $carousel->subtitle = $this->subtitle;

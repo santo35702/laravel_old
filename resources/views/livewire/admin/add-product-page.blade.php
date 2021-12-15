@@ -33,7 +33,7 @@
                     <div class="col-6">
                         <div class="card card-primary card-outline">
                             <div class="card-header">
-                                <h3 class="card-title">Products Information</h3>
+                                <h3 class="card-title">Products Information <small class="ml-2"><b class="badge badge-danger mr-1">Note:</b> All <span class="text-danger fa-2x">*</span> marks must fill required.</small></h3>
                                 <div class="card-tools">
                                     <a href="{{ route('admin.products.index') }}" class="btn btn-sm btn-info">Products</a>
                                     <button type="button" class="btn btn-tool" data-card-widget="maximize" title="Expand">
@@ -44,15 +44,17 @@
                             </div>
                             <!-- /.card-header -->
                             <div class="card-body">
+                                @error ('slug')
+                                    <div class="alert alert-danger">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
                                 <div class="form-group">
                                     <label for="title">Title <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control" id="title" placeholder="Enter Products Title" wire:model="title" wire:keyup="generateslug">
+                                    <input type="text" class="form-control @error('title') is-invalid @enderror" id="title" placeholder="Enter Products Title" wire:model="title" wire:keyup="generateslug">
                                     @error ('title')
-                                        <div class="alert alert-danger alert-dismissible fade show mt-2" role="alert">
+                                        <div class="invalid-feedback">
                                             {{ $message }}
-                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
                                         </div>
                                     @enderror
                                 </div>
@@ -61,40 +63,36 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="short_description">Short Description <span class="text-danger">*</span></label>
-                                    <textarea class="form-control" rows="5" placeholder="Enter Short Description" id="short_description" wire:model="short_description"></textarea>
+                                    <textarea class="form-control @error('short_description') is-invalid @enderror" rows="3" placeholder="Enter Short Description" id="short_description" wire:model="short_description"></textarea>
                                     @error ('short_description')
-                                        <div class="alert alert-danger alert-dismissible fade show mt-2" role="alert">
+                                        <div class="invalid-feedback">
                                             {{ $message }}
-                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
                                         </div>
                                     @enderror
                                 </div>
                                 <div class="form-group">
                                     <label for="regular_price">Regular Price <span class="text-danger">*</span></label>
-                                    <input type="number" class="form-control" id="regular_price" placeholder="Enter Products Regular Price" wire:model="regular_price">
+                                    <input type="number" class="form-control @error('regular_price') is-invalid @enderror" id="regular_price" placeholder="Enter Products Regular Price" wire:model="regular_price">
                                     @error ('regular_price')
-                                        <div class="alert alert-danger alert-dismissible fade show mt-2" role="alert">
+                                        <div class="invalid-feedback">
                                             {{ $message }}
-                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
                                         </div>
                                     @enderror
                                 </div>
-                                <div class="form-group ">
-                                    <div class="custom-file mb-3">
+                                <div class="form-group">
+                                    <label for="sale_price">Sale Price</label>
+                                    <input type="number" class="form-control" id="sale_price" placeholder="Enter Products Sale Price" wire:model="sale_price">
+                                </div>
+                                <div class="form-group">
+                                    <div class="custom-file">
                                         <label for="image" class="custom-file-label">Product Image <span class="text-danger">*</span></label>
                                         <input type="file" class="custom-file-input" id="image" wire:model="image">
                                         @error ('image')
-                                            <div class="alert alert-danger alert-dismissible fade show mt-2" role="alert">
+                                            <div class="invalid-feedback">
                                                 {{ $message }}
-                                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button>
                                             </div>
                                         @enderror
+                                        
                                         @if ($image)
                                             <img src="{{ $image->temporaryUrl() }}" alt="Product image" class="img-fluid img-thumbnail" width="100">
                                         @endif
@@ -102,18 +100,15 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="category">Category <span class="text-danger">*</span></label>
-                                    <select class="custom-select select2" id="category" wire:model="category_id">
+                                    <select class="custom-select select2 @error('category_id') is-invalid @enderror" id="category" required wire:model="category_id">
                                         <option>Select Category...</option>
                                         @foreach (\App\Models\Category::orderBy('name', 'ASC')->get() as $key)
                                             <option value="{{ $key->id }}">{{ $key->name }}</option>
                                         @endforeach
                                     </select>
                                     @error ('category_id')
-                                        <div class="alert alert-danger alert-dismissible fade show mt-2" role="alert">
+                                        <div class="invalid-feedback">
                                             {{ $message }}
-                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
                                         </div>
                                     @enderror
                                 </div>
@@ -126,7 +121,7 @@
                     <div class="col-6">
                         <div class="card card-secondary card-outline">
                             <div class="card-header">
-                                <h3 class="card-title">Others Information</h3>
+                                <h3 class="card-title">Others Information <small class="ml-2"><b class="badge badge-danger mr-1">Note:</b> All <span class="text-danger fa-2x">*</span> marks must fill required.</small></h3>
                                 <div class="card-tools">
                                     <a href="{{ route('admin.products.index') }}" class="btn btn-tool"><i class="fas fa-undo"></i></a>
                                     <button type="button" class="btn btn-tool" data-card-widget="maximize" title="Expand">
@@ -139,19 +134,12 @@
                             <div class="card-body">
                                 <div class="form-group" id="summernote"> <!-- id="summernote" -->
                                     <label for="description">Description <span class="text-danger">*</span></label>
-                                    <textarea class="form-control" rows="5" placeholder="Enter Description" id="description" wire:model="description"></textarea>
+                                    <textarea class="form-control @error('description') is-invalid @enderror" rows="7" placeholder="Enter Description" id="description" wire:model="description"></textarea>
                                     @error ('description')
-                                        <div class="alert alert-danger alert-dismissible fade show mt-2" role="alert">
+                                        <div class="invalid-feedback">
                                             {{ $message }}
-                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
                                         </div>
                                     @enderror
-                                </div>
-                                <div class="form-group">
-                                    <label for="sale_price">Sale Price</label>
-                                    <input type="number" class="form-control" id="sale_price" placeholder="Enter Products Sale Price" wire:model="sale_price">
                                 </div>
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
@@ -173,13 +161,10 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="quantity">Quantity <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control" id="quantity" placeholder="Enter Products Quantity" wire:model="quantity">
+                                    <input type="text" class="form-control @error ('quantity') is-invalid @enderror" id="quantity" placeholder="Enter Products Quantity" wire:model="quantity">
                                     @error ('quantity')
-                                        <div class="alert alert-danger alert-dismissible fade show mt-2" role="alert">
+                                        <div class="invalid-feedback">
                                             {{ $message }}
-                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
                                         </div>
                                     @enderror
                                 </div>
@@ -187,13 +172,10 @@
                                     <div class="input-group-prepend">
                                         <label for="sku" class="input-group-text">SKU  <span class="text-danger">*</span></label>
                                     </div>
-                                    <input type="text" class="form-control" id="sku" placeholder="Enter Products SKU" wire:model="sku">
+                                    <input type="text" class="form-control @error ('sku') is-invalid @enderror" id="sku" placeholder="Enter Products SKU" wire:model="sku">
                                     @error ('sku')
-                                        <div class="alert alert-danger alert-dismissible fade show mt-2" role="alert">
+                                        <div class="invalid-feedback">
                                             {{ $message }}
-                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
                                         </div>
                                     @enderror
                                 </div>

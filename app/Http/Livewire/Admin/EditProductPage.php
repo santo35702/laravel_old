@@ -50,8 +50,35 @@ class EditProductPage extends Component
         $this->slug = Str::slug($this->title, '-');
     }
 
+    public function updated($fields)
+    {
+        $this->validateOnly($fields, [
+            'title' => 'required|max:255',
+            'slug' => 'required|max:255',
+            'short_description' => 'required',
+            'regular_price' => 'required|numeric',
+            // 'image' => 'required|mimes:jpeg,jpg,png',
+            'category_id' => 'required',
+            'description' => 'required',
+            'quantity' => 'required|numeric',
+            'sku' => 'required',
+        ]);
+    }
+
     public function updateItem(Request $request)
     {
+        $this->validate([
+            'title' => 'required|max:255',
+            'slug' => 'required|max:255',
+            'short_description' => 'required',
+            'regular_price' => 'required|numeric',
+            // 'image' => 'required|mimes:jpeg,jpg,png',
+            'category_id' => 'required',
+            'description' => 'required',
+            'quantity' => 'required|numeric',
+            'sku' => 'required',
+        ]);
+
         $product = Product::find($this->product_id);
         $product->title = $this->title;
         $product->slug = $this->slug;

@@ -30,23 +30,38 @@
                     <form wire:submit.prevent="updateItem">
                         <div class="card card-primary">
                             <div class="card-header">
-                                <h3 class="card-title">Update Information</h3>
+                                <h3 class="card-title">Update Information <small class="ml-2"><b class="badge badge-danger mr-1">Note:</b> All <span class="text-danger fa-2x">*</span> marks must fill required.</small></h3>
 
                                 <div class="card-tools">
                                     <a href="{{ route('admin.categories.index') }}" class="btn btn-tool"><i class="fas fa-undo"></i></a>
                                 </div>
                             </div>
                             <div class="card-body">
+                                @error ('slug')
+                                    <div class="alert alert-danger">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
                                 <div class="form-group">
-                                    <label for="name">Name</label>
-                                    <input type="text" class="form-control" id="name" placeholder="Enter Category Name" wire:model="name" wire:keyup="generateslug">
+                                    <label for="name">Name <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" placeholder="Enter Category Name" wire:model="name" wire:keyup="generateslug">
+                                    @error ('name')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
                                     <input type="hidden" class="form-control" wire:model="slug">
                                 </div>
                                 <div class="form-group" id="summernote"> <!-- id="summernote" -->
-                                    <label for="description">Description</label>
-                                    <textarea class="form-control" rows="5" placeholder="Enter Description" id="description" wire:model="description"></textarea>
+                                    <label for="description">Description <span class="text-danger">*</span></label>
+                                    <textarea class="form-control @error('description') is-invalid @enderror" rows="5" placeholder="Enter Description" id="description" wire:model="description"></textarea>
+                                    @error ('description')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
                                 </div>
                             </div>
                             <!-- /.card-body -->
