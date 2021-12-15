@@ -77,11 +77,13 @@
                                                 <a class="text-capitalize"><span class="badge {{ $key->status === 1 ? 'badge-success' : 'badge-danger' }} pb-1">{{ $key->status === 1 ? 'Active' : 'Inactive' }}</span></a>
                                             </td>
                                             <td class="d-flex justify-content-center align-items-center">
-                                                <div class="btn-group btn-group-sm">
+                                                <a href="{{ route('admin.carousel.edit', $key->id) }}" class="btn btn-info btn-sm mr-1"><i class="fas fa-edit"></i></a>
+                                                <a href="#" onclick="confirm('Are you sure, you want to Delete?') || event.stopImmediatePropagation()" class="btn btn-danger btn-sm" wire:click.prevent="deleteItem('{{ $key->id }}')"><i class="fas fa-trash"></i></a>
+                                                {{-- <div class="btn-group btn-group-sm">
                                                     <a href="{{ route('admin.carousel.edit', $key->id) }}" class="btn btn-info"><i class="fas fa-edit"></i></a>
-                                                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal{{ $key->id }}"><i class="fas fa-trash"></i></button>
+                                                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal{{ $key->id }}"><i class="fas fa-trash"></i></button> --}}
                                                     {{-- <a href="#" class="btn btn-danger"><i class="fas fa-trash"></i></a> --}}
-                                                </div>
+                                                {{-- </div> --}}
                                             </td>
                                         </tr>
                                     @endforeach
@@ -99,7 +101,7 @@
         <!-- /.container-fluid -->
 
         {{-- Modal --}}
-        @foreach ($carousel as $key)
+        {{-- @foreach ($carousel as $key)
             <div class="modal fade" id="modal{{ $key->id }}">
                 <div class="modal-dialog modal-lg">
                     <div class="modal-content">
@@ -114,15 +116,15 @@
                         </div>
                         <div class="modal-footer justify-content-between">
                             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                            <a href="#" class="btn btn-danger" wire:click.prevent="deleteItem('{{ $key->id }}')">Delete</a>
+                            <a href="#" class="btn btn-danger" wire:click.prevent="deleteItem('{{ $key->id }}')">Delete</a> --}}
                             {{-- <button type="button" class="btn btn-primary">Save changes</button> --}}
-                        </div>
+                        {{-- </div>
                     </div>
                     <!-- /.modal-content -->
                 </div>
                 <!-- /.modal-dialog -->
             </div>
-        @endforeach
+        @endforeach --}}
         <!-- /.modal -->
     </section>
     <!-- /.content -->
