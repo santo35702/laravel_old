@@ -9,7 +9,7 @@
 
     <div class="container">
         <div class="row">
-            @if (Cart::count() > 0)
+            @if (Cart::instance('cart')->count() > 0)
             <div class="col-12 col-sm-12 col-md-12 col-lg-12 main-col">
                 @if (session('status'))
                     <div class="alert alert-success text-uppercase" role="alert">
@@ -30,7 +30,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach (Cart::content() as $key)
+                            @foreach (Cart::instance('cart')->content() as $key)
                             <tr class="cart__row border-bottom line1 cart-flex border-top">
                                 <td class="cart__image-wrapper cart-flex-item">
                                     <a href="{{ route('products.details', $key->model->slug) }}"><img class="cart__image" src="{{ asset('assets/images/product-images/' . $key->model->image) }}" alt="{{ $key->model->title }}"></a>
@@ -334,16 +334,16 @@
                 <div class="solid-border">
                   <div class="row">
                     <span class="col-12 col-sm-6 cart__subtotal-title"><strong>Subtotal</strong></span>
-                    <span class="col-12 col-sm-6 cart__subtotal-title cart__subtotal text-right"><span class="money">${{ Cart::subtotal() }}</span></span>
+                    <span class="col-12 col-sm-6 cart__subtotal-title cart__subtotal text-right"><span class="money">${{ Cart::instance('cart')->subtotal() }}</span></span>
                     <hr class="clear">
                     <span class="col-12 col-sm-6 cart__subtotal-title"><strong>Tax</strong></span>
-                    <span class="col-12 col-sm-6 cart__subtotal-title cart__subtotal text-right"><span class="money">${{ Cart::tax() }}</span></span>
+                    <span class="col-12 col-sm-6 cart__subtotal-title cart__subtotal text-right"><span class="money">${{ Cart::instance('cart')->tax() }}</span></span>
                     <hr class="clear">
                     <span class="col-12 col-sm-6 cart__subtotal-title"><strong>Shipping</strong></span>
                     <span class="col-12 col-sm-6 cart__subtotal-title cart__subtotal text-right"><span class="money">Free Shipping</span></span>
                     <hr class="clear">
                     <span class="col-12 col-sm-6 cart__subtotal-title"><strong>Total</strong></span>
-                    <span class="col-12 col-sm-6 cart__subtotal-title cart__subtotal text-right"><span class="money">${{ Cart::total() }}</span></span>
+                    <span class="col-12 col-sm-6 cart__subtotal-title cart__subtotal text-right"><span class="money">${{ Cart::instance('cart')->total() }}</span></span>
                   </div>
                   {{-- <div class="cart__shipping">Shipping &amp; taxes calculated at checkout</div> --}}
                   <p class="cart_tearm mt-2 pt-2">
@@ -359,7 +359,7 @@
                 <div class="col-12 col-sm-12 col-md-12 col-lg-12 main-col">
                     @if (session('status'))
                         <div class="alert alert-success text-uppercase" role="alert">
-                            <i class="icon anm anm-truck-l icon-large"></i> &nbsp;<strong>Congratulations!</strong> {{ session('status') }}
+                            <i class="icon anm anm-truck-l icon-large"></i> &nbsp;<strong>Congratulationsssssss!</strong> {{ session('status') }}
                         </div>
                     @endif
                     <div class="jumbotron justify-content-between d-flex">

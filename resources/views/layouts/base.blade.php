@@ -90,7 +90,11 @@
                                     <li><a href="{{ route('register') }}">Create Account</a></li>
                                 @endif
                             @endunless
-                            <li><a href="{{ route('wishlist') }}">Wishlist</a></li>
+                            @if (Cart::instance('wishlist')->count() > 0)
+                                <li><a href="{{ route('wishlist') }}">Wishlist <span class="badge badge-light">{{ Cart::instance('wishlist')->count() }}</span></a></li>
+                            @else
+                                <li><a href="{{ route('wishlist') }}">Wishlist</a></li>
+                            @endif
                         </ul>
                     </div>
                 </div>
@@ -175,13 +179,13 @@
                         <div class="site-cart">
                         	<a href="#;" class="site-header__cart" title="Cart">
                             	<i class="icon anm anm-bag-l"></i>
-                                <span id="CartCount" class="site-header__cart-count" data-cart-render="item_count">{{ Cart::count() }}</span>
+                                <span id="CartCount" class="site-header__cart-count" data-cart-render="item_count">{{ Cart::instance('cart')->count() }}</span>
                             </a>
                             <!--Minicart Popup-->
                             <div id="header-cart" class="block block-cart">
-                                @if (Cart::count() > 0)
+                                @if (Cart::instance('cart')->count() > 0)
                                 <ul class="mini-products-list">
-                                    @foreach (Cart::content() as $key)
+                                    @foreach (Cart::instance('cart')->content() as $key)
                                     <li class="item">
                                     	<a class="product-image" href="{{ route('products.details', $key->model->slug) }}">
                                         	<img src="{{ asset('assets/images/product-images/' . $key->model->image) }}" alt="{{ $key->model->title }}" title="{{ $key->model->title }}" />
@@ -210,7 +214,7 @@
                                 </ul>
                                 <div class="total">
                                 	<div class="total-in">
-                                    	<span class="label">Cart Subtotal:</span><span class="product-price"><span class="money">${{ Cart::subtotal() }}</span></span>
+                                    	<span class="label">Cart Subtotal:</span><span class="product-price"><span class="money">${{ Cart::instance('cart')->subtotal() }}</span></span>
                                     </div>
                                      <div class="buttonSet text-center">
                                         <a href="{{ route('cart') }}" class="btn btn-secondary btn--small">View Cart</a>

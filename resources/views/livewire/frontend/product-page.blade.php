@@ -240,6 +240,9 @@
                     <!--End Toolbar-->
                     <div class="grid-products grid--view-items">
                         <div class="row">
+                            @php
+                                $witems = Cart::instance('wishlist')->content()->pluck('id');
+                            @endphp
                             @foreach ($products as $key)
                             <div class="col-6 col-sm-6 col-md-4 col-lg-3 item grid-view-item--sold-out">
                                 <!-- start product image -->
@@ -284,9 +287,15 @@
                                             <i class="icon anm anm-search-plus-r"></i>
                                         </a>
                                         <div class="wishlist-btn">
-                                            <a class="wishlist add-to-wishlist" href="#" title="Add to Wishlist">
-                                                <i class="icon anm anm-heart-l"></i>
-                                            </a>
+                                            @if ($witems->contains($key->id))
+                                                <a class="wishlist add-to-wishlist" href="#" title="Already in Wishlist">
+                                                    <i class="icon anm anm-heart"></i>
+                                                </a>
+                                            @else
+                                                <a class="wishlist add-to-wishlist" href="#" wire:click.prevent="addToWishlist({{ $key->id }}, '{{ $key->title }}', {{ $key->regular_price }})" title="Add to Wishlist">
+                                                    <i class="icon anm anm-heart-l"></i>
+                                                </a>
+                                            @endif
                                         </div>
                                         <div class="compare-btn">
                                             <a class="compare add-to-compare" href="compare.html" title="Add to Compare">

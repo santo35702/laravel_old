@@ -27,9 +27,15 @@ class ProductListPage extends Component
 
     public function addToCart($product_id, $product_title, $product_price, Request $request)
     {
-        Cart::add($product_id, $product_title, 1, $product_price)->associate('App\Models\Product');
+        Cart::instance('cart')->add($product_id, $product_title, 1, $product_price)->associate('App\Models\Product');
         $request->session()->flash('status', 'Product add to Cart successful!');
         return redirect()->route('cart');
+    }
+
+    public function addToWishlist($product_id, $product_title, $product_price, Request $request)
+    {
+        Cart::instance('wishlist')->add($product_id, $product_title, 1, $product_price)->associate('App\Models\Product');
+        $request->session()->flash('status', 'Product add to Wishlist successful!');
     }
 
     public function render()

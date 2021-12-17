@@ -236,6 +236,9 @@
                     <!--End Toolbar-->
                     <div class="list-view-items grid--view-items">
                         <!--ListView Item-->
+                        @php
+                            $witems = Cart::instance('wishlist')->content()->pluck('id');
+                        @endphp
                         @foreach ($products as $key)
                         <div class="list-product list-view-item">
                             <div class="list-view-item__image-column">
@@ -272,6 +275,11 @@
                                     @endif
                                 </p>
                                 <!-- End Price -->
+                                @if ($witems->contains($key->id))
+                                    <a href="#" class="variants btn btn--small disabled">Already in Wishlist</a>
+                                @else
+                                    <a href="#" class="variants btn btn--small" wire:click.prevent="addToWishlist({{ $key->id }}, '{{ $key->title }}', {{ $key->regular_price }})">Add to Wishlist</a>
+                                @endif
                                 @if ($key->sale_price > 0 && $sale_date->status == 1 && $sale_date->sale_date > Carbon\Carbon::now() )
                                     <a href="#" class="variants btn btn--small" wire:click.prevent="addToCart({{ $key->id }}, '{{ $key->title }}', {{ $key->sale_price }})">Add to Cart</a>
                                 @else
