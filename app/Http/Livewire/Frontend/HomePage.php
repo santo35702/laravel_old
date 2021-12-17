@@ -23,6 +23,7 @@ class HomePage extends Component
     public function addToWishlist($product_id, $product_title, $product_price, Request $request)
     {
         Cart::instance('wishlist')->add($product_id, $product_title, 1, $product_price)->associate('App\Models\Product');
+        $this->emitTo('frontend.wishlist-count', 'refresh');
         $request->session()->flash('status', 'Product add to Wishlist successful!');
     }
 

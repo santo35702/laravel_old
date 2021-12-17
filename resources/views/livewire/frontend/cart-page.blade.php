@@ -359,7 +359,7 @@
                 <div class="col-12 col-sm-12 col-md-12 col-lg-12 main-col">
                     @if (session('status'))
                         <div class="alert alert-success text-uppercase" role="alert">
-                            <i class="icon anm anm-truck-l icon-large"></i> &nbsp;<strong>Congratulationsssssss!</strong> {{ session('status') }}
+                            <i class="icon anm anm-truck-l icon-large"></i> &nbsp;<strong>Congratulations!</strong> {{ session('status') }}
                         </div>
                     @endif
                     <div class="jumbotron justify-content-between d-flex">

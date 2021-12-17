@@ -168,8 +168,21 @@
                         </form>
                         <div class="display-table shareRow">
                             <div class="display-table-cell medium-up--one-third">
+                                @php
+                                    $witems = Cart::instance('wishlist')->content()->pluck('id');
+                                @endphp
                                 <div class="wishlist-btn">
-                                    <a class="wishlist add-to-wishlist" href="#" title="Add to Wishlist"><i class="icon anm anm-heart-l" aria-hidden="true"></i> <span>Add to Wishlist</span></a>
+                                    @if ($witems->contains($product->id))
+                                        <a class="wishlist add-to-wishlist" href="#" title="Already in Wishlist">
+                                            <i class="icon anm anm-heart"></i>
+                                            <span>Already in Wishlist</span>
+                                        </a>
+                                    @else
+                                        <a class="wishlist add-to-wishlist" href="#" wire:click.prevent="addToWishlist({{ $product->id }}, '{{ $product->title }}', {{ $product->regular_price }})" title="Add to Wishlist">
+                                            <i class="icon anm anm-heart-l"></i>
+                                            <span>Add to Wishlist</span>
+                                        </a>
+                                    @endif
                                 </div>
                             </div>
                             <div class="display-table-cell text-right">
