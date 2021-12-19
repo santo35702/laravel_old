@@ -288,7 +288,7 @@
                                         </a>
                                         <div class="wishlist-btn">
                                             @if ($witems->contains($key->id))
-                                                <a class="wishlist add-to-wishlist" href="#" title="Already in Wishlist">
+                                                <a class="wishlist add-to-wishlist" href="#" wire:click.prevent="removeFromWishlist({{ $key->id }})" title="Remove from Wishlist">
                                                     <i class="icon anm anm-heart"></i>
                                                 </a>
                                             @else

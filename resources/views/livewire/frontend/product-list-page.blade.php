@@ -277,7 +277,7 @@
                                 </p>
                                 <!-- End Price -->
                                 @if ($witems->contains($key->id))
-                                    <a href="#" class="variants btn btn--small disabled">Already in Wishlist</a>
+                                    <a href="#" class="variants btn btn--small" wire:click.prevent="removeFromWishlist({{ $key->id }})">Remove from Wishlist</a>
                                 @else
                                     <a href="#" class="variants btn btn--small" wire:click.prevent="addToWishlist({{ $key->id }}, '{{ $key->title }}', {{ $key->regular_price }})">Add to Wishlist</a>
                                 @endif

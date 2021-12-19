@@ -173,9 +173,9 @@
                                 @endphp
                                 <div class="wishlist-btn">
                                     @if ($witems->contains($product->id))
-                                        <a class="wishlist add-to-wishlist" href="#" title="Already in Wishlist">
+                                        <a class="wishlist add-to-wishlist" href="#" wire:click.prevent="removeFromWishlist({{ $product->id }})">
                                             <i class="icon anm anm-heart"></i>
-                                            <span>Already in Wishlist</span>
+                                            <span>Remove from Wishlist</span>
                                         </a>
                                     @else
                                         <a class="wishlist add-to-wishlist" href="#" wire:click.prevent="addToWishlist({{ $product->id }}, '{{ $product->title }}', {{ $product->regular_price }})" title="Add to Wishlist">
