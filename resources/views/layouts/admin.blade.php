@@ -266,6 +266,28 @@
                                     </li>
                                 </ul>
                             </li>
+                            <li class="nav-item">
+                                <a href="#" class="nav-link">
+                                    <i class="nav-icon fas fa-money-bill-alt"></i>
+                                    <p>Coupon
+                                        <i class="fas fa-angle-left right"></i>
+                                    </p>
+                                </a>
+                                <ul class="nav nav-treeview">
+                                    <li class="nav-item">
+                                        <a href="{{ route('admin.coupons.index') }}" class="nav-link">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>View All</p>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="{{ route('admin.coupons.add') }}" class="nav-link">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>Add New Carousel</p>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
                             <li class="nav-header">Home Page</li>
                             <li class="nav-item">
                                 <a href="#" class="nav-link">

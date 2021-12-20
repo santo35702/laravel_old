@@ -31,6 +31,9 @@ use App\Http\Livewire\Admin\AddCategoryPage;
 use App\Http\Livewire\Admin\EditCategoryPage;
 use App\Http\Livewire\Admin\HomeCarouselPage;
 use App\Http\Livewire\Admin\HomeCategoryPage;
+use App\Http\Livewire\Admin\CouponPage;
+use App\Http\Livewire\Admin\AddCouponPage;
+use App\Http\Livewire\Admin\EditCouponPage;
 use App\Http\Livewire\Admin\HomeCarouselAddPage;
 use App\Http\Livewire\Admin\HomeCarouselEditPage;
 
@@ -123,5 +126,12 @@ Route::middleware(['auth:sanctum', 'verified', 'authadmin'])->prefix('admin/')->
         Route::get('/', SalePage::class)->name('index');
         // Route::get('/add', AddSalePage::class)->name('add');
         // Route::get('/edit/{id}', EditSalePage::class)->name('edit');
+    });
+
+    Route::prefix('coupons')->name('coupons.')->group(function ()
+    {
+        Route::get('/', CouponPage::class)->name('index');
+        Route::get('/add', AddCouponPage::class)->name('add');
+        Route::get('/edit/{id}', EditCouponPage::class)->name('edit');
     });
 });
