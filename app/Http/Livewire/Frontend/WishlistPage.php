@@ -9,13 +9,6 @@ use Cart;
 
 class WishlistPage extends Component
 {
-    public function addToCart($product_id, $product_title, $product_price, Request $request)
-    {
-        Cart::instance('cart')->add($product_id, $product_title, 1, $product_price)->associate('App\Models\Product');
-        $request->session()->flash('status', 'Product add to Cart successful!');
-        return redirect()->route('cart');
-    }
-
     public function removeFromWishlist($product_id, Request $request)
     {
         foreach (Cart::instance('wishlist')->content() as $key) {
@@ -26,6 +19,17 @@ class WishlistPage extends Component
                 return;
             }
         }
+    }
+
+    public function moveFromWishlistToCart($rowId, Request $request)
+    {
+        $item = Cart::instance('wishlist')->get($rowId);
+        Cart::instance('wishlist')->remove($rowId);
+        Cart::instance('cart')->add($item->id,$item->model->title,1,$item->price)->associate('App\Models\Product');
+        $this->emitTo('frontend.wishlist-count', 'refresh');
+        $this->emitTo('frontend.cart-count', 'refresh');
+        $request->session()->flash('status', 'Product add to Cart successful!');
+        return redirect()->route('cart');
     }
 
     public function removeAll(Request $request)

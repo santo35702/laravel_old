@@ -49,11 +49,7 @@
                                         </td>
                                         <td class="product-subtotal text-center">
                                             {{-- <button type="button" class="btn btn-small">Add To Cart</button> --}}
-                                            @if ($key->model->sale_price > 0 && $sale_date->status == 1 && $sale_date->sale_date > Carbon\Carbon::now() )
-                                                <a href="#" class="btn btn-small" wire:click.prevent="addToCart({{ $key->model->id }}, '{{ $key->model->title }}', {{ $key->model->sale_price }})">Add to Cart</a>
-                                            @else
-                                                <a href="#" class="btn btn-small" wire:click.prevent="addToCart({{ $key->model->id }}, '{{ $key->model->title }}', {{ $key->model->regular_price }})">Add to Cart</a>
-                                            @endif
+                                            <a href="#" class="btn btn-small" wire:click.prevent="moveFromWishlistToCart('{{ $key->rowId }}')">Move to Cart</a>
                                         </td>
                                     </tr>
                                     @endforeach
