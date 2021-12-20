@@ -11,17 +11,31 @@ use Cart;
 class ProductDetailsPage extends Component
 {
     public $slug;
+    public $qty;
 
     public function mount($slug)
     {
         $this->slug = $slug;
+        $this->qty = 1;
     }
 
     public function addToCart($product_id, $product_title, $product_price, Request $request)
     {
-        Cart::add($product_id, $product_title, 1, $product_price)->associate('App\Models\Product');
+        Cart::add($product_id, $product_title, $this->qty, $product_price)->associate('App\Models\Product');
         $request->session()->flash('status', 'Product add to Cart successful!');
         return redirect()->route('cart');
+    }
+
+    public function increaseQuantity()
+    {
+        $this->qty++;
+    }
+
+    public function decreaseQuantity()
+    {
+        if ($this->qty > 1) {
+            $this->qty--;
+        }
     }
 
     public function addToWishlist($product_id, $product_title, $product_price, Request $request)

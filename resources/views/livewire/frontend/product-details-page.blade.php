@@ -153,7 +153,16 @@
                             <p class="infolinks"><a href="#sizechart" class="sizelink btn"> Size Guide</a> <a href="#productInquiry" class="emaillink btn"> Ask About this Product</a></p>
                             <!-- Product Action -->
                             <div class="product-action clearfix">
-                                <div class="product-form__item--submit mb-2">
+                                <div class="product-form__item--quantity">
+                                    <div class="wrapQtyBtn">
+                                        <div class="qtyField">
+                                            <a class="qtyBtn minus" href="javascript:void(0);" wire:click.prevent="decreaseQuantity"><i class="fa anm anm-minus-r" aria-hidden="true"></i></a>
+                                            <input type="text" id="Quantity" name="quantity" value="1" class="product-form__input qty">
+                                            <a class="qtyBtn plus" href="javascript:void(0);" wire:click.prevent="increaseQuantity"><i class="fa anm anm-plus-r" aria-hidden="true"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="product-form__item--submit">
                                     @if ($product->sale_price > 0 && $sale_date->status == 1 && $sale_date->sale_date > Carbon\Carbon::now())
                                         <a href="#" class="btn product-form__cart-submit" wire:click.prevent="addToCart({{ $product->id }}, '{{ $product->title }}', {{ $product->sale_price }})">Add to Cart</a>
                                     @else
