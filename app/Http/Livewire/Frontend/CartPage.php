@@ -38,6 +38,15 @@ class CartPage extends Component
         $request->session()->flash('status', 'All Products removed from Cart successful!');
     }
 
+    public function saveForLater($rowId, Request $request)
+    {
+        $item = Cart::instance('cart')->get($rowId);
+        Cart::instance('cart')->remove($rowId);
+        Cart::instance('saveForLater')->add($item->id, $item->model->title, 1, $item->price)->associate('App\Models\Product');
+        $this->emitTo('frontend.cart-count', 'refresh');
+        $request->session()->flash('status', 'Product Remove from Cart and Added to :save_for_later successful!', ['save_for_later' => '<a href="'.route('save_for_later').'" class="text-sm text-gray-600">Save-For-Later</a>']);
+    }
+
     public function render()
     {
         return view('livewire.frontend.cart-page')->layout('layouts.base');

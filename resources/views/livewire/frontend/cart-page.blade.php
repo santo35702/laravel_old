@@ -32,10 +32,10 @@
                         <tbody>
                             @foreach (Cart::instance('cart')->content() as $key)
                             <tr class="cart__row border-bottom line1 cart-flex border-top">
-                                <td class="cart__image-wrapper cart-flex-item">
+                                <td class="cart__image-wrapper cart-flex-item align-middle">
                                     <a href="{{ route('products.details', $key->model->slug) }}"><img class="cart__image" src="{{ asset('assets/images/product-images/' . $key->model->image) }}" alt="{{ $key->model->title }}"></a>
                                 </td>
-                                <td class="cart__meta small--text-left cart-flex-item">
+                                <td class="cart__meta small--text-left cart-flex-item align-middle">
                                     <div class="list-view-item__title text-capitalize">
                                         <a href="{{ route('products.details', $key->model->slug) }}">{{ $key->model->title }}</a>
                                     </div>
@@ -44,10 +44,10 @@
                                         Color: Navy<br>Size: Small<br>
                                     </div>
                                 </td>
-                                <td class="cart__price-wrapper cart-flex-item">
+                                <td class="cart__price-wrapper cart-flex-item align-middle">
                                     <span class="money">${{ $key->model->regular_price }}</span>
                                 </td>
-                                <td class="cart__update-wrapper cart-flex-item text-right">
+                                <td class="cart__update-wrapper cart-flex-item text-right align-middle">
                                     <div class="cart__qty text-center">
                                         <div class="qtyField">
                                             <a class="qtyBtn minus" href="javascript:void(0);" wire:click.prevent="decreaseQty('{{ $key->rowId }}')"><i class="icon icon-minus"></i></a>
@@ -56,10 +56,17 @@
                                         </div>
                                     </div>
                                 </td>
-                                <td class="text-right small--hide cart-price">
+                                <td class="text-right small--hide cart-price align-middle">
                                     <div><span class="money">${{ $key->subtotal }}</span></div>
                                 </td>
-                                <td class="text-center small--hide"><a href="#" class="btn btn--secondary cart__remove" title="Remove tem" wire:click.prevent="destroy('{{ $key->rowId }}')"><i class="icon icon anm anm-times-l"></i></a></td>
+                                <td class="text-center small--hide align-middle">
+                                    <a href="#" class="btn btn--secondary cart__remove d-flex flex-column" title="Remove tem" wire:click.prevent="destroy('{{ $key->rowId }}')">
+                                        <i class="icon icon anm anm-times-l"></i>
+                                    </a>
+                                    <a href="#" class="btn btn--secondary cart__remove d-flex flex-column" title="Save for Later" wire:click.prevent="saveForLater('{{ $key->rowId }}')">
+                                        <i class="icon fa fa-bookmark-o"></i>
+                                    </a>
+                                </td>
                             </tr>
                             @endforeach
                         </tbody>

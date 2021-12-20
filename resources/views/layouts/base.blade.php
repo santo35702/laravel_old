@@ -34,6 +34,8 @@
     @elseif (request()->routeIs('not_found'))
         lookbook-template error-page
     @endif
+@elseif (request()->routeIs('save_for_later'))
+    cart-variant1
 @endif">
     <div id="pre-loader">
         <img src="{{ asset('assets/images/loader.gif') }}" alt="Loading..." />
@@ -128,6 +130,7 @@
                                       	<li><a href="{{ route('compare') }}" class="site-nav">Compare Product </a></li>
             							<li><a href="{{ route('faq') }}" class="site-nav">FAQs</a></li>
                                         <li><a href="{{ route('not_found') }}" class="site-nav">404</a></li>
+                                        <li><a href="{{ route('save_for_later') }}" class="site-nav">Save for Later</a></li>
                                     </ul>
                                 </li>
                                 <li class="lvl1 parent dropdown"><a href="#">Blog <i class="anm anm-angle-down-l"></i></a>
@@ -173,7 +176,7 @@
                     <!--Mobile Logo-->
                     <div class="col-4 col-sm-3 col-md-3 col-lg-2">
                         @livewire('frontend.cart-count')
-                        
+
                         <div class="site-header__search">
                         	<button type="button" class="search-trigger"><i class="icon anm anm-search-l"></i></button>
                         </div>

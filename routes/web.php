@@ -13,6 +13,7 @@ use App\Http\Livewire\Frontend\WishlistPage;
 use App\Http\Livewire\Frontend\ContactUsPage;
 use App\Http\Livewire\Frontend\ProductByBrand;
 use App\Http\Livewire\Frontend\ProductListPage;
+use App\Http\Livewire\Frontend\SaveForLaterPage;
 use App\Http\Livewire\Frontend\ProductByCategory;
 use App\Http\Livewire\Frontend\ProductDetailsPage;
 use App\Http\Livewire\Frontend\ProductByListCategory;
@@ -79,6 +80,8 @@ Route::get('/checkout', CheckoutPage::class)->name('checkout');
 Route::get('/compare', ComparePage::class)->name('compare');
 
 Route::get('/wishlist', WishlistPage::class)->name('wishlist');
+
+Route::get('/save-for-later', SaveForLaterPage::class)->name('save_for_later');
 
 Route::get('/contact-us', ContactUsPage::class)->name('contact');
 
