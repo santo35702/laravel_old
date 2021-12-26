@@ -31,15 +31,18 @@
                                 @if ($coupons->count() > 0)
                                     @foreach ($coupons as $key)
                                     <div class="col-sm-2">
-                                        <div class="position-relative p-3 bg-gray" style="height: 130px">
+                                        <div class="position-relative p-3 bg-gray" style="height: 180px">
                                             <div class="ribbon-wrapper">
                                                 <div class="ribbon bg-success">
                                                     Coupon
                                                 </div>
                                             </div>
-                                            Coupon Code <br /> Coupon Type <br /> Coupon Value <br />
-                                            <small>Cart Value</small>
-                                            <small>Action</small>
+                                            Coupon Code: {{ $key->code }} <br /> Coupon Type: {{ $key->type }} <br /> Coupon Value: {{ $key->type == 'fixed' ? '$' . $key->value : '' . $key->value . ' %'}} <br />
+                                            <small>Cart Value: ${{ $key->cart_value }}</small><br><br>
+                                            <small>
+                                                <a href="{{ route('admin.coupons.edit', $key->id) }}" class="btn btn-info btn-sm mr-1"><i class="fas fa-edit"></i></a>
+                                                <a href="#" onclick="confirm('Are you sure, you want to Delete?') || event.stopImmediatePropagation()" class="btn btn-danger btn-sm" wire:click.prevent="deleteItem('{{ $key->id }}')"><i class="fas fa-trash"></i></a>
+                                            </small>
                                         </div>
                                     </div>
                                     @endforeach
