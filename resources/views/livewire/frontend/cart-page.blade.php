@@ -340,24 +340,69 @@
                 </div>
                 <div class="solid-border">
                   <div class="row">
-                    <span class="col-12 col-sm-6 cart__subtotal-title"><strong>Subtotal</strong></span>
+                    <span class="col-12 col-sm-6 cart__subtotal-title"><strong>Product-total</strong></span>
                     <span class="col-12 col-sm-6 cart__subtotal-title cart__subtotal text-right"><span class="money">${{ Cart::instance('cart')->subtotal() }}</span></span>
-                    <hr class="clear">
-                    <span class="col-12 col-sm-6 cart__subtotal-title"><strong>Tax</strong></span>
-                    <span class="col-12 col-sm-6 cart__subtotal-title cart__subtotal text-right"><span class="money">${{ Cart::instance('cart')->tax() }}</span></span>
-                    <hr class="clear">
-                    <span class="col-12 col-sm-6 cart__subtotal-title"><strong>Shipping</strong></span>
-                    <span class="col-12 col-sm-6 cart__subtotal-title cart__subtotal text-right"><span class="money">Free Shipping</span></span>
-                    <hr class="clear">
-                    <span class="col-12 col-sm-6 cart__subtotal-title"><strong>Total</strong></span>
-                    <span class="col-12 col-sm-6 cart__subtotal-title cart__subtotal text-right"><span class="money">${{ Cart::instance('cart')->total() }}</span></span>
+                    @if (session('coupon'))
+                        <hr class="clear">
+                        <span class="col-12 col-sm-6 cart__subtotal-title"><strong>Discount</strong></span>
+                        <span class="col-12 col-sm-6 cart__subtotal-title cart__subtotal text-right"><span class="money">(-) ${{ number_format($discount, 2) }}</span></span>
+                        <hr class="clear">
+                        <span class="col-12 col-sm-6 cart__subtotal-title"><strong>Sub-Total</strong></span>
+                        <span class="col-12 col-sm-6 cart__subtotal-title cart__subtotal text-right"><span class="money">${{ number_format($subtotalAfterDiscount, 2) }}</span></span>
+                        <hr class="clear">
+                        <span class="col-12 col-sm-6 cart__subtotal-title"><strong>Tax ({{ config('cart.tax') }}%)</strong></span>
+                        <span class="col-12 col-sm-6 cart__subtotal-title cart__subtotal text-right"><span class="money">(+) ${{ number_format($taxAfterDiscount, 2) }}</span></span>
+                        <hr class="clear">
+                        <span class="col-12 col-sm-6 cart__subtotal-title"><strong>Total</strong></span>
+                        <span class="col-12 col-sm-6 cart__subtotal-title cart__subtotal text-right"><span class="money">${{ number_format($totalAfterDiscount, 2) }}</span></span>
+                    @else
+                        <hr class="clear">
+                        <span class="col-12 col-sm-6 cart__subtotal-title"><strong>Tax</strong></span>
+                        <span class="col-12 col-sm-6 cart__subtotal-title cart__subtotal text-right"><span class="money">${{ Cart::instance('cart')->tax() }}</span></span>
+                        <hr class="clear">
+                        <span class="col-12 col-sm-6 cart__subtotal-title"><strong>Shipping</strong></span>
+                        <span class="col-12 col-sm-6 cart__subtotal-title cart__subtotal text-right"><span class="money">Free Shipping</span></span>
+                        <hr class="clear">
+                        <span class="col-12 col-sm-6 cart__subtotal-title"><strong>Total</strong></span>
+                        <span class="col-12 col-sm-6 cart__subtotal-title cart__subtotal text-right"><span class="money">${{ Cart::instance('cart')->total() }}</span></span>
+                    @endif
                   </div>
                   {{-- <div class="cart__shipping">Shipping &amp; taxes calculated at checkout</div> --}}
-                  <p class="cart_tearm mt-2 pt-2">
-                    <label>
-                      <input type="checkbox" name="tearm" id="cartTearm" class="checkbox" value="tearm" required>
-                       I agree with the terms and conditions</label>
+                  <p class="cart_tearm mt-2 pt-2 mb-1">
+                      <label>
+                          <input type="checkbox" name="tearm" id="cartTearm" class="checkbox" value="tearm" required>
+                          I agree with the terms and conditions
+                      </label>
                   </p>
+                  @if (!session('coupon'))
+                      <p class="mb-1">
+                          <label>
+                              <input type="checkbox" id="promo-code" class="checkbox" name="coupon" value="1" wire:model="haveCouponCode">
+                              I have promo Code
+                          </label>
+                      </p>
+                      @if ($haveCouponCode == 1)
+                          <div class="coupon-form">
+                              <form class="coupon-form" wire:submit.prevent="applyCouponCode">
+                                  <h4 class="coupon-title">Coupon Code</h4>
+                                  <div class="form-group">
+                                      <label for="coupon-code">Enter your coupon code:</label>
+                                      <div class="input-group">
+                                          <input type="text" class="form-control @if (session('coupon_status')) is-invalid @endif" id="coupon-code" wire:model="couponCode">
+                                          <div class="input-group-append">
+                                              <button type="submit" class="btn btn--secondary">Apply</button>
+                                          </div>
+                                          @if (session('coupon_status'))
+                                              <div class="invalid-feedback">
+                                                  {{ session('coupon_status') }}
+                                              </div>
+                                          @endif
+                                      </div>
+                                  </div>
+                              </form>
+                          </div>
+                      @endif
+                  @endif
                   <input type="submit" name="checkout" id="cartCheckout" class="btn btn--small-wide checkout" value="Checkout">
                   <div class="paymnet-img"><img src="{{ asset('assets/images/payment-img.jpg') }}" alt="Payment"></div>
                 </div>
